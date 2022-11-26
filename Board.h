@@ -3,13 +3,18 @@
 
 #include <iostream>
 #include <vector>
+#include "Piece.h"
 using namespace std;
 
-class Board : puplic Pieces{
+class Board: public Piece{
     vector <Piece *> pieces;
     string pieces;
     string colour;
-    string position;
+    string positions;
+    public:
+    Board();
+    
+    ~Board();
 };
 
 #endif
