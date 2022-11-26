@@ -1,1 +1,0 @@
-PiecesType.o: PiecesType.cc
