@@ -7,8 +7,12 @@ using namespace std;
 class Board;
 
 class Piece {
-    string position;
+    int id;
+    int row, col;
+    string colour;
 
+public:
+    virtual bool getcheck(string position) = 0;
 };
 
 #endif
