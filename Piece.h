@@ -7,7 +7,12 @@ using namespace std;
 class Board;
 
 class Piece {
-    string position;
+    int id;
+    int row, col;
+    string colour;
+    
+public:
+    bool getcheck(string position);
 
 };
 
