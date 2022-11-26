@@ -10,10 +10,9 @@ class Piece {
     int id;
     int row, col;
     string colour;
-    
-public:
-    bool getcheck(string position);
 
+public:
+    virtual bool getcheck(string position) = 0;
 };
 
 #endif
