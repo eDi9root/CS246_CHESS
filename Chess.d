@@ -1,0 +1,1 @@
+Chess.o: Chess.cc
