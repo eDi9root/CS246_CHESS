@@ -9,7 +9,11 @@ ${EXEC}: ${OBJECTS}
 
 -include ${DEPENDS}
 
-.PHONY: clean
+.PHONY: clean r
 
 clean:
-	rm ${OBJECTS} ${EXEC} ${DEPENDS}
+	rm ${OBJECTS} ${DEPENDS}
+
+r:
+	make clean; make
+	
