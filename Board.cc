@@ -1,10 +1,6 @@
 #include <iostream>
 #include <vector>
+#include "Board.h"
 using namespace std;
 
-class Board {
-    vector <Piece *> pieces;
-    string pieces;
-    string colour;
-    string position;
-}
+
