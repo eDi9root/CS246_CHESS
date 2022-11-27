@@ -17,6 +17,7 @@ class Board : public Piece
 
 public:
     Board();
+    void setup_placeP(string piecesType, string positions);
 
     ~Board();
 };

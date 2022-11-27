@@ -6,5 +6,16 @@
 using namespace std;
 
 int main() {
-    return 0;
+    string command;
+    string setup;
+    string picecetype;
+    string coordinator;
+    while (!cin.eof()) {
+        cin >> command;
+        if (command == "setup") { // consider about input "setup" first
+            cin >> setup;
+            if (setup[])
+
+        }
+    }
 }

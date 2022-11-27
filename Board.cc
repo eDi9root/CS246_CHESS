@@ -5,3 +5,6 @@
 using namespace std;
 
 
+void Board::setup_placeP(string piecesType, string position) {
+    //if (piecesType == "")
+}
