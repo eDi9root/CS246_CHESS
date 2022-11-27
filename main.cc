@@ -28,9 +28,20 @@ int main() {
                         cout << "invalid movement!" << endl;
                      }
                 }
-            } else if (setup == "-") {
-                // 하나만 입력받음 (위치)
             }
+        } else if (command == "-") {
+                // 하나만 입력받음 (위치)
+        } else if (setup == "move") {
+
+        } else if (setup == "=") { // makes the next's input's turn (i.e. white, black)
+            cin >> turn;
+            if (turn == "white") {
+                //...
+            }
+        } else if (setup == "redesign") {
+                
+        } else { // invalid command
+            cout << "invalid command!" << endl;
         }
     }
 }
