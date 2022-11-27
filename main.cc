@@ -22,7 +22,11 @@ int main() {
                      picecetype[0] == 'r' || picecetype[0] == 'n' || picecetype[0] == 'p') &&
                     ((coordinate[0] >= 'a' && coordinate[0] <= 'z') && 
                      (coordinate[1] >= '1' && coordinate[1] <= '1'))) { // check if the command is valid
-                     Board::setup_placeP(picecetype[0], coordinate[0], coordinate[1]);
+                     if (Board::legal_movement(picecetype[0], coordinate[0], coordinate[1]) == true) {
+                        // ...
+                     } else {
+                        cout << "invalid movement!" << endl;
+                     }
                 }
             } else if (setup == "-") {
                 // 하나만 입력받음 (위치)

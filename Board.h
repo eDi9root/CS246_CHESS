@@ -18,6 +18,7 @@ class Board : public Piece
 public:
     Board();
     void setup_placeP(string piecesType, string positions);
+    //bool legal_movement(string pieceType, string x, string y);
 
     ~Board();
 };
