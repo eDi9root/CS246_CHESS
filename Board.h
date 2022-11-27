@@ -10,7 +10,7 @@ using namespace std;
 class Board : public Piece
 {
     // Tile **theBoard;
-    vector<Piece *> pieces; // 이중 vector 이어야 할듯?
+    vector<vector<Piece *>> pieces; // 이중 vector 이어야 할듯?
     string piecesType;
     string colour;
     string positions;
@@ -18,7 +18,7 @@ class Board : public Piece
 public:
     Board();
     void setup_placeP(string piecesType, string positions);
-    //bool legal_movement(string pieceType, string x, string y);
+    // bool legal_movement(string pieceType, string x, string y);
 
     ~Board();
 };
