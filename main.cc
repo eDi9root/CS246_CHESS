@@ -14,7 +14,9 @@ int main() {
         cin >> command;
         if (command == "setup") { // consider about input "setup" first
             cin >> setup;
-            if (setup[])
+            if (setup == "+") {
+                cin >> piecetype >> coordinator;
+            }
 
         }
     }
