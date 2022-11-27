@@ -33,9 +33,11 @@ int main() {
                 // 하나만 입력받음 (위치)
         } else if (setup == "move") {
 
-        } else if (setup == "=") { // makes the next's input's turn (i.e. white, black)
+        } else if (setup == "=") { // makes the input's turn (i.e. white, black)
             cin >> turn;
             if (turn == "white") {
+                //...
+            } else if (turn == "black") {
                 //...
             }
         } else if (setup == "redesign") {
