@@ -11,6 +11,7 @@ class King: public Piece {
 public:
     void notify(char letter, int row, int col);
     TextDisplay();
+    friend ostream &operator<<(ostream &out, const TextDisplay &t)
     ~TextDisplay();
 };
 
