@@ -5,13 +5,13 @@
 #include <string>
 using namespace std;
 
-class King: public Piece {
+class TextDisplay {
     char **Tdisplay;
 
 public:
     void notify(char letter, int row, int col);
     TextDisplay();
-    friend ostream &operator<<(ostream &out, const TextDisplay &t)
+    friend ostream &operator<<(ostream &out, const TextDisplay &t);
     ~TextDisplay();
 };
 
