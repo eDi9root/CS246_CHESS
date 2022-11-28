@@ -15,7 +15,7 @@ class Move;
 
 class Board {
   Tile **theBoard;                 // 한 칸을 참조?
-  vector<vector<Piece *>> pieces;  // 보드 [8][8]
+  vector<vector<Piece *>> pBoard;  // 보드 [8][8]
   string piecesType;
   string colour;
   string positions;
