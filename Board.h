@@ -8,9 +8,8 @@
 #include "Move.h"
 #include "Piece.h"
 #include "Tile.h"
-using namespace std;
 
-class Piece;
+using namespace std;
 
 class Move;
 
