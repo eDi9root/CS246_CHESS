@@ -14,8 +14,8 @@ using namespace std;
 class Move;
 
 class Board {
-  Tile **theBoard;                 // 한 칸을 참조?
-  vector<vector<Piece *>> pBoard;  // 보드 [8][8]
+  Tile **theBoard;                                       // 한 칸을 참조?
+  vector<vector<Piece>> pBoard(8, vector<Piece>(8, 0));  // 보드 [8][8]
   string piecesType;
   string colour;
   string positions;

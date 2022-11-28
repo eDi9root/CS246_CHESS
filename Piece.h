@@ -17,6 +17,7 @@ class Piece {
   bool init_moved;
 
  public:
+  Piece();
   virtual bool getcheck() const;  // 이동 가능 확인
 
   // Move movement(Board board) const;  // 이동
