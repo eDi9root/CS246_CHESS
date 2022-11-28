@@ -6,13 +6,13 @@
 using namespace std;
 
 class TextDisplay {
-    char **Tdisplay;
+  char **Tdisplay;
 
-public:
-    void notify(char letter, int row, int col);
-    TextDisplay();
-    friend ostream &operator<<(ostream &out, const TextDisplay &t);
-    ~TextDisplay();
+ public:
+  void notify(char letter, int row, int col);
+  TextDisplay();
+  ~TextDisplay();
+  friend ostream &operator<<(ostream &out, const TextDisplay &t);
 };
 
 #endif
