@@ -12,13 +12,9 @@ class Piece {
   string colour;
 
  public:
-  //   enum { King = 0, Queen = 1, Bishop = 2, Knight = 3, Rock = 4, Pawn = 5 };
+  virtual bool getcheck(string position) const;
 
-  //   enum { Black = 0, white = 1 };
-
-  virtual bool getcheck(string position) = 0;
-
-  virtual bool movement() = 0;
+  virtual bool movement() const;
 };
 
 #endif
