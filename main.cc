@@ -12,7 +12,7 @@ int main() {
     //Board *b;
     string command;
     string setup;
-    string picecetype; // store the type of the piece
+    string piecetype; // store the type of the piece
     string coordinate; // for coordinate
     string colour; // turn?
     //string turn;
@@ -24,13 +24,13 @@ int main() {
             cin >> setup;
             if (setup == "+") {
                 cin >> piecetype >> coordinate;
-                if ((picecetype[0] == 'K' || picecetype[0] == 'Q' || picecetype[0] == 'B' || 
-                     picecetype[0] == 'R' || picecetype[0] == 'N' || picecetype[0] == 'P' ||
-                     picecetype[0] == 'k' || picecetype[0] == 'q' || picecetype[0] == 'b' || 
-                     picecetype[0] == 'r' || picecetype[0] == 'n' || picecetype[0] == 'p') &&
+                if ((piecetype[0] == 'K' || piecetype[0] == 'Q' || piecetype[0] == 'B' || 
+                     piecetype[0] == 'R' || piecetype[0] == 'N' || piecetype[0] == 'P' ||
+                     piecetype[0] == 'k' || piecetype[0] == 'q' || piecetype[0] == 'b' || 
+                     piecetype[0] == 'r' || piecetype[0] == 'n' || piecetype[0] == 'p') &&
                     ((coordinate[0] >= 'a' && coordinate[0] <= 'h') && 
                      (coordinate[1] >= '1' && coordinate[1] <= '8'))) { // check if the command is valid
-                     setup_piceceP(picecetype[0], colour, coordinate[0], coordinate[1]); // from board
+                     setup_piceceP(piecetype[0], colour, coordinate[0], coordinate[1]); // from board
                 } else {
                         cout << "invalid setup!" << endl;
                 }
