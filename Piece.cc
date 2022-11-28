@@ -45,7 +45,7 @@ using namespace std;
 //   // return (!(origin_x < 0 || orgin_x >= 8 || ) )
 // }
 
-bool Piece::getcheck(int ax, int ay, int bx, int by) const {
+bool Piece::check_move(int ax, int ay, int bx, int by) const {
   return (!(ax < 0 || ax >= 8 || ay < 0 || ay >= 8)) &&
          (!(ax == bx && ay == by));
 }
