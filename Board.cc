@@ -11,7 +11,30 @@
 
 using namespace std;
 
-void Board::init() { vector<vector<Piece>> pBoard(8, vector<Piece>(8, NULL)); }
+//void Board::init() { vector<vector<Piece>> pBoard(8, vector<Piece>(8, NULL)); }
+
+void Board::init() {
+    vector <vector<Piece>> pBoard(8,vector<Piece>(8,0));
+    //string;
+    int y1 = 0;
+    int y2 = 1;
+    for (j = 0; j < 2; ++j) {
+    pBoard[0][y1] = new Rook(); //black
+    pBoard[1][y1] = new Knight();
+    pBoard[2][y1] = new Bishop(); 
+    pBoard[3][y1] = new Queen();
+    pBoard[4][y1] = new King();
+    pBoard[5][y1] = new Bishop();
+    pBoard[6][y1] = new Knight();
+    pBoard[7][y1] = new Rook();
+        for (int i = 0; i < 8; ++i) {
+            pBoard[i][y2] = new Pawn();
+        }
+    y1 = 7;
+    y2 = 6;
+    // player 도 바꿔주기 
+    }
+}
 
 bool Board::movement(int ax, int ay, int bx, int by) {
   // 이거 vector 로 다시 써야함
