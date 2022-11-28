@@ -32,7 +32,7 @@ void Board::init() {
         }
     y1 = 7;
     y2 = 6;
-    colour = "white"
+    colour = "white";
     }
 }
 
