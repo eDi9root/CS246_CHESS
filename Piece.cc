@@ -30,7 +30,11 @@ int Piece::calculate_coord_y(char number) {
         return 1;
     } else if (number == '3') {
         return 2;
-    }
+    } else if (number == '4') {
+        return 3;
+    } else if (number == '5') {
+        return 4;
+    } else if 
 
 }
 
