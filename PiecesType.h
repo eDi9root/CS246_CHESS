@@ -15,7 +15,7 @@ class King : public Piece {
 
  public:
   King(std::string colour);
-  bool getcheck(string origin_x, string origin_y, string new_x, string new_y);
+  bool getcheck(int origin_x, int origin_y, int new_x, int new_y) const;
   bool movement();
 
   friend class Board;  // castle 변수의 접근을 위해 Board 를 friend 로 선언?
@@ -25,30 +25,30 @@ class King : public Piece {
 class Queen : public Piece {
  public:
   Queen(std::string colour);
-  bool getcheck(string origin_x, string origin_y, string new_x, string new_y);
+  bool getcheck(int origin_x, int origin_y, int new_x, int new_y) const;
   //bool movement();
 };
 
 class Bishop : public Piece {
   public:
-  bool getcheck(string origin_x, string origin_y, string new_x, string new_y);
+  bool getcheck(int origin_x, int origin_y, int new_x, int new_y) const;
 
 };
 
 class Rook : public Piece {
   public:
-  bool getcheck(string origin_x, string origin_y, string new_x, string new_y);
+  bool getcheck(int origin_x, int origin_y, int new_x, int new_y) const;
 };
 
 class Knight : public Piece {
   public:
-  bool getcheck(string origin_x, string origin_y, string new_x, string new_y);
+  bool getcheck(int origin_x, int origin_y, int new_x, int new_y) const;
 
 };
 
 class Pawn : public Piece {
   public: 
-  bool getcheck(string origin_x, string origin_y, string new_x, string new_y);
+  bool getcheck(int origin_x, int origin_y, int new_x, int new_y) const;
 };
 
 #endif
