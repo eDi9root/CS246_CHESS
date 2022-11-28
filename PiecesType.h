@@ -7,8 +7,6 @@
 
 #include "Piece.h"
 
-using namespace std;
-
 class King : public Piece {
  private:
   bool castle = true;
@@ -16,8 +14,7 @@ class King : public Piece {
  public:
   King(std::string colour);
 
-  // bool getcheck();
-  bool movement();
+  bool getcheck();
 
   friend class Board;  // castle 변수의 접근을 위해 Board 를 friend 로 선언?
 };
@@ -25,23 +22,25 @@ class King : public Piece {
 class Queen : public Piece {
  public:
   Queen(std::string colour);
-  bool getcheck(char origin_x, char origin_y, char new_x, char new_y) const;
-  // bool movement();
+  bool getcheck() const;
 };
 
 class Bishop : public Piece {
  public:
-  bool getcheck(char origin_x, char origin_y, char new_x, char new_y) const;
+  Bishop(std::string colour);
+  bool getcheck() const;
 };
 
 class Rook : public Piece {
  public:
-  bool getcheck(char origin_x, char origin_y, char new_x, char new_y) const;
+  Rook(std::string colour);
+  bool getcheck() const;
 };
 
 class Knight : public Piece {
  public:
-  bool getcheck(char origin_x, char origin_y, char new_x, char new_y) const;
+  Knight(std::string colour);
+  bool getcheck() const;
 };
 
 class Pawn : public Piece {
@@ -52,8 +51,7 @@ class Pawn : public Piece {
  public:
   Pawn(std::string colour);
 
-  bool getcheck();
-  bool movement();
+  bool getcheck() const;
 
   friend class Board;  // castle 변수의 접근을 위해 Board 를 friend 로 선언?
 };

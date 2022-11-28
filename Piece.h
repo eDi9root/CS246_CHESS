@@ -2,19 +2,24 @@
 #define _PIECE_H
 
 #include <iostream>
+
+#include "Board.h"
+#include "Tile.h"
 using namespace std;
 
 class Board;
 
 class Piece {
   int id;
-  int row, col;
   string colour;
+  Tile* position;
+  bool captured;
+  bool init_moved;
 
  public:
-  virtual bool getcheck(string position) const;
+  virtual bool getcheck() const;  // 이동 가능 확인
 
-  virtual bool movement() const;
+  // Move movement(Board board) const;  // 이동
 };
 
 #endif

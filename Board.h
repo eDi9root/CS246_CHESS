@@ -10,21 +10,20 @@
 #include "Tile.h"
 using namespace std;
 
-class Pieces;
+class Piece;
 
 class Move;
 
 class Board {
-  // Tile **theBoard;
-  vector<vector<Piece*>> pieces;  // 이중 vector 이어야 할듯?
-  // Tile** theBoard;
+  Tile **theBoard;                 // 한 칸을 참조?
+  vector<vector<Piece *>> pieces;  // 보드 [8][8]
   string piecesType;
   string colour;
   string positions;
 
  public:
   Board();
-  bool Move(Move move);
+  bool Move(Move move);  // move class 를 가져와서 이동
   void setup_placeP(string piecesType, string positions);
   // bool legal_movement(string pieceType, string x, string y);
 
