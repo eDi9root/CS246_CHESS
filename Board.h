@@ -7,12 +7,13 @@
 #include "Piece.h"
 using namespace std;
 
-class Board : public Piece
-{
+class Pieces;
+
+class Board: {
     // Tile **theBoard;
     vector<vector<Piece *>> pieces; // 이중 vector 이어야 할듯?
     string piecesType;
-    string colour;
+    string colour;ß
     string positions;
 
 public:

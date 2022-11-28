@@ -5,6 +5,6 @@
 using namespace std;
 
 
-void Board::setup_placeP(string piecesType, string position) {
+void Board::setup_placeP(string piecesType, string x, string y, ) {
 
 }
