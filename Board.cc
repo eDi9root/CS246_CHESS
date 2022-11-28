@@ -32,7 +32,7 @@ void Board::init() {
     }
     y1 = 7;
     y2 = 6;
-    // player 도 바꿔주기
+    colour = "white"
   }
 }
 
