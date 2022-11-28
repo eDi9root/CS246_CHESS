@@ -8,7 +8,7 @@
 #include "PiecesType.h"
 #include "Player.h"
 #include "TextDisplay.h"
-//#inlcude ""
+
 using namespace std;
 
 void Board::init() { vector<vector<Piece>> pBoard(8, vector<Piece>(8, NULL)); }
