@@ -3,6 +3,7 @@
 #include <fstream>
 #include <sstream>
 
+#include "Move.h"
 #include "Board.h"
 #include "Player.h"
 using namespace std;
