@@ -46,6 +46,9 @@ class Knight : public Piece {
 
 };
 
-class 
+class Pawn : public Piece {
+  public: 
+  bool getcheck(string origin_x, string origin_y, string new_x, string new_y);
+};
 
 #endif
