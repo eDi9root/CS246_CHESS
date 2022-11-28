@@ -5,13 +5,14 @@
 
 class Chess {
   Board board;
-  Player player;
+  Player players;
 
  public:
   void resign();
   void reset();
   void turnmove();
   void setup();
+  void game();
 };
 
 #endif
