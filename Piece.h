@@ -14,11 +14,7 @@ class Piece {
  public:
   virtual bool getcheck(string position) const;
 
-  //   enum { Black = 0, white = 1 };
-
-  virtual bool getcheck(string position) = 0;
-
-  virtual bool movement() = 0;
+  virtual bool movement() const;
 };
 
 #endif

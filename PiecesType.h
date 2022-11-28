@@ -46,7 +46,8 @@ class Knight : public Piece {
 
 class Pawn : public Piece {
  private:
-  bool castle = true;
+  bool enpassen = true;
+  bool init_two_move = true;
 
  public:
   Pawn(std::string colour);
