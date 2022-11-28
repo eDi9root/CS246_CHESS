@@ -14,11 +14,10 @@ using namespace std;
 Board::Board() { vector<vector<Tile>> pBoard(8, vector<Tile>(8, 0)); }
 
 void Board::init() {
-  vector<vector<Piece>> pBoard(8, vector<Piece>(8, 0));
   string colour = "black";
   int y1 = 0;
   int y2 = 1;
-  for (j = 0; j < 2; ++j) {
+  for (int j = 0; j < 2; ++j) {
     pBoard[0][y1] = new Rook(colour);  // black
     pBoard[1][y1] = new Knight(colour);
     pBoard[2][y1] = new Bishop(colour);
