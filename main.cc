@@ -40,7 +40,7 @@ int main() {
             cin >> originpos >> newpos;
             if ((originpos[0] >= 'a' && originpos[0] <= 'h') && (newpos[0] >= 'a' && newpos[0] <= 'h') &&
                 (originpos[1] >= '1' && originpos[1] <= '8') && (newpos[1] >= '1' && newpos[1] <= '8')) {
-                    move// from player
+                    move(originpos[0], originpos[1], newpos[0], newpos[1]) // from ???
                 }
 
         } else if (setup == "=") { // makes the input's turn (i.e. white, black)

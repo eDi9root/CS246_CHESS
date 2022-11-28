@@ -25,30 +25,30 @@ class King : public Piece {
 class Queen : public Piece {
  public:
   Queen(std::string colour);
-  bool getcheck(int origin_x, int origin_y, int new_x, int new_y) const;
+  bool getcheck(char origin_x, char origin_y, char new_x, char new_y) const;
   //bool movement();
 };
 
 class Bishop : public Piece {
   public:
-  bool getcheck(int origin_x, int origin_y, int new_x, int new_y) const;
+  bool getcheck(char origin_x, char origin_y, char new_x, char new_y) const;
 
 };
 
 class Rook : public Piece {
   public:
-  bool getcheck(int origin_x, int origin_y, int new_x, int new_y) const;
+  bool getcheck(char origin_x, char origin_y, char new_x, char new_y) const;
 };
 
 class Knight : public Piece {
   public:
-  bool getcheck(int origin_x, int origin_y, int new_x, int new_y) const;
+  bool getcheck(char origin_x, char origin_y, char new_x, char new_y) const;
 
 };
 
 class Pawn : public Piece {
   public: 
-  bool getcheck(int origin_x, int origin_y, int new_x, int new_y) const;
+  bool getcheck(char origin_x, char origin_y, char new_x, char new_y) const;
 };
 
 #endif

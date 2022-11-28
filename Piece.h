@@ -15,7 +15,9 @@ class Piece {
   //   enum { King = 0, Queen = 1, Bishop = 2, Knight = 3, Rock = 4, Pawn = 5 };
 
   //   enum { Black = 0, white = 1 };
-  virtual bool getcheck(int origin_x, int origin_y, int new_x, int new_y) const;
+  virtual int calculate_coord_x(char letter);
+  virtual int calculate_coord_y(char number);
+  virtual bool getcheck(char origin_x, char origin_y, char new_x, char new_y) const;
 
   virtual bool movement() = 0;
 };
