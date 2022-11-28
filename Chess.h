@@ -8,6 +8,7 @@ class Chess {
   Player players;
 
  public:
+  Chess();
   void resign();
   void reset();
   void turnmove();
