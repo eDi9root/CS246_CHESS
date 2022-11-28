@@ -3,14 +3,13 @@
 
 #include "Chess.h"
 
-class Player : public Chess
-{
-    Player player1;
-    Player player2;
-    std::string turn;
+class Player : public Chess {
+  Player player1;
+  Player player2;
+  std::string turn;
 
-public:
-    Move player();
+ public:
+  Move player();
 };
 
 #endif
