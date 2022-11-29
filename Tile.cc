@@ -24,22 +24,27 @@ Piece* Tile::getPiece() {
 
 }
 
+/*
 string Tile::getPos() {
     return position;
 }
+*/
 
 Tile::~Tile() {
     delete piecethatisonTile;
 }
 
-/*
-void Tile::setRow(int x) {
-    this->x = row;
+
+void Tile::setRow(char x) {
+    int change_x_int = x - 97;
+    change_x_int = row;
 }
 void Tile::setCol(int y) {
-    this->y = col;
+    int change_y_int = 7 - (y - 49);
+    change_y_int = col;
 }
-*/
+
+/*
 void Tile::setPos(string pos) {
     position = pos;
     char x_coord = pos[0]; // alphabet
@@ -49,6 +54,7 @@ void Tile::setPos(string pos) {
     row = change_x_int;
     col = change_y_int;
 }
+*/
 void Tile::setPiece(Piece *piece) {
     piecethatisonTile = piece;
 }
