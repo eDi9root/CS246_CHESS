@@ -19,7 +19,7 @@ int main() {
   string piecetype;   // store the type of the piece
   string coordinate;  // for coordinate
   string colour;      // turn?
-  // string turn;
+  string turn;
   string originpos;
   string newpos;
   while (!cin.eof()) {
