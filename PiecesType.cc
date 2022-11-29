@@ -4,16 +4,12 @@
 
 #define abs(x) ((x) < 0 ? -(x) : (x))
 
-King::King(std::string colour) : Piece(id, colour) {}
+King::King(std::string colour) : Piece(Piece::King, colour) {}
 
 bool King::check_move(int ax, int ay, int bx, int by) const {
   // 한칸씩 이동 가능
-  if (ax == bx) {
-    return Piece::check_move(ax, ay, bx, by);
-  } else if (ay == by) {
-    return Piece::check_move(ax, ay, bx, by);
-  } else {
-    if (abs(ax - bx) == abs(ay - by)) {
+  if (ax >= bx - 1 && ax <= bx + 1) {
+    if (ay >= by - 1 && ay <= by + 1) {
       return Piece::check_move(ax, ay, bx, by);
     }
   }

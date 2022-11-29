@@ -3,49 +3,15 @@
 #include <iostream>
 using namespace std;
 
-// int Piece::calculate_coord_x(char letter) {
-//   if (letter == 'a') {
-//     return 0;
-//   } else if (letter == 'b') {
-//     return 1;
-//   } else if (letter == 'c') {
-//     return 2;
-//   } else if (letter == 'd') {
-//     return 3;
-//   } else if (letter == 'e') {
-//     return 4;
-//   } else if (letter == 'f') {
-//     return 5;
-//   } else if (letter == 'g') {
-//     return 6;
-//   } else {
-//     return 7;
-//   }
-// }
+Piece::Piece(int id, string colour) : id(id), colour(colour) {}
 
-// int Piece::calculate_coord_y(char number) {
-//   if (number == '1') {
-//     return 0;
-//   } else if (number == '2') {
-//     return 1;
-//   } else if (number == '3') {
-//     return 2;
-//   } else if (number == '4') {
-//     return 3;
-//   } else if (number == '5') {
-//     return 4;
-//   } else if
-// }
-
-// bool Piece::getcheck(char origin_x, char origin_y, char new_x,
-//                      char new_y) const {
-//   int ax = calculate_coord_x(origin_x);
-//   int ay = calculate_coord_y(origin_y);
-//   int bx =
-//   // return (!(origin_x < 0 || orgin_x >= 8 || ) )
-// }
+Piece::Piece(const Piece &pieces) : id(pieces.pid), colour(pieces.pcolour) {}
 
 bool Piece::check_move(int ax, int ay, int bx, int by) const {
   return (!(ax < 0 || ax >= 8 || ay < 0 || ay >= 8)) &&
          (!(ax == bx && ay == by));
+}
+
+bool Piece::check_attack(int ax, int ay, int bx, int by) const {
+  return Piece::check_move(ax, ay, bx, by);
 }
