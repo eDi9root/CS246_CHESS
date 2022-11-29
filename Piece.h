@@ -5,6 +5,7 @@
 #include <string>
 
 #include "Board.h"
+#include "PiecesType.h"
 #include "Tile.h"
 using namespace std;
 

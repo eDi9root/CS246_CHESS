@@ -14,6 +14,8 @@ using namespace std;
 
 class TextDisplay;
 
+class Tile;
+
 class Board {
   Tile **pBoard;  // 한 칸을 참조?
 
