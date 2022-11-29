@@ -7,10 +7,11 @@
 #include "Chess.h"
 #include "Move.h"
 #include "Player.h"
+#include "TextDisplay.h"
 using namespace std;
 
 int main() {
-  // Board *b;
+  Board *b;
   string command;
   string player1;
   string player2;
@@ -48,8 +49,8 @@ int main() {
                piecetype[0] == 'n' || piecetype[0] == 'p') &&
               ((coordinate[0] >= 'a' && coordinate[0] <= 'h') &&
                (coordinate[1] >= '1' && coordinate[1] <= '8'))) {  // check if the command is valid
-            setup_piceceP(piecetype[0], colour, coordinate[0], coordinate[1]);  // from board
-
+              setup_piceceP(piecetype[0], colour, coordinate[0], coordinate[1]);  // from board
+              notify(piecetype[0], coordinate[0],coordinate[1]);
           } else {
             cout << "invalid setup!" << endl;
           }
