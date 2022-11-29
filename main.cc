@@ -19,7 +19,7 @@ int main() {
   string piecetype;   // store the type of the piece
   string coordinate;  // for coordinate
   string colour;      // turn?
-  // string turn;
+  string turn;
   string originpos;
   string newpos;
   while (!cin.eof()) {
@@ -36,7 +36,7 @@ int main() {
       }
       */
     } else if (command == "setup") {  // consider about input "setup" first
-      setup_init();
+      //setup_init();
       cin >> setup;
       while (true) {
         if (setup == "+") {
@@ -60,6 +60,7 @@ int main() {
         }
         */
       }
+      }
 
     } else if (command == "move") {
       cin >> originpos >> newpos;
@@ -67,7 +68,8 @@ int main() {
           (newpos[0] >= 'a' && newpos[0] <= 'h') &&
           (originpos[1] >= '1' && originpos[1] <= '8') &&
           (newpos[1] >= '1' && newpos[1] <= '8')) {
-        move(originpos[0], originpos[1], newpos[0], newpos[1]);  // from ???
+            cout << "move" << endl;
+        //move(originpos[0], originpos[1], newpos[0], newpos[1]);  // from ???
       }
 
     } else if (command == "=") {  // makes the input's turn (i.e. white, black)
@@ -82,7 +84,6 @@ int main() {
     } else if (command == "redesign") {
     } else {  // invalid command
       cout << "invalid command!" << endl;
-    }
     }
   }
 }

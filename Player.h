@@ -3,7 +3,8 @@
 
 #include "Chess.h"
 
-class Player : public Chess {
+//class Player : public Chess {
+  class Player {
   std::string turn;
 
  public:
