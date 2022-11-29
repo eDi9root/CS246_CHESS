@@ -7,8 +7,6 @@
 
 using namespace std;
 
-class Piece;
-
 class Tile {
   int row;
   int col;
