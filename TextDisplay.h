@@ -11,7 +11,7 @@ class TextDisplay {
   char **Tdisplay;
 
  public:
-  void notify(char letter, int row, int col);
+  void notify(char letter, char row, char col);
   TextDisplay();
   ~TextDisplay();
   friend ostream &operator<<(ostream &out, const TextDisplay &t);
