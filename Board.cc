@@ -109,7 +109,7 @@ bool Board::movement(int ax, int ay, int bx, int by) {
   //   // 이동 완료될 경우 지나간 자리는 0 또는 null 로
   //   pBoard[bx][by] = 0;
 
-  //   return true;
+     return true;
 }
 
 // void Board::setup_placeP

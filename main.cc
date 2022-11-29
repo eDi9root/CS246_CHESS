@@ -7,10 +7,11 @@
 #include "Chess.h"
 #include "Move.h"
 #include "Player.h"
+#include "TextDisplay.h"
 using namespace std;
 
 int main() {
-  // Board *b;
+  Board *b;
   string command;
   string player1;
   string player2;
@@ -48,8 +49,8 @@ int main() {
                piecetype[0] == 'n' || piecetype[0] == 'p') &&
               ((coordinate[0] >= 'a' && coordinate[0] <= 'h') &&
                (coordinate[1] >= '1' && coordinate[1] <= '8'))) {  // check if the command is valid
-            setup_piceceP(piecetype[0], colour, coordinate[0], coordinate[1]);  // from board
-
+              b->setup_placeP(piecetype[0], coordinate[0], coordinate[1]);  // from board
+              //notify(piecetype[0], coordinate[0],coordinate[1]);
           } else {
             cout << "invalid setup!" << endl;
           }
@@ -60,7 +61,7 @@ int main() {
         */
       }
 
-    } else if (setup == "move") {
+    } else if (command == "move") {
       cin >> originpos >> newpos;
       if ((originpos[0] >= 'a' && originpos[0] <= 'h') &&
           (newpos[0] >= 'a' && newpos[0] <= 'h') &&
@@ -69,7 +70,7 @@ int main() {
         move(originpos[0], originpos[1], newpos[0], newpos[1]);  // from ???
       }
 
-    } else if (setup == "=") {  // makes the input's turn (i.e. white, black)
+    } else if (command == "=") {  // makes the input's turn (i.e. white, black)
       cin >> turn;
       /*
       if (turn == "white") {
@@ -78,9 +79,10 @@ int main() {
           //...
       }
       */
-    } else if (setup == "redesign") {
+    } else if (command == "redesign") {
     } else {  // invalid command
       cout << "invalid command!" << endl;
+    }
     }
   }
 }

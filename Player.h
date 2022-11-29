@@ -4,8 +4,6 @@
 #include "Chess.h"
 
 class Player : public Chess {
-  Player player1;
-  Player player2;
   std::string turn;
 
  public:

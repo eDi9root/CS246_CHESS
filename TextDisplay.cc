@@ -3,7 +3,9 @@
 #include "TextDisplay.h"
 using namespace std;
 
-void TextDisplay::notify(char letter, int row, int col) {
+void TextDisplay::notify(char letter, char row, char col) {
+    int change_x_int = row - 97;
+    int change_y_int = 7 - (col - 49);
     Tdisplay[row][col] = letter;
 }
 
