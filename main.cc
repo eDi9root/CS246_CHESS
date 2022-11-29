@@ -68,7 +68,8 @@ int main() {
           (newpos[0] >= 'a' && newpos[0] <= 'h') &&
           (originpos[1] >= '1' && originpos[1] <= '8') &&
           (newpos[1] >= '1' && newpos[1] <= '8')) {
-        move(originpos[0], originpos[1], newpos[0], newpos[1]);  // from ???
+            cout << "move" << endl;
+        //move(originpos[0], originpos[1], newpos[0], newpos[1]);  // from ???
       }
 
     } else if (command == "=") {  // makes the input's turn (i.e. white, black)
@@ -83,7 +84,6 @@ int main() {
     } else if (command == "redesign") {
     } else {  // invalid command
       cout << "invalid command!" << endl;
-    }
     }
   }
 }
