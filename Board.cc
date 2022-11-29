@@ -8,6 +8,7 @@
 #include "PiecesType.h"
 #include "Player.h"
 #include "TextDisplay.h"
+#include "Tile.h"
 
 using namespace std;
 
