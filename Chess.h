@@ -1,6 +1,7 @@
 #ifndef _CHESS_H
 #define _CHESS_H
 #include "Board.h"
+#include "Piece.h"
 #include "Player.h"
 
 class Chess {
