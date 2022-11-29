@@ -62,6 +62,8 @@ int main() {
           } else {
             cout << "invalid setup!" << endl;
           }
+        } else {
+          cout << "invalid input!" << endl;
           /*
         } else if (command == "-") {
           //...
