@@ -49,7 +49,7 @@ int main() {
                piecetype[0] == 'n' || piecetype[0] == 'p') &&
               ((coordinate[0] >= 'a' && coordinate[0] <= 'h') &&
                (coordinate[1] >= '1' && coordinate[1] <= '8'))) {  // check if the command is valid
-              b->setup_placeP(piecetype[0], colour, coordinate[0], coordinate[1]);  // from board
+              b->setup_placeP(piecetype[0], coordinate[0], coordinate[1]);  // from board
               //notify(piecetype[0], coordinate[0],coordinate[1]);
           } else {
             cout << "invalid setup!" << endl;
@@ -82,6 +82,7 @@ int main() {
     } else if (command == "redesign") {
     } else {  // invalid command
       cout << "invalid command!" << endl;
+    }
     }
   }
 }
