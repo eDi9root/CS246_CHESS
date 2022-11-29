@@ -11,7 +11,7 @@
 
 using namespace std;
 
-class Move;
+class TextDisplay;
 
 class Board {
   Tile **pBoard;  // 한 칸을 참조?
