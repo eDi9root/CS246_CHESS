@@ -73,7 +73,7 @@ Pawn::Pawn(std::string colour) : Piece(Piece::Pawn, colour) {}
 
 bool Pawn::check_move(int ax, int ay, int bx, int by) const {
   if (pcolour == "black") {
-    if (ax = bx && (ay > by && ay - 2 <= by)) {
+    if (ax == bx && (ay > by && ay - 2 <= by)) {
       return Piece::check_move(ax, ay, bx, by);
     }
   } else {
