@@ -25,14 +25,15 @@ int main() {
     cin >> command;
     if (command == "game") {
       cin >> player1 >> player2;
+      /*
       if ((player1 == "white-player") || (player2 == "black-player")) {
-        Chess->player[0] = "white";
-        Chess->player[1] = "black"
       } else if (player1 == "human") {
         if (player2 == "computer[1]") {
           //...
         }
+        
       }
+      */
     } else if (command == "setup") {  // consider about input "setup" first
       setup_init();
       cin >> setup;
