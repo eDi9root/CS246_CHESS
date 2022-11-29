@@ -5,9 +5,9 @@
 #include <string>
 #include <vector>
 
+#include "Board.h"
 #include "Piece.h"
-
-class Piece;
+#include "Tile.h"
 
 class King : public Piece {
  private:
