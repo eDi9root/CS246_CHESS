@@ -5,8 +5,8 @@
 #include <vector>
 
 #include "Board.h"
+#include "Piece.h"
 #include "observer.h"
-#include "piece.h"
 
 class Observer;
 
@@ -18,5 +18,5 @@ class Subject {
   void detach(Observer *o);
   void notifyObservers();
   virtual char getState(int row, int col) const = 0;
-  virtual ~subject() = default;
-}
+  virtual ~Subject() = default;
+};
