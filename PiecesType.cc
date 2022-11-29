@@ -4,7 +4,7 @@
 
 #define abs(x) ((x) < 0 ? -(x) : (x))
 
-King::King(std::string colour) : Piece(Piece::King, colour) {}
+King::King(std::string colour) : Piece(id, colour) {}
 
 bool King::check_move(int ax, int ay, int bx, int by) const {
   // 한칸씩 이동 가능
