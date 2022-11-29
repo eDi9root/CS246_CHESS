@@ -48,14 +48,15 @@ int main() {
               ((coordinate[0] >= 'a' && coordinate[0] <= 'h') &&
                (coordinate[1] >= '1' &&
                 coordinate[1] <= '8'))) {  // check if the command is valid
-            setup_piceceP(piecetype[0], colour, coordinate[0],
-                          coordinate[1]);  // from board
+            setup_piceceP(piecetype[0], colour, coordinate[0], coordinate[1]);  // from board
           } else {
             cout << "invalid setup!" << endl;
           }
+          /*
         } else if (command == "-") {
           //...
         }
+        */
       }
 
     } else if (setup == "move") {
