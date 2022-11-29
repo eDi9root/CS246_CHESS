@@ -7,7 +7,7 @@
 
 using namespace std;
 
-//class Piece;
+class Piece;
 
 class Tile {
   int row;
