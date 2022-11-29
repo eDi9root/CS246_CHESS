@@ -21,11 +21,11 @@ class Tile {
   int getRow();
   int getCol();
   Piece *getPiece();
-  //string getPos();
+  // string getPos();
 
-    void setRow(char x);
-    void setCol(char y);
-  //void setPos(string pos);
+  void setRow(char x);
+  void setCol(char y);
+  // void setPos(string pos);
   void setPiece(Piece *piece);
 
   ~Tile();
