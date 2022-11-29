@@ -7,6 +7,8 @@
 
 #include "Piece.h"
 
+class Piece;
+
 class King : public Piece {
  private:
   bool castle = true;
