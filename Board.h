@@ -16,6 +16,8 @@ class TextDisplay;
 
 class Tile;
 
+class Piece;
+
 class Board {
   Tile **pBoard;  // 한 칸을 참조?
 
