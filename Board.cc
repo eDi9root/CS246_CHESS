@@ -113,4 +113,8 @@ bool Board::movement(int ax, int ay, int bx, int by) {
   return true;
 }
 
-// void Board::setup_placeP
+Tile* Board::getTile(int x, int y) {
+  if (x >= 0 && x < 8 && y >= 0 && y < 8) {
+    return &pBoard[x][y];
+  }
+}

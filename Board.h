@@ -28,7 +28,7 @@ class Board : public Subject {
   Board();
   void init();
   Piece *getPiece(int x, int y);
-  Tile *getTile();
+  Tile *getTile(int x, int y);
   bool movement(int ax, int ay, int bx, int by);  // move class 를 가져와서 이동
   void setup_placeP(char piecesType, char c, char y);
   // bool legal_movement(string pieceType, string x, string y);
