@@ -36,7 +36,7 @@ int main() {
       }
       */
     } else if (command == "setup") {  // consider about input "setup" first
-      setup_init();
+      //setup_init();
       cin >> setup;
       while (true) {
         if (setup == "+") {
@@ -59,6 +59,7 @@ int main() {
           //...
         }
         */
+      }
       }
 
     } else if (command == "move") {
