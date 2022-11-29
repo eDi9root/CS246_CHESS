@@ -8,7 +8,7 @@
   std::string turn;
 
  public:
-  Move player();
+  //Move player();
 };
 
 #endif
