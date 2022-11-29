@@ -1,7 +1,11 @@
 #ifndef _TILE_H
 #define _TILE_H
 
+#include <string>
+
 #include "Piece.h"
+
+using namespace std;
 
 class Piece;
 
@@ -16,19 +20,19 @@ class Tile {
   bool get_empty_tile();
   int getRow();
   int getCol();
-  Piece* getPiece();
+  Piece *getPiece();
   string getPos();
 
-/*
-  void setRow(int x);
-  void setCol(int y);
-  */
+  /*
+    void setRow(int x);
+    void setCol(int y);
+    */
   void setPos(string pos);
   void setPiece(Piece *piece);
 
   ~Tile();
 };
 
-//std::ostream& operator<<(std::ostream& out, Tile& t);
+// std::ostream& operator<<(std::ostream& out, Tile& t);
 
 #endif
