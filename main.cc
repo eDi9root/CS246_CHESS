@@ -6,7 +6,7 @@
 #include "Board.h"
 #include "Chess.h"
 #include "Move.h"
-#include "Observer.h"
+#include "observer.h"
 #include "Piece.h"
 #include "PiecesType.h"
 #include "Player.h"
