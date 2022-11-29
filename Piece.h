@@ -2,6 +2,7 @@
 #define _PIECE_H
 
 #include <iostream>
+#include <string>
 
 #include "Board.h"
 #include "Tile.h"
@@ -12,7 +13,7 @@ class Board;
 class Piece {
   int id;         // Itype
   string colour;  // iTeam
-  Tile* position;
+  string position;
   bool captured;
   bool init_moved;
 
