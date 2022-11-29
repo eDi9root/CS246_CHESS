@@ -1,4 +1,5 @@
 #include "PiecesType.h"
+#include "Piece.h"
 
 #include <iostream>
 
