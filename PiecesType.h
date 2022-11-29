@@ -9,8 +9,6 @@
 #include "Piece.h"
 #include "Tile.h"
 
-class PiecesType {};
-
 class King : public Piece {
  private:
   bool castle = true;
