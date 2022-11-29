@@ -46,9 +46,9 @@ int main() {
                piecetype[0] == 'b' || piecetype[0] == 'r' ||
                piecetype[0] == 'n' || piecetype[0] == 'p') &&
               ((coordinate[0] >= 'a' && coordinate[0] <= 'h') &&
-               (coordinate[1] >= '1' &&
-                coordinate[1] <= '8'))) {  // check if the command is valid
+               (coordinate[1] >= '1' && coordinate[1] <= '8'))) {  // check if the command is valid
             setup_piceceP(piecetype[0], colour, coordinate[0], coordinate[1]);  // from board
+
           } else {
             cout << "invalid setup!" << endl;
           }
