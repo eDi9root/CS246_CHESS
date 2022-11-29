@@ -52,6 +52,7 @@ class Pawn : public Piece {
   Pawn(std::string colour);
 
   bool check_move(int ax, int ay, int bx, int by) const;
+  bool check_attack(int ax, int ay, int bx, int by) const;
 
   friend class Board;  // castle 변수의 접근을 위해 Board 를 friend 로 선언?
 };
