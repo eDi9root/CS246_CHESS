@@ -48,53 +48,53 @@ void Board::setup_placeP(char piecesType, char x, char y) {
   int change_x_int = x - 97;
   int change_y_int = 7 - (y - 49);
   if (piecesType == 'k') {
-    pBoard[x][y].setRow = x;
-    pBoard[x][y].setCol = y;
-    pBoard[x][y].setPiece = new King("black");
+    pBoard[x][y].setRow(x);
+    pBoard[x][y].setCol(y);
+    pBoard[x][y].setPiece(new King("black"));
   } else if (piecesType == 'q') {
-    pBoard[x][y].setRow = x;
-    pBoard[x][y].setCol = y;
-    pBoard[x][y].setPiece = new Queen("black");
+    pBoard[x][y].setRow(x);
+    pBoard[x][y].setCol(y);
+    pBoard[x][y].setPiece(new Queen("black"));
   } else if (piecesType == 'b') {
-    pBoard[x][y].setRow = x;
-    pBoard[x][y].setCol = y;
-    pBoard[x][y].setPiece = new Bishop("black");
+    pBoard[x][y].setRow(x);
+    pBoard[x][y].setCol(y);
+    pBoard[x][y].setPiece(new Bishop("black"));
   } else if (piecesType == 'r') {
-    pBoard[x][y].setRow = x;
-    pBoard[x][y].setCol = y;
-    pBoard[x][y].setPiece = new Rook("black");
+    pBoard[x][y].setRow(x);
+    pBoard[x][y].setCol(y);
+    pBoard[x][y].setPiece(new Rook("black"));
   } else if (piecesType == 'n') {
-    pBoard[x][y].setRow = x;
-    pBoard[x][y].setCol = y;
-    pBoard[x][y].setPiece = new Knight("black");
+    pBoard[x][y].setRow(x);
+    pBoard[x][y].setCol(y);
+    pBoard[x][y].setPiece(new Knight("black"));
   } else if (piecesType == 'p') {
-    pBoard[x][y].setRow = x;
-    pBoard[x][y].setCol = y;
-    pBoard[x][y].setPiece = new Pawn("black");
+    pBoard[x][y].setRow(x);
+    pBoard[x][y].setCol(y);
+    pBoard[x][y].setPiece(new Pawn("black"));
   } else if (piecesType == 'K') {
-    pBoard[x][y].setRow = x;
-    pBoard[x][y].setCol = y;
-    pBoard[x][y].setPiece = new King("white");
+    pBoard[x][y].setRow(x);
+    pBoard[x][y].setCol(y);
+    pBoard[x][y].setPiece(new King("white"));
   } else if (piecesType == 'Q') {
-    pBoard[x][y].setRow = x;
-    pBoard[x][y].setCol = y;
-    pBoard[x][y].setPiece = new Queen("white");
+    pBoard[x][y].setRow(x);
+    pBoard[x][y].setCol(y);
+    pBoard[x][y].setPiece(new Queen("white"));
   } else if (piecesType == 'B') {
-    pBoard[x][y].setRow = x;
-    pBoard[x][y].setCol = y;
-    pBoard[x][y].setPiece = new Bishop("white");
+    pBoard[x][y].setRow(x);
+    pBoard[x][y].setCol(y);
+    pBoard[x][y].setPiece(new Bishop("white"));
   } else if (piecesType == 'W') {
-    pBoard[x][y].setRow = x;
-    pBoard[x][y].setCol = y;
-    pBoard[x][y].setPiece = new Rook("white");
+    pBoard[x][y].setRow(x);
+    pBoard[x][y].setCol(y);
+    pBoard[x][y].setPiece(new Rook("white"));
   } else if (piecesType == 'N') {
-    pBoard[x][y].setRow = x;
-    pBoard[x][y].setCol = y;
-    pBoard[x][y].setPiece = new Knight("white");
+    pBoard[x][y].setRow(x);
+    pBoard[x][y].setCol(y);
+    pBoard[x][y].setPiece(new Knight("white"));
   } else if (piecesType == 'P') {
-    pBoard[x][y].setRow = x;
-    pBoard[x][y].setCol = y;
-    pBoard[x][y].setPiece = new Pawn("white");
+    pBoard[x][y].setRow(x);
+    pBoard[x][y].setCol(y);
+    pBoard[x][y].setPiece(new Pawn("white"));
   }
 }
 
