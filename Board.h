@@ -7,6 +7,7 @@
 
 //#include "Move.h"
 #include "Piece.h"
+#include "Subject.h"
 #include "Tile.h"
 
 using namespace std;
@@ -17,9 +18,8 @@ class Tile;
 
 class Piece;
 
-class Board {
+class Board : public Subject {
   Tile **pBoard;  // 한 칸을 참조?
-
   string piecesType;
   string colour;
   string positions;

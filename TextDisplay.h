@@ -2,19 +2,19 @@
 #define _TEXTDISPLAY_H
 
 #include <iostream>
-#include <string>
 
 #include "Board.h"
+#include "observer.h"
 using namespace std;
 
-class TextDisplay {
-  char **Tdisplay;
+class TextDisplay : public Observer {
+  Board *subject;
+  // ostream &out = cout;
 
  public:
-  void notify(char letter, char row, char col);
-  TextDisplay();
+  void notify() override;
+  TextDisplay(Board *sub);
   ~TextDisplay();
-  friend ostream &operator<<(ostream &out, const TextDisplay &t);
 };
 
 #endif

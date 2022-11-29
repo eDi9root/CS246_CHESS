@@ -1,42 +1,19 @@
+#include "TextDisplay.h"
+
 #include <iostream>
 #include <string>
-#include "TextDisplay.h"
 using namespace std;
 
-void TextDisplay::notify(char letter, char row, char col) {
-    int change_x_int = row - 97;
-    int change_y_int = 7 - (col - 49);
-    Tdisplay[row][col] = letter;
+void TextDisplay::notify() {
+  for (int i = 8; i > 0; --i) {
+    cout << i << " ";
+    for (int j = 8; j > 0; --j) {
+      cout << *subject->getTile(i, j);
+    }
+    cout << "\n";
+  }
 }
 
-TextDisplay::TextDisplay() {
-    Tdisplay = new char *[8];
-    for (int i = 0; i < 8; ++i) {
-        Tdisplay[i] = new char[8];
-    }
-}
+TextDisplay::TextDisplay(Board *sub) : subject{sub} { subject->attach(this); }
 
-ostream &operator<<(ostream &out, const TextDisplay &t) {
-    for (int row = 7; row >= 0; --row) {
-        for (int col = 0; col < 8; ++col) {
-            if (t.Tdisplay[row][col] == ' ') {
-                if ((row % 2 == 0 && col % 2 == 0) || (row % 2 != 0 && col % 2 != 0)) {
-                    out << "_";
-                } else {
-                    out << " ";
-                }
-            } else {
-                out << t.Tdisplay[row][col];
-            }
-        }
-        out << endl;
-    }
-    return out;
-}
-
-TextDisplay::~TextDisplay() {
-    for (int i = 0; i < 8; ++i) {
-        delete [] Tdisplay[i];
-    }
-    delete [] Tdisplay;
-}
+TextDisplay::~TextDisplay() { subject->detach(this); }
