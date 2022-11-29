@@ -5,7 +5,6 @@
 #include <string>
 #include <vector>
 
-#include "PiecesType.h"
 //#include "Move.h"
 #include "Piece.h"
 #include "Tile.h"
