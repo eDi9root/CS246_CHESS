@@ -14,7 +14,7 @@ class King : public Piece {
  public:
   King(std::string colour);
 
-  bool getcheck(int ax, int ay, int bx, int by) const;
+  bool check_move(int ax, int ay, int bx, int by) const;
 
   friend class Board;  // castle 변수의 접근을 위해 Board 를 friend 로 선언?
 };
@@ -22,25 +22,25 @@ class King : public Piece {
 class Queen : public Piece {
  public:
   Queen(std::string colour);
-  bool getcheck(int ax, int ay, int bx, int by) const;
+  bool check_move(int ax, int ay, int bx, int by) const;
 };
 
 class Bishop : public Piece {
  public:
   Bishop(std::string colour);
-  bool getcheck(int ax, int ay, int bx, int by) const;
+  bool check_move(int ax, int ay, int bx, int by) const;
 };
 
 class Rook : public Piece {
  public:
   Rook(std::string colour);
-  bool getcheck(int ax, int ay, int bx, int by) const;
+  bool check_move(int ax, int ay, int bx, int by) const;
 };
 
 class Knight : public Piece {
  public:
   Knight(std::string colour);
-  bool getcheck(int ax, int ay, int bx, int by) const;
+  bool check_move(int ax, int ay, int bx, int by) const;
 };
 
 class Pawn : public Piece {
@@ -51,7 +51,7 @@ class Pawn : public Piece {
  public:
   Pawn(std::string colour);
 
-  bool getcheck(int ax, int ay, int bx, int by) const;
+  bool check_move(int ax, int ay, int bx, int by) const;
 
   friend class Board;  // castle 변수의 접근을 위해 Board 를 friend 로 선언?
 };

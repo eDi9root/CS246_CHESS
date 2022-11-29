@@ -11,7 +11,14 @@
 
 using namespace std;
 
-Board::Board() { vector<vector<Tile>> pBoard(8, vector<Tile>(8, 0)); }
+// Board::Board() {
+//   for (int i = 0; i < 8; i++) {
+//     for (int j = 0; j < 8; j++) {
+//       pBoard[i][j] = 0;
+//     }
+//   }
+// }
+// { vector<vector<Tile>> pBoard(8, vector<Tile>(8, 0)); }
 
 void Board::init() {
   string colour = "black";
