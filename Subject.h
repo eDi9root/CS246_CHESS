@@ -20,3 +20,5 @@ class Subject {
   virtual char getState(int row, int col) const = 0;
   virtual ~Subject() = default;
 };
+
+#endif
