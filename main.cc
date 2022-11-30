@@ -33,7 +33,6 @@ int main() {
         if (command == "game") {
             // cin >> player1 >> player2;
             // TextDisplay(b);
-            play.run();
             b->notifyObservers();
             // Chess run = Chess(player1, player2);
             /*

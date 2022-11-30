@@ -10,7 +10,7 @@ class Chess {
     bool playing;
 
    public:
-    Chess(*players);
+    Chess(Player *players);
     void resign();
     void reset();
     void turnmove();

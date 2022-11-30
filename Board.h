@@ -14,26 +14,28 @@ using namespace std;
 
 class TextDisplay;
 
-//class Tile;
+// class Tile;
 
 class Piece;
 
 class Board : public Subject {
-  vector<vector<Tile>> pBoard;  // 한 칸을 참조?
-  string piecesType;
-  string colour;
-  string positions;
+    vector<vector<Tile>> pBoard;  // 한 칸을 참조?
+    string piecesType;
+    string colour;
+    string positions;
 
- public:
-  Board();
-  void init();
-  Piece *getPiece(int x, int y);
-  Tile *getTile(int x, int y);
-  bool movement(int ax, int ay, int bx, int by);  // move class 를 가져와서 이동
-  void setup_placeP(char piecesType, char c, char y);
-  // bool legal_movement(string pieceType, string x, string y);
+   public:
+    Board();
+    void init();
+    void Render();
+    Piece *getPiece(int x, int y);
+    Tile *getTile(int x, int y);
+    bool movement(int ax, int ay, int bx,
+                  int by);  // move class 를 가져와서 이동
+    void setup_placeP(char piecesType, char c, char y);
+    // bool legal_movement(string pieceType, string x, string y);
 
-  ~Board();
+    ~Board();
 };
 
 #endif
