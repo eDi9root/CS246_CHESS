@@ -26,29 +26,29 @@ Board::Board() {
    }
 }
 
-/*
+
 void Board::init() {
   string colour = "black";
   int y1 = 0;
   int y2 = 1;
   for (int j = 0; j < 2; ++j) {
-    pBoard[0][y1] = new Rook(colour);  // black
-    pBoard[1][y1] = new Knight(colour);
-    pBoard[2][y1] = new Bishop(colour);
-    pBoard[3][y1] = new Queen(colour);
-    pBoard[4][y1] = new King(colour);
-    pBoard[5][y1] = new Bishop(colour);
-    pBoard[6][y1] = new Knight(colour);
-    pBoard[7][y1] = new Rook(colour);
+    pBoard[0][y1].setPiece(new Rook(colour));  // black
+    pBoard[1][y1].setPiece(new Knight(colour));
+    pBoard[2][y1].setPiece(new Bishop(colour));
+    pBoard[3][y1].setPiece(new Queen(colour));
+    pBoard[4][y1].setPiece(new King(colour));
+    pBoard[5][y1].setPiece(new Bishop(colour));
+    pBoard[6][y1].setPiece(new Knight(colour));
+    pBoard[7][y1].setPiece(new Rook(colour));
     for (int i = 0; i < 8; ++i) {
-      pBoard[i][y2] = new Pawn(colour);
+      pBoard[i][y2].setPiece(new Pawn(colour));
     }
     y1 = 7;
     y2 = 6;
     colour = "white";
   }
 }
-*/
+
 
 void Board::setup_placeP(char piecesType, char x, char y) {
     int change_x_int = x - 97;
