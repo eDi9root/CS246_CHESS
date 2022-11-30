@@ -8,6 +8,7 @@ class Chess {
     Board board;
     Player *player1;
     Player *player2;
+    bool playing;
 
    public:
     Chess(Player *player1, Player *player2);

@@ -14,12 +14,12 @@ using namespace std;
 
 class TextDisplay;
 
-class Tile;
+//class Tile;
 
 class Piece;
 
 class Board : public Subject {
-  Tile **pBoard;  // 한 칸을 참조?
+  vector<vector<Tile>> pBoard;  // 한 칸을 참조?
   string piecesType;
   string colour;
   string positions;

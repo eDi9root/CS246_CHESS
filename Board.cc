@@ -12,13 +12,19 @@
 
 using namespace std;
 
-// Board::Board() {
-//   for (int i = 0; i < 8; i++) {
-//     for (int j = 0; j < 8; j++) {
-//       pBoard[i][j] = 0;
-//     }
-//   }
-// }
+Board::Board() {
+   Tile t;
+   for (int i = 0; i < 8; i++) {
+    vector<Tile> rows;
+    pBoard.push_back(rows);
+     for (int j = 0; j < 8; j++) {
+        t.setRow(i);
+        t.setCol(j);
+        t.setPiece(NULL);
+        pBoard.at(i).push_back(t);
+     }
+   }
+}
 
 /*
 void Board::init() {
@@ -118,4 +124,14 @@ Tile* Board::getTile(int x, int y) {
         return &pBoard[x][y];
     }
     throw invalid_argument("out of range");
+}
+
+
+Board::~Board() {
+    for (int i = 0; i < 8; i++) {
+        for (int j = 0; j < 8; j++) {
+            pBoard.at(i).pop_back();
+        }
+        pBoard.pop_back();
+    }
 }
