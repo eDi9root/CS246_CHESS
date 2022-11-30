@@ -1,4 +1,4 @@
-#include <fstream>
+
 #include <iostream>
 #include <sstream>
 #include <string>
@@ -31,8 +31,9 @@ int main() {
     while (!cin.eof()) {
         cin >> command;
         if (command == "game") {
-            //cin >> player1 >> player2;
-            //TextDisplay(b);
+            // cin >> player1 >> player2;
+            // TextDisplay(b);
+            play.run();
             b->notifyObservers();
             // Chess run = Chess(player1, player2);
             /*
@@ -57,8 +58,11 @@ int main() {
                          piecetype[0] == 'b' || piecetype[0] == 'r' ||
                          piecetype[0] == 'n' || piecetype[0] == 'p') &&
                         ((coordinate[0] >= 'a' && coordinate[0] <= 'h') &&
-                         (coordinate[1] >= '1' && coordinate[1] <= '8'))) {  // check if the command is valid
-                        b->setup_placeP(piecetype[0], coordinate[0], coordinate[1]);  // from board
+                         (coordinate[1] >= '1' &&
+                          coordinate[1] <=
+                              '8'))) {  // check if the command is valid
+                        b->setup_placeP(piecetype[0], coordinate[0],
+                                        coordinate[1]);  // from board
                         b->notifyObservers();
                         // notify(piecetype[0], coordinate[0],coordinate[1]);
                     } else {
