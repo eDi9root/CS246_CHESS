@@ -5,7 +5,7 @@
 #include "Player.h"
 
 class Chess {
-    Board **board;
+    Board board;
     Player *players;
     bool playing;
 
