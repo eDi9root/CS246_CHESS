@@ -1,21 +1,28 @@
 #ifndef _CHESS_H
 #define _CHESS_H
+#include <memory>
+#include <vector>
+
 #include "Board.h"
-#include "Piece.h"
 #include "Player.h"
+#include "observer.h"
+
+using namespace std;
 
 class Chess {
     Board board;
-    Player *players;
+    unique_ptr<Player> players[2];
+    vector<unique_ptr<Observer>> ob;
     bool playing;
 
    public:
-    Chess(Player *players);
+    Chess();
     void resign();
     void reset();
     void turnmove();
     void setup();
     void run();
+    void graphics();
 };
 
 #endif

@@ -31,9 +31,12 @@ int main() {
     while (!cin.eof()) {
         cin >> command;
         if (command == "game") {
+            Chess play = Chess();
+            play.graphics();
+            play.run();
             // cin >> player1 >> player2;
             // TextDisplay(b);
-            b->notifyObservers();
+            // b->notifyObservers();
             // Chess run = Chess(player1, player2);
             /*
             if ((player1 == "white-player") || (player2 == "black-player")) {
