@@ -4,6 +4,8 @@
 #include <string>
 using namespace std;
 
+TextDisplay::TextDisplay(Board *sub) : subject{sub} { subject->attach(this); }
+
 void TextDisplay::notify() {
     for (int i = 8; i > 0; --i) {
         cout << i << " ";
@@ -15,6 +17,6 @@ void TextDisplay::notify() {
     cout << "  abcdefgh\n";
 }
 
-TextDisplay::TextDisplay(Board *sub) : subject{sub} { subject->attach(this); }
+
 
 TextDisplay::~TextDisplay() { subject->detach(this); }

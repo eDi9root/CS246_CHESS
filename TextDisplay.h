@@ -9,7 +9,7 @@ using namespace std;
 
 class TextDisplay : public Observer {
   Board *subject;
-  // ostream &out = cout;
+  //ostream &out = cout;
 
  public:
   void notify() override;
