@@ -15,3 +15,4 @@ bool Piece::check_move(int ax, int ay, int bx, int by) const {
 bool Piece::check_attack(int ax, int ay, int bx, int by) const {
   return Piece::check_move(ax, ay, bx, by);
 }
+

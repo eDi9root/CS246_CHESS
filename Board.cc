@@ -18,9 +18,6 @@ Board::Board() {
         vector<Tile> rows;
         pBoard.push_back(rows);
         for (int j = 0; j < 8; j++) {
-            t.setRow(i);
-            t.setCol(j);
-            t.setPiece(new King("white"));
             pBoard.at(i).push_back(t);
         }
     }
@@ -51,6 +48,7 @@ void Board::init() {
 void Board::Render() { notifyObservers(); }
 
 void Board::setup_placeP(char piecesType, char x, char y) {
+    /*
     int change_x_int = x - 97;
     int change_y_int = 7 - (y - 49);
     if (piecesType == 'k') {
@@ -102,6 +100,7 @@ void Board::setup_placeP(char piecesType, char x, char y) {
         pBoard[x][y].setCol(y);
         pBoard[x][y].setPiece(new Pawn("white"));
     }
+    */
 }
 
 bool Board::movement(int ax, int ay, int bx, int by) {
