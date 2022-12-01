@@ -45,3 +45,4 @@ void Tile::setPos(string pos) {
 }
 */
 void Tile::setPiece(Piece* piece) { piecethatisonTile = piece; }
+

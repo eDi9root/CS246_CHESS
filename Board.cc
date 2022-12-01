@@ -20,7 +20,7 @@ Board::Board() {
         for (int j = 0; j < 8; j++) {
             t.setRow(i);
             t.setCol(j);
-            t.setPiece(NULL);
+            t.setPiece(new King("white"));
             pBoard.at(i).push_back(t);
         }
     }
@@ -120,11 +120,11 @@ bool Board::movement(int ax, int ay, int bx, int by) {
 }
 
 Tile* Board::getTile(int x, int y) {
-    return &pBoard[x][y];
-    if (x >= 0 && x < 8 && y >= 0 && y < 8) {
+    if ((x >= 0 && x <= 8) && (y >= 0 && y <= 8)) {
         return &pBoard[x][y];
     }
     throw invalid_argument("out of range");
+    
 }
 
 Board::~Board() {

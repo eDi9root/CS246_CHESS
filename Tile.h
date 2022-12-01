@@ -10,6 +10,7 @@ using namespace std;
 class Tile {
     int row;
     int col;
+    char typeofpiece;
     string position;
     Piece* piecethatisonTile;
 
@@ -28,5 +29,7 @@ class Tile {
 
     ~Tile();
 };
+
+
 
 #endif

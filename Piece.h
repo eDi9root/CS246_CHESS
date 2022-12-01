@@ -9,6 +9,7 @@ using namespace std;
 class Board;
 
 class Piece {
+  protected:
   int id;         // Itype
   string colour;  // iTeam
                   // string position;
@@ -26,6 +27,8 @@ class Piece {
 
   virtual bool check_attack(int ax, int ay, int bx, int by) const;
   // 공격 가능 확인
+  virtual string printpiece() = 0;
+  virtual ~Piece() = default;
 
   // Move movement(Board board) const;  // 이동
 

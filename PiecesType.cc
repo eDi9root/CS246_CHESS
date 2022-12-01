@@ -16,6 +16,12 @@ bool King::check_move(int ax, int ay, int bx, int by) const {
   }
   return false;
 }
+string King::printpiece() {
+  if (colour == "white") {
+    return "K";
+  }
+  return "k";
+}
 
 Queen::Queen(std::string colour) : Piece(Piece::Queen, colour) {}
 
@@ -33,6 +39,13 @@ bool Queen::check_move(int ax, int ay, int bx, int by) const {
   return false;
 }
 
+string Queen::printpiece() {
+  if (colour == "white") {
+    return "Q";
+  }
+  return "q";
+}
+
 Bishop::Bishop(std::string colour) : Piece(Piece::Bishop, colour) {}
 
 bool Bishop::check_move(int ax, int ay, int bx, int by) const {
@@ -41,6 +54,13 @@ bool Bishop::check_move(int ax, int ay, int bx, int by) const {
     return Piece::check_move(ax, ay, bx, by);
   }
   return false;
+}
+
+string Bishop::printpiece() {
+  if (colour == "white") {
+    return "B";
+  }
+  return "b";
 }
 
 Rook::Rook(std::string colour) : Piece(Piece::Rook, colour) {}
@@ -53,6 +73,13 @@ bool Rook::check_move(int ax, int ay, int bx, int by) const {
     return Piece::check_move(ax, ay, bx, by);
   }
   return false;
+}
+
+string Rook::printpiece() {
+  if (colour == "white") {
+    return "R";
+  }
+  return "r";
 }
 
 Knight::Knight(std::string colour) : Piece(Piece::Knight, colour) {}
@@ -68,6 +95,12 @@ bool Knight::check_move(int ax, int ay, int bx, int by) const {
     }
   }
   return false;
+}
+string Knight::printpiece() {
+  if (colour == "white") {
+    return "N";
+  }
+  return "n";
 }
 
 Pawn::Pawn(std::string colour) : Piece(Piece::Pawn, colour) {}
@@ -96,4 +129,11 @@ bool Pawn::check_attack(int ax, int ay, int bx, int by) const {
     }
   }
   return false;
+}
+
+string Pawn::printpiece() {
+  if (colour == "white") {
+    return "P";
+  }
+  return "p";
 }

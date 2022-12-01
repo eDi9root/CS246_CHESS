@@ -14,7 +14,7 @@ class TextDisplay : public Observer {
 
    public:
     void notify() override;
-    char Tochar(Tile &t);
+    string Tochar(Tile *t);
     TextDisplay(Board *sub);
     ~TextDisplay();
 };
