@@ -8,27 +8,25 @@
 using namespace std;
 
 class Tile {
-  int row;
-  int col;
-  string position;
-  Piece *piecethatisonTile;
+    int row;
+    int col;
+    string position;
+    Piece* piecethatisonTile;
 
- public:
-  Tile();
-  bool get_empty_tile();
-  int getRow();
-  int getCol();
-  Piece *getPiece();
-  // string getPos();
+   public:
+    Tile();
+    bool get_empty_tile();
+    int getRow();
+    int getCol();
+    Piece* getPiece();
+    // string getPos();
 
-  void setRow(char x);
-  void setCol(char y);
-  // void setPos(string pos);
-  void setPiece(Piece *piece);
+    void setRow(char x);
+    void setCol(char y);
+    // void setPos(string pos);
+    void setPiece(Piece* piece);
 
-  ~Tile();
+    ~Tile();
 };
-
-// std::ostream& operator<<(std::ostream& out, Tile& t);
 
 #endif

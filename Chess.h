@@ -17,8 +17,8 @@ class Chess {
 
    public:
     Chess();
-    void resign();
-    void reset();
+    // void resign();
+    // void reset();
     void turnmove();
     void setup();
     void run();

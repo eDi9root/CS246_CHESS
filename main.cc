@@ -17,7 +17,6 @@
 using namespace std;
 
 int main() {
-    Board *b;
     string command;
     string player1;
     string player2;
@@ -34,6 +33,7 @@ int main() {
             Chess play = Chess();
             play.graphics();
             play.run();
+            play.turnmove();
             // cin >> player1 >> player2;
             // TextDisplay(b);
             // b->notifyObservers();
@@ -63,9 +63,9 @@ int main() {
                          (coordinate[1] >= '1' &&
                           coordinate[1] <=
                               '8'))) {  // check if the command is valid
-                        b->setup_placeP(piecetype[0], coordinate[0],
-                                        coordinate[1]);  // from board
-                        b->notifyObservers();
+                        // b->setup_placeP(piecetype[0], coordinate[0],
+                        //                 coordinate[1]);  // from board
+                        // b->notifyObservers();
                         // notify(piecetype[0], coordinate[0],coordinate[1]);
                     } else {
                         cout << "invalid setup!" << endl;

@@ -5,10 +5,10 @@
 Tile::Tile() : row{0}, col{0}, position{"0"}, piecethatisonTile{NULL} {}
 
 bool Tile::get_empty_tile() {
-  if (piecethatisonTile == NULL) {
-    return true;
-  }
-  return false;
+    if (piecethatisonTile == NULL) {
+        return true;
+    }
+    return false;
 }
 
 int Tile::getRow() { return row; }
@@ -25,12 +25,12 @@ string Tile::getPos() {
 Tile::~Tile() { delete piecethatisonTile; }
 
 void Tile::setRow(char x) {
-  int change_x_int = x - 97;
-  change_x_int = row;
+    int change_x_int = x - 97;
+    change_x_int = row;
 }
 void Tile::setCol(char y) {
-  int change_y_int = 7 - (y - 49);
-  change_y_int = col;
+    int change_y_int = 7 - (y - 49);
+    change_y_int = col;
 }
 
 /*

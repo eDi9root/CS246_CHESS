@@ -2,9 +2,16 @@
 
 #include "TextDisplay.h"
 
-Chess::Chess() {}  // board.init();
+Chess::Chess() {
+    board.init();
+    board.Render();
+}
 
-void Chess::run() {}
+void Chess::turnmove() {}
+
+void Chess::setup() {}
+
+void Chess::run() { board.Render(); }
 
 void Chess::graphics() {
     unique_ptr<Observer> o;

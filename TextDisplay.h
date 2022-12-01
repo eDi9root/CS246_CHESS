@@ -4,17 +4,19 @@
 #include <iostream>
 
 #include "Board.h"
+#include "Tile.h"
 #include "observer.h"
 using namespace std;
 
 class TextDisplay : public Observer {
-  Board *subject;
-  //ostream &out = cout;
+    Board *subject;
+    // ostream &out = cout;
 
- public:
-  void notify() override;
-  TextDisplay(Board *sub);
-  ~TextDisplay();
+   public:
+    void notify() override;
+    char Tochar(Tile &t);
+    TextDisplay(Board *sub);
+    ~TextDisplay();
 };
 
 #endif

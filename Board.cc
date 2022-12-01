@@ -13,42 +13,42 @@
 using namespace std;
 
 Board::Board() {
-   Tile t;
-   for (int i = 0; i < 8; i++) {
-    vector<Tile> rows;
-    pBoard.push_back(rows);
-     for (int j = 0; j < 8; j++) {
-        t.setRow(i);
-        t.setCol(j);
-        t.setPiece(NULL);
-        pBoard.at(i).push_back(t);
-     }
-   }
+    Tile t;
+    for (int i = 0; i < 8; i++) {
+        vector<Tile> rows;
+        pBoard.push_back(rows);
+        for (int j = 0; j < 8; j++) {
+            t.setRow(i);
+            t.setCol(j);
+            t.setPiece(NULL);
+            pBoard.at(i).push_back(t);
+        }
+    }
 }
-
 
 void Board::init() {
-  string colour = "black";
-  int y1 = 0;
-  int y2 = 1;
-  for (int j = 0; j < 2; ++j) {
-    pBoard[0][y1].setPiece(new Rook(colour));  // black
-    pBoard[1][y1].setPiece(new Knight(colour));
-    pBoard[2][y1].setPiece(new Bishop(colour));
-    pBoard[3][y1].setPiece(new Queen(colour));
-    pBoard[4][y1].setPiece(new King(colour));
-    pBoard[5][y1].setPiece(new Bishop(colour));
-    pBoard[6][y1].setPiece(new Knight(colour));
-    pBoard[7][y1].setPiece(new Rook(colour));
-    for (int i = 0; i < 8; ++i) {
-      pBoard[i][y2].setPiece(new Pawn(colour));
+    string colour = "black";
+    int y1 = 0;
+    int y2 = 1;
+    for (int j = 0; j < 2; ++j) {
+        pBoard[0][y1].setPiece(new Rook(colour));  // black
+        pBoard[1][y1].setPiece(new Knight(colour));
+        pBoard[2][y1].setPiece(new Bishop(colour));
+        pBoard[3][y1].setPiece(new Queen(colour));
+        pBoard[4][y1].setPiece(new King(colour));
+        pBoard[5][y1].setPiece(new Bishop(colour));
+        pBoard[6][y1].setPiece(new Knight(colour));
+        pBoard[7][y1].setPiece(new Rook(colour));
+        for (int i = 0; i < 8; ++i) {
+            pBoard[i][y2].setPiece(new Pawn(colour));
+        }
+        y1 = 7;
+        y2 = 6;
+        colour = "white";
     }
-    y1 = 7;
-    y2 = 6;
-    colour = "white";
-  }
 }
 
+void Board::Render() { notifyObservers(); }
 
 void Board::setup_placeP(char piecesType, char x, char y) {
     int change_x_int = x - 97;
@@ -120,12 +120,12 @@ bool Board::movement(int ax, int ay, int bx, int by) {
 }
 
 Tile* Board::getTile(int x, int y) {
+    return &pBoard[x][y];
     if (x >= 0 && x < 8 && y >= 0 && y < 8) {
         return &pBoard[x][y];
     }
     throw invalid_argument("out of range");
 }
-
 
 Board::~Board() {
     for (int i = 0; i < 8; i++) {
