@@ -4,7 +4,6 @@
 #include <iostream>
 
 #include "Board.h"
-#include "Tile.h"
 #include "observer.h"
 using namespace std;
 
@@ -15,7 +14,6 @@ class TextDisplay : public Observer {
    public:
     void notify() override;
     string Tochar(Piece *p);
-    string Tochar(Tile *p);
     TextDisplay(Board *sub);
     ~TextDisplay();
 };

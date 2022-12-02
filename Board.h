@@ -5,21 +5,15 @@
 #include <string>
 #include <vector>
 
-//#include "Move.h"
 #include "Piece.h"
 #include "Subject.h"
-#include "Tile.h"
 
 using namespace std;
 
-class TextDisplay;
-
-// class Tile;
-
-class Piece;
-
 class Board : public Subject {
-    vector<vector<Tile>> pBoard;  // 한 칸을 참조?
+    // vector<vector<Tile>> pBoard;  // 한 칸을 참조?
+    // vector<Tile> pBoard2;
+    Piece* pBoard[8][8];
     string piecesType;
     string colour;
     string positions;
@@ -28,11 +22,12 @@ class Board : public Subject {
     Board();
     void init();
     void Render();
-    unique_ptr<Piece> *getPiece(int x, int y);
-    Tile* getTile(int x, int y);
+    // unique_ptr<Piece> *getPiece(int x, int y);
+    Piece* getPiece(int x, int y);
+    const Piece* getPiece(int x, int y) const;
     bool movement(int ax, int ay, int bx,
                   int by);  // move class 를 가져와서 이동
-    void setup_placeP(char piecesType, char c, char y);
+    // void setup_placeP(char piecesType, char c, char y);
     // bool legal_movement(string pieceType, string x, string y);
 
     ~Board();

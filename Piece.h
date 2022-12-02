@@ -9,32 +9,35 @@ using namespace std;
 class Board;
 
 class Piece {
-  protected:
-  int id;         // Itype
-  string colour;  // iTeam
-                  // string position;
-                  // bool captured;
-                  // bool init_moved;
+   private:
+    int id;      // Itype
+    int colour;  // iTeam
+                 // string position;
+                 // bool captured;
+                 // bool init_moved;
 
- public:
-  enum { King = 0, Queen = 1, Bishop = 2, Knight = 3, Rook = 4, Pawn = 5 };
+   public:
+    enum { King = 0, Queen = 1, Bishop = 2, Knight = 3, Rook = 4, Pawn = 5 };
+    enum { white = 0, black = 1 };
 
- public:
-  Piece(const Piece &pieces);
-  Piece(int id, string colour);
-  virtual bool check_move(int ax, int ay, int bx, int by) const;
-  // 이동 가능 확인
+   protected:
+    Piece(int id, int colour);
 
-  virtual bool check_attack(int ax, int ay, int bx, int by) const;
-  // 공격 가능 확인
-  virtual string printpiece() = 0;
-  virtual ~Piece() = default;
+   public:
+    Piece(const Piece &pieces);
+    int getColor();
+    virtual bool check_move(int ax, int ay, int bx, int by) const;
+    // 이동 가능 확인
 
-  // Move movement(Board board) const;  // 이동
+    virtual bool check_attack(int ax, int ay, int bx, int by) const;
+    // 공격 가능 확인
+    virtual ~Piece() = default;
 
- public:
-  const int &pid = id;
-  const string &pcolour = colour;
+    // Move movement(Board board) const;  // 이동
+
+   public:
+    const int &pid = id;
+    const int &pcolour = colour;
 };
 
 #endif

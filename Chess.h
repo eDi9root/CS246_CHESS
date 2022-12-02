@@ -15,6 +15,8 @@ class Chess {
     vector<unique_ptr<Observer>> ob;
     bool playing;
 
+    unsigned int colour = Piece::white;
+
    public:
     Chess();
     // void resign();

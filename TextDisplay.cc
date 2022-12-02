@@ -10,68 +10,62 @@ void TextDisplay::notify() {
     for (int i = 8; i > 0; --i) {
         cout << i << " ";
         for (int j = 8; j > 0; --j) {
-            cout << " ";
-            //cout << Tochar(subject->getTile(i,j));
-            //cout << subject->getTile(i,j);
-            cout << subject->getTile(i,j)->getPiece();
+            if (Tochar(subject->getPiece(i - 1, j - 1)) == " " &&
+                (i - j) & 2 != 0) {
+                cout << "_";
+            } else if (Tochar(subject->getPiece(i - 1, j - 1)) == " " &&
+                       (i - j) % 2 == 0) {
+                cout << " ";
+            } else {
+                cout << Tochar(subject->getPiece(i - 1, j - 1));
+            }
         }
+
         cout << "\n";
     }
-    cout << "  abcdefgh\n";
+    cout << "\n  abcdefgh\n";
 }
-
 
 string TextDisplay::Tochar(Piece *p) {
     if (p == NULL) {
         return " ";
     } else {
-        switch(p->pid) {
-            case Piece::King:
-            return "K";
-            case Piece::Queen:
-            return "Q";
-            case Piece::Bishop:
-            return "B";
-            case Piece::Knight:
-            return "K";
-            case Piece::Rook:
-            return "R";
-            case Piece::Pawn:
-            return "P";
-            default:
-            return 0;
+        if (p->getColor() == Piece::white) {
+            switch (p->pid) {
+                case Piece::King:
+                    return "K";
+                case Piece::Queen:
+                    return "Q";
+                case Piece::Bishop:
+                    return "B";
+                case Piece::Knight:
+                    return "N";
+                case Piece::Rook:
+                    return "R";
+                case Piece::Pawn:
+                    return "P";
+                default:
+                    return 0;
+            }
+        } else {
+            switch (p->pid) {
+                case Piece::King:
+                    return "k";
+                case Piece::Queen:
+                    return "q";
+                case Piece::Bishop:
+                    return "b";
+                case Piece::Knight:
+                    return "n";
+                case Piece::Rook:
+                    return "r";
+                case Piece::Pawn:
+                    return "p";
+                default:
+                    return 0;
+            }
         }
     }
-    //Piece *p = t->getPiece();
-    //return p->printpiece();
-    return 0;
-}
-
-
-string TextDisplay::Tochar(Tile *p) {
-    Piece *n = p->getPiece();
-    if (n == 0) {
-        return " ";
-    } else {
-        switch(n->pid) {
-            case Piece::King:
-            return "K";
-            case Piece::Queen:
-            return "Q";
-            case Piece::Bishop:
-            return "B";
-            case Piece::Knight:
-            return "K";
-            case Piece::Rook:
-            return "R";
-            case Piece::Pawn:
-            return "P";
-            default:
-            return 0;
-        }
-    }
-    //Piece *p = t->getPiece();
-    //return p->printpiece();
     return 0;
 }
 

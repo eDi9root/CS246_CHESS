@@ -3,16 +3,8 @@
 #include <sstream>
 #include <string>
 
-#include "Board.h"
 #include "Chess.h"
-#include "Move.h"
-#include "Piece.h"
-#include "PiecesType.h"
 #include "Player.h"
-#include "Subject.h"
-#include "TextDisplay.h"
-#include "Tile.h"
-#include "observer.h"
 
 using namespace std;
 
@@ -33,7 +25,7 @@ int main() {
             Chess play = Chess();
             play.graphics();
             play.run();
-            play.turnmove();
+            // play.turnmove();
             // cin >> player1 >> player2;
             // TextDisplay(b);
             // b->notifyObservers();

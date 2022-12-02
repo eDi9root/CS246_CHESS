@@ -5,65 +5,58 @@
 #include <string>
 #include <vector>
 
-
-#include "Piece.h"
 #include "Board.h"
+#include "Piece.h"
 #include "Tile.h"
 
 class King : public Piece {
- private:
-  bool castle = true;
+   private:
+    bool castle = true;
 
- public:
-  King(std::string colour);
+   public:
+    King(int colour);
 
-  bool check_move(int ax, int ay, int bx, int by) const;
-  string printpiece();
+    bool check_move(int ax, int ay, int bx, int by) const;
 
-  friend class Board;  // castle 변수의 접근을 위해 Board 를 friend 로 선언?
+    friend class Board;  // castle 변수의 접근을 위해 Board 를 friend 로 선언?
 };
 
 class Queen : public Piece {
- public:
-  Queen(std::string colour);
-  bool check_move(int ax, int ay, int bx, int by) const;
-  string printpiece();
+   public:
+    Queen(int colour);
+    bool check_move(int ax, int ay, int bx, int by) const;
 };
 
 class Bishop : public Piece {
- public:
-  Bishop(std::string colour);
-  bool check_move(int ax, int ay, int bx, int by) const;
-  string printpiece();
+   public:
+    Bishop(int colour);
+    bool check_move(int ax, int ay, int bx, int by) const;
 };
 
 class Rook : public Piece {
- public:
-  Rook(std::string colour);
-  bool check_move(int ax, int ay, int bx, int by) const;
-  string printpiece();
+   public:
+    Rook(int colour);
+    bool check_move(int ax, int ay, int bx, int by) const;
 };
 
 class Knight : public Piece {
- public:
-  Knight(std::string colour);
-  bool check_move(int ax, int ay, int bx, int by) const;
-  string printpiece();
+   public:
+    Knight(int colour);
+    bool check_move(int ax, int ay, int bx, int by) const;
 };
 
 class Pawn : public Piece {
- private:
-  bool enpassen = true;
-  bool init_two_move = true;
+   private:
+    bool enpassen = true;
+    bool init_two_move = true;
 
- public:
-  Pawn(std::string colour);
+   public:
+    Pawn(int colour);
 
-  bool check_move(int ax, int ay, int bx, int by) const;
-  bool check_attack(int ax, int ay, int bx, int by) const;
-  string printpiece();
+    bool check_move(int ax, int ay, int bx, int by) const;
+    bool check_attack(int ax, int ay, int bx, int by) const;
 
-  friend class Board;  // castle 변수의 접근을 위해 Board 를 friend 로 선언?
+    friend class Board;  // castle 변수의 접근을 위해 Board 를 friend 로 선언?
 };
 
 #endif

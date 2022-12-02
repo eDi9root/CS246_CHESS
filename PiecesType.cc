@@ -1,139 +1,100 @@
 #include "PiecesType.h"
-#include "Piece.h"
 
 #include <iostream>
 
+#include "Piece.h"
+
 #define abs(x) ((x) < 0 ? -(x) : (x))
 
-King::King(std::string colour) : Piece(Piece::King, colour) {}
+King::King(int colour) : Piece(Piece::King, colour) {}
 
 bool King::check_move(int ax, int ay, int bx, int by) const {
-  // 한칸씩 이동 가능
-  if (ax >= bx - 1 && ax <= bx + 1) {
-    if (ay >= by - 1 && ay <= by + 1) {
-      return Piece::check_move(ax, ay, bx, by);
+    // 한칸씩 이동 가능
+    if (ax >= bx - 1 && ax <= bx + 1) {
+        if (ay >= by - 1 && ay <= by + 1) {
+            return Piece::check_move(ax, ay, bx, by);
+        }
     }
-  }
-  return false;
-}
-string King::printpiece() {
-  if (colour == "white") {
-    return "K";
-  }
-  return "k";
+    return false;
 }
 
-Queen::Queen(std::string colour) : Piece(Piece::Queen, colour) {}
+Queen::Queen(int colour) : Piece(Piece::Queen, colour) {}
 
 bool Queen::check_move(int ax, int ay, int bx, int by) const {
-  // 퀸은 모든 이동 가능 (나이트 제외)
-  if (ax == bx) {
-    return Piece::check_move(ax, ay, bx, by);
-  } else if (ay == by) {
-    return Piece::check_move(ax, ay, bx, by);
-  } else {
-    if (abs(ax - bx) == abs(ay - by)) {
-      return Piece::check_move(ax, ay, bx, by);
+    // 퀸은 모든 이동 가능 (나이트 제외)
+    if (ax == bx) {
+        return Piece::check_move(ax, ay, bx, by);
+    } else if (ay == by) {
+        return Piece::check_move(ax, ay, bx, by);
+    } else {
+        if (abs(ax - bx) == abs(ay - by)) {
+            return Piece::check_move(ax, ay, bx, by);
+        }
     }
-  }
-  return false;
+    return false;
 }
 
-string Queen::printpiece() {
-  if (colour == "white") {
-    return "Q";
-  }
-  return "q";
-}
-
-Bishop::Bishop(std::string colour) : Piece(Piece::Bishop, colour) {}
+Bishop::Bishop(int colour) : Piece(Piece::Bishop, colour) {}
 
 bool Bishop::check_move(int ax, int ay, int bx, int by) const {
-  // bishop은 대각선만
-  if (abs(ax - bx) == abs(ay - by)) {
-    return Piece::check_move(ax, ay, bx, by);
-  }
-  return false;
+    // bishop은 대각선만
+    if (abs(ax - bx) == abs(ay - by)) {
+        return Piece::check_move(ax, ay, bx, by);
+    }
+    return false;
 }
 
-string Bishop::printpiece() {
-  if (colour == "white") {
-    return "B";
-  }
-  return "b";
-}
-
-Rook::Rook(std::string colour) : Piece(Piece::Rook, colour) {}
+Rook::Rook(int colour) : Piece(Piece::Rook, colour) {}
 
 bool Rook::check_move(int ax, int ay, int bx, int by) const {
-  // 룩은 직선만
-  if (ax == bx) {
-    return Piece::check_move(ax, ay, bx, by);
-  } else if (ay == by) {
-    return Piece::check_move(ax, ay, bx, by);
-  }
-  return false;
+    // 룩은 직선만
+    if (ax == bx) {
+        return Piece::check_move(ax, ay, bx, by);
+    } else if (ay == by) {
+        return Piece::check_move(ax, ay, bx, by);
+    }
+    return false;
 }
 
-string Rook::printpiece() {
-  if (colour == "white") {
-    return "R";
-  }
-  return "r";
-}
-
-Knight::Knight(std::string colour) : Piece(Piece::Knight, colour) {}
+Knight::Knight(int colour) : Piece(Piece::Knight, colour) {}
 
 bool Knight::check_move(int ax, int ay, int bx, int by) const {
-  if (abs(1 - bx) == ax) {
-    if (abs(2 - by) == ay) {
-      return Piece::check_move(ax, ay, bx, by);
+    if (abs(1 - bx) == ax) {
+        if (abs(2 - by) == ay) {
+            return Piece::check_move(ax, ay, bx, by);
+        }
+    } else if (abs(2 - bx) == ax) {
+        if (abs(1 - by) == ay) {
+            return Piece::check_move(ax, ay, bx, by);
+        }
     }
-  } else if (abs(2 - bx) == ax) {
-    if (abs(1 - by) == ay) {
-      return Piece::check_move(ax, ay, bx, by);
-    }
-  }
-  return false;
-}
-string Knight::printpiece() {
-  if (colour == "white") {
-    return "N";
-  }
-  return "n";
+    return false;
 }
 
-Pawn::Pawn(std::string colour) : Piece(Piece::Pawn, colour) {}
+Pawn::Pawn(int colour) : Piece(Piece::Pawn, colour) {}
 
 bool Pawn::check_move(int ax, int ay, int bx, int by) const {
-  if (pcolour == "black") {
-    if (ax == bx && (ay > by && ay - 2 <= by)) {
-      return Piece::check_move(ax, ay, bx, by);
+    if (pcolour == Piece::black) {
+        if (ax == bx && (ay > by && ay - 2 <= by)) {
+            return Piece::check_move(ax, ay, bx, by);
+        }
+    } else {
+        if (ax == bx && (ay < by && ay + 2 >= by)) {
+            return Piece::check_move(ax, ay, bx, by);
+        }
     }
-  } else {
-    if (ax == bx && (ay < by && ay + 2 >= by)) {
-      return Piece::check_move(ax, ay, bx, by);
-    }
-  }
-  return false;
+    return false;
 }
 
 bool Pawn::check_attack(int ax, int ay, int bx, int by) const {
-  if (pcolour == "black") {
-    if ((abs(1 + ax) == bx) && (ay - 1 == by)) {
-      return true;
+    if (pcolour == Piece::black) {
+        if ((abs(1 + ax) == bx) && (ay - 1 == by)) {
+            return true;
+        }
+    } else {
+        if ((abs(1 - ax) == bx) && (ay + 1 == by)) {
+            return true;
+        }
     }
-  } else {
-    if ((abs(1 - ax) == bx) && (ay + 1 == by)) {
-      return true;
-    }
-  }
-  return false;
-}
-
-string Pawn::printpiece() {
-  if (colour == "white") {
-    return "P";
-  }
-  return "p";
+    return false;
 }
