@@ -17,6 +17,10 @@ class Board : public Subject {
     string piecesType;
     string colour;
     string positions;
+    int blackKing_x;
+    int blackKing_y;
+    int whiteKing_x;
+    int whiteKing_y;
 
    public:
     Board();
@@ -27,6 +31,8 @@ class Board : public Subject {
     const Piece* getPiece(int x, int y) const;
     bool movement(int ax, int ay, int bx,
                   int by);  // move class 를 가져와서 이동
+    void king_location();
+    bool check();
     // void setup_placeP(char piecesType, char c, char y);
     // bool legal_movement(string pieceType, string x, string y);
 

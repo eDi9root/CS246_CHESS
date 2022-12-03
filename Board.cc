@@ -17,6 +17,7 @@ Board::Board() {
             pBoard[i][j] = 0;
         }
     }
+    blackKing_x = 3;
 }
 
 void Board::init() {
@@ -28,7 +29,7 @@ void Board::init() {
         pBoard[1][y1] = new Knight(colour);
         pBoard[2][y1] = new Bishop(colour);
         pBoard[4][y1] = new Queen(colour);
-        pBoard[3][y1] = new King(colour);
+        pBoard[3][y1] = new Kings(colour);
         pBoard[5][y1] = new Bishop(colour);
         pBoard[6][y1] = new Knight(colour);
         pBoard[7][y1] = new Rook(colour);
@@ -71,6 +72,34 @@ const Piece* Board::getPiece(int x, int y) const {
     throw invalid_argument("!out of range");
 }
 
+/*
+void Board::king_location() {
+    for (int i = 0; i < 8; ++i) {
+        for (int j = 0; j < 8; ++j) {
+            Piece *p = getPiece(i,j);
+            if (p->pid == Piece::King) {
+                cout << "i'm here" << endl;
+                if (p->getColor() == Piece::white) {
+                    whiteKing_x = i;
+                    whiteKing_y = j;
+                } else {
+                    blackKing_x = i;
+                    blackKing_y = j;
+                }
+            }
+        }
+    }
+    //cout << "black king x: " << blackKing_x << ", black king y: " << blackKing_y << endl;
+    //cout << "white king x: " << whiteKing_x << ", white king y: " << whiteKing_y << endl;
+}
+*/
+
+bool Board::check() {
+    cout << "black king x: " << blackKing_x << ", black king y: " << blackKing_y << endl;
+    cout << "white king x: " << whiteKing_x << ", white king y: " << whiteKing_y << endl;
+    return true;
+}
+
 Board::~Board() {
     for (int i = 0; i < 8; i++) {
         for (int j = 0; j < 8; j++) {
@@ -80,3 +109,5 @@ Board::~Board() {
         }
     }
 }
+
+

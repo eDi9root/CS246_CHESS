@@ -35,6 +35,9 @@ void Chess::turnmove() {
                 if (board.movement(x[1], y[1], x[0], y[0])) {
                     colour = !colour;
                     cout << colour << endl;
+                    if (board.getPiece(x[1],y[1])->pid == Piece::King) {
+                        
+                    }
                 }
             }
         } else {
@@ -46,6 +49,7 @@ void Chess::turnmove() {
             }
         }
     }
+    board.check();
 }
 
 void Chess::setup() {}
