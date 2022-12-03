@@ -23,7 +23,7 @@ int main() {
         cin >> command;
         if (command == "game") {
             Chess play = Chess();
-            play.graphics();
+            // play.graphics();
             play.run();
             // play.turnmove();
             // cin >> player1 >> player2;

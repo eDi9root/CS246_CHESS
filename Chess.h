@@ -1,6 +1,8 @@
 #ifndef _CHESS_H
 #define _CHESS_H
+#include <iostream>
 #include <memory>
+#include <string>
 #include <vector>
 
 #include "Board.h"
