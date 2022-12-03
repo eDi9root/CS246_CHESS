@@ -27,10 +27,6 @@ int main() {
             play.run();
             // play.turnmove();
             // cin >> player1 >> player2;
-            // TextDisplay(b);
-            // b->notifyObservers();
-            // Chess run = Chess(player1, player2);
-            /*
             if ((player1 == "white-player") || (player2 == "black-player")) {
             } else if (player1 == "human") {
               if (player2 == "computer[1]") {
@@ -38,7 +34,6 @@ int main() {
               }
 
             }
-            */
         } else if (command == "setup") {  // consider about input "setup" first
             // setup_init();
             cin >> setup;
@@ -55,10 +50,7 @@ int main() {
                          (coordinate[1] >= '1' &&
                           coordinate[1] <=
                               '8'))) {  // check if the command is valid
-                        // b->setup_placeP(piecetype[0], coordinate[0],
-                        //                 coordinate[1]);  // from board
-                        // b->notifyObservers();
-                        // notify(piecetype[0], coordinate[0],coordinate[1]);
+
                     } else {
                         cout << "invalid setup!" << endl;
                     }
@@ -71,7 +63,7 @@ int main() {
                   */
                 }
             }
-
+/*
         } else if (command == "move") {
             cin >> originpos >> newpos;
             if ((originpos[0] >= 'a' && originpos[0] <= 'h') &&
@@ -82,7 +74,7 @@ int main() {
                 // move(originpos[0], originpos[1], newpos[0], newpos[1]);  //
                 // from ???
             }
-
+*/
         } else if (command ==
                    "=") {  // makes the input's turn (i.e. white, black)
             cin >> turn;

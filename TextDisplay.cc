@@ -11,7 +11,7 @@ void TextDisplay::notify() {
     for (int i = 8; i > 0; --i) {
         cout << i << " ";
         for (int j = 0; j < 8; ++j) {
-            if (Tochar(subject->getPiece(j, x)) == " " && (x - j) & 2 != 0) {
+            if (Tochar(subject->getPiece(j, x)) == " " && (x - j) % 2 != 0) {
                 cout << "_";
             } else if (Tochar(subject->getPiece(j, x)) == " " &&
                        (x - j) % 2 == 0) {
