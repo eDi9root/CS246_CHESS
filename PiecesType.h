@@ -16,7 +16,7 @@ class King : public Piece {
    public:
     King(int colour);
 
-    bool check_move(int ax, int ay, int bx, int by) const;
+    bool check_move(int ax, int ay, int bx, int by, Board &board) const;
 
     friend class Board;  // castle 변수의 접근을 위해 Board 를 friend 로 선언?
 };
@@ -24,25 +24,25 @@ class King : public Piece {
 class Queen : public Piece {
    public:
     Queen(int colour);
-    bool check_move(int ax, int ay, int bx, int by) const;
+    bool check_move(int ax, int ay, int bx, int by, Board &board) const;
 };
 
 class Bishop : public Piece {
    public:
     Bishop(int colour);
-    bool check_move(int ax, int ay, int bx, int by) const;
+    bool check_move(int ax, int ay, int bx, int by, Board &board) const;
 };
 
 class Rook : public Piece {
    public:
     Rook(int colour);
-    bool check_move(int ax, int ay, int bx, int by) const;
+    bool check_move(int ax, int ay, int bx, int by, Board &board) const;
 };
 
 class Knight : public Piece {
    public:
     Knight(int colour);
-    bool check_move(int ax, int ay, int bx, int by) const;
+    bool check_move(int ax, int ay, int bx, int by, Board &board) const;
 };
 
 class Pawn : public Piece {
@@ -53,8 +53,8 @@ class Pawn : public Piece {
    public:
     Pawn(int colour);
 
-    bool check_move(int ax, int ay, int bx, int by) const;
-    bool check_attack(int ax, int ay, int bx, int by) const;
+    bool check_move(int ax, int ay, int bx, int by, Board &board) const;
+    bool check_attack(int ax, int ay, int bx, int by, Board &board) const;
 
     friend class Board;  // castle 변수의 접근을 위해 Board 를 friend 로 선언?
 };

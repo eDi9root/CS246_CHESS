@@ -31,14 +31,14 @@ void Chess::turnmove() {
 
     if (targetpiece->pcolour == colour) {
         if (attackpiece && (attackpiece->pcolour != colour)) {
-            if (targetpiece->check_attack(x[1], y[1], x[0], y[0])) {
+            if (targetpiece->check_attack(x[1], y[1], x[0], y[0], board)) {
                 if (board.movement(x[1], y[1], x[0], y[0])) {
                     colour = !colour;
                     cout << colour << endl;
                 }
             }
         } else {
-            if (targetpiece->check_move(x[1], y[1], x[0], y[0])) {
+            if (targetpiece->check_move(x[1], y[1], x[0], y[0], board)) {
                 if (board.movement(x[1], y[1], x[0], y[0])) {
                     colour = !colour;
                     cout << colour << endl;
