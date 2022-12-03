@@ -16,32 +16,34 @@ void Chess::turnmove() {
         0,
     };
     Piece *targetpiece = 0;
+    Piece *attackpiece = 0;
+
     cin >> command[0] >> command[1];  // 명령어 받기
 
     x[0] = command[0][0] - 'a';
     y[0] = 7 - (command[0][1] - '1');  // 이전 위치
 
-    cout << x[0] << y[0] << endl;
-
     x[1] = command[1][0] - 'a';
     y[1] = 7 - (command[1][1] - '1');  // 목표 위치
 
-    cout << x[1] << y[1] << endl;
-
     targetpiece = board.getPiece(x[0], y[0]);
+    attackpiece = board.getPiece(x[1], y[1]);
 
     if (targetpiece->pcolour == colour) {
-        if (board.getPiece(x[1], y[1]) && targetpiece->pcolour == colour) {
+        if (attackpiece && (attackpiece->pcolour != colour)) {
             if (targetpiece->check_attack(x[1], y[1], x[0], y[0])) {
-                board.movement(x[1], y[1], x[0], y[0]);
-                colour = !colour;
+                if (board.movement(x[1], y[1], x[0], y[0])) {
+                    colour = !colour;
+                    cout << colour << endl;
+                }
             }
-        }
-    } else {
-        cout << "need to pass" << endl;
-        if (targetpiece->check_move(x[1], y[1], x[0], y[0])) {
-            board.movement(x[1], y[1], x[0], y[0]);
-            colour = !colour;
+        } else {
+            if (targetpiece->check_move(x[1], y[1], x[0], y[0])) {
+                if (board.movement(x[1], y[1], x[0], y[0])) {
+                    colour = !colour;
+                    cout << colour << endl;
+                }
+            }
         }
     }
 }
@@ -49,13 +51,10 @@ void Chess::turnmove() {
 void Chess::setup() {}
 
 void Chess::run() {
+    graphics();
     while (true) {
-        graphics();
-        cout << "1" << endl;
         board.Render();
-        cout << "2" << endl;
         turnmove();
-        cout << "3" << endl;
     }
 }
 

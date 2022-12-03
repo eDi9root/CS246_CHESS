@@ -1,14 +1,14 @@
 #ifndef _PLAYER_H
 #define _PLAYER_H
 
+#include "Board.h"
 #include "Chess.h"
 
-//class Player : public Chess {
-  class Player {
-  std::string turn;
+class Player {
+    int turn;
 
- public:
-  //Move player();
+   public:
+    Player(int turn);
 };
 
 #endif

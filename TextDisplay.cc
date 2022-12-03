@@ -7,20 +7,20 @@ using namespace std;
 TextDisplay::TextDisplay(Board *sub) : subject{sub} { subject->attach(this); }
 
 void TextDisplay::notify() {
+    int x = 0;
     for (int i = 8; i > 0; --i) {
         cout << i << " ";
-        for (int j = 8; j > 0; --j) {
-            if (Tochar(subject->getPiece(i - 1, j - 1)) == " " &&
-                (i - j) & 2 != 0) {
+        for (int j = 0; j < 8; ++j) {
+            if (Tochar(subject->getPiece(j, x)) == " " && (x - j) & 2 != 0) {
                 cout << "_";
-            } else if (Tochar(subject->getPiece(i - 1, j - 1)) == " " &&
-                       (i - j) % 2 == 0) {
+            } else if (Tochar(subject->getPiece(j, x)) == " " &&
+                       (x - j) % 2 == 0) {
                 cout << " ";
             } else {
-                cout << Tochar(subject->getPiece(i - 1, j - 1));
+                cout << Tochar(subject->getPiece(j, x));
             }
         }
-
+        x++;
         cout << "\n";
     }
     cout << "\n  abcdefgh\n";

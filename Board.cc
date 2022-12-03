@@ -20,24 +20,24 @@ Board::Board() {
 }
 
 void Board::init() {
-    int colour = Piece::white;
+    int colour = Piece::black;
     int y1 = 0;
     int y2 = 1;
     for (int j = 0; j < 2; ++j) {
-        pBoard[y1][0] = new Rook(colour);  // white
-        pBoard[y1][1] = new Knight(colour);
-        pBoard[y1][2] = new Bishop(colour);
-        pBoard[y1][4] = new Queen(colour);
-        pBoard[y1][3] = new King(colour);
-        pBoard[y1][5] = new Bishop(colour);
-        pBoard[y1][6] = new Knight(colour);
-        pBoard[y1][7] = new Rook(colour);
+        pBoard[0][y1] = new Rook(colour);  // white
+        pBoard[1][y1] = new Knight(colour);
+        pBoard[2][y1] = new Bishop(colour);
+        pBoard[4][y1] = new Queen(colour);
+        pBoard[3][y1] = new King(colour);
+        pBoard[5][y1] = new Bishop(colour);
+        pBoard[6][y1] = new Knight(colour);
+        pBoard[7][y1] = new Rook(colour);
         for (int i = 0; i < 8; ++i) {
-            pBoard[y2][i] = new Pawn(colour);
+            pBoard[i][y2] = new Pawn(colour);
         }
         y1 = 7;
         y2 = 6;
-        colour = Piece::black;
+        colour = Piece::white;
     }
 }
 
