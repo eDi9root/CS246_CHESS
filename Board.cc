@@ -28,8 +28,8 @@ void Board::init() {
         pBoard[0][y1] = new Rook(colour);  // white
         pBoard[1][y1] = new Knight(colour);
         pBoard[2][y1] = new Bishop(colour);
-        pBoard[4][y1] = new Queen(colour);
-        pBoard[3][y1] = new King(colour);
+        pBoard[3][y1] = new Queen(colour);
+        pBoard[4][y1] = new King(colour);
         pBoard[5][y1] = new Bishop(colour);
         pBoard[6][y1] = new Knight(colour);
         pBoard[7][y1] = new Rook(colour);
