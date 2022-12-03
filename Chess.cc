@@ -31,10 +31,38 @@ void Chess::turnmove() {
 
     if (targetpiece->pcolour == colour) {
         if (attackpiece && (attackpiece->pcolour != colour)) {
+<<<<<<< HEAD
+=======
+            if (targetpiece->check_attack(x[1], y[1], x[0], y[0], board)) {
+                if (board.movement(x[1], y[1], x[0], y[0])) {
+                    colour = !colour;
+                    cout << colour << endl;
+                    if (board.getPiece(x[1],y[1])->pid == Piece::King) {
+                        if (board.getPiece(x[1],y[1])->getColor() == Piece::black) {
+                            board.set_new_blackking_x(x[1]);
+                            board.set_new_blackking_y(y[1]);
+                        } else {
+                            board.set_new_whiteking_x(x[1]);
+                            board.set_new_whiteking_y(y[1]);
+                        }
+                    }
+                }
+            }
+        } else {
+>>>>>>> bd3ab4827784f7e689d6af44235c6d7d2dd3cf6b
             if (targetpiece->check_move(x[1], y[1], x[0], y[0], board)) {
                 if (board.movement(x[1], y[1], x[0], y[0])) {
                     colour = !colour;
                     cout << colour << endl;
+                    if (board.getPiece(x[1],y[1])->pid == Piece::King) {
+                        if (board.getPiece(x[1],y[1])->getColor() == Piece::black) {
+                            board.set_new_blackking_x(x[1]);
+                            board.set_new_blackking_y(y[1]);
+                        } else {
+                            board.set_new_whiteking_x(x[1]);
+                            board.set_new_whiteking_y(y[1]);
+                        }
+                    }
                 }
             }
         }
@@ -46,6 +74,7 @@ void Chess::turnmove() {
             }
         }
     }
+    board.check();
 }
 
 void Chess::setup() {}
