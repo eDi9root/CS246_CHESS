@@ -27,14 +27,9 @@ class Piece {
     int getColor();
     virtual bool check_move(int ax, int ay, int bx, int by, Board &board) const;
     // 이동 가능 확인
-
-    virtual bool check_attack(int ax, int ay, int bx, int by,
-                              Board &board) const;
     // 공격 가능 확인
 
     virtual ~Piece() = default;
-
-    // Move movement(Board board) const;  // 이동
 
    public:
     const int &pid = id;

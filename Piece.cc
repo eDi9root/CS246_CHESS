@@ -13,7 +13,3 @@ bool Piece::check_move(int ax, int ay, int bx, int by, Board &board) const {
     return (!(ax < 0 || ax >= 8 || ay < 0 || ay >= 8)) &&
            (!(ax == bx && ay == by));
 }
-
-bool Piece::check_attack(int ax, int ay, int bx, int by, Board &board) const {
-    return Piece::check_move(ax, ay, bx, by, board);
-}

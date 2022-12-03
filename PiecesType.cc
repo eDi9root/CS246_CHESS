@@ -10,19 +10,25 @@ using namespace std;
 King::King(int colour) : Piece(Piece::King, colour) {}
 
 bool King::check_move(int ax, int ay, int bx, int by, Board &board) const {
-    // 한칸씩 이동 가능
-    if (ax >= bx - 1 && ax <= bx + 1) {
-        if (ay >= by - 1 && ay <= by + 1) {
-            return Piece::check_move(ax, ay, bx, by, board);
+    // only can move one tile, possible 8 movement
+    if (board.getPiece(ax, ay) != 0) {  // Same colour
+        if ((board.getPiece(bx, by)->getColor()) ==
+            board.getPiece(ax, ay)->getColor()) {
+            cout << "There is an ally" << endl;
+            return false;
         }
     }
-    return false;
+    if ((abs(bx - ax) > 1 || abs(by - ay) > 1)) {
+        cout << "Invalid movement!" << endl;
+        return false;
+    }
+    return Piece::check_move(ax, ay, bx, by, board);
 }
 
 Queen::Queen(int colour) : Piece(Piece::Queen, colour) {}
 
 bool Queen::check_move(int ax, int ay, int bx, int by, Board &board) const {
-    if (board.getPiece(ax, ay) != 0) {
+    if (board.getPiece(ax, ay) != 0) {  // Same colour
         if ((board.getPiece(bx, by)->getColor()) ==
             board.getPiece(ax, ay)->getColor()) {
             cout << "There is an ally" << endl;
@@ -113,64 +119,194 @@ bool Queen::check_move(int ax, int ay, int bx, int by, Board &board) const {
 Bishop::Bishop(int colour) : Piece(Piece::Bishop, colour) {}
 
 bool Bishop::check_move(int ax, int ay, int bx, int by, Board &board) const {
-    // bishop은 대각선만
-    if (abs(ax - bx) == abs(ay - by)) {
-        return Piece::check_move(ax, ay, bx, by, board);
+    if (board.getPiece(ax, ay) != 0) {  // Same colour
+        if ((board.getPiece(bx, by)->getColor()) ==
+            board.getPiece(ax, ay)->getColor()) {
+            cout << "There is an ally" << endl;
+            return false;
+        }
     }
-    return false;
+
+    if (abs(ax - bx) != abs(ay - by)) {  // diagonal movement only
+        cout << "Invalid movement!!" << endl;
+        return false;
+    }
+
+    if (ax > bx && ay > by) {  // diagonal down-right
+        int BY = by + 1;
+        for (int i = bx + 1; i < ax; i++) {
+            if ((board.getPiece(i, BY)) != 0) {
+                cout << "Blocked1" << endl;
+                return false;
+            }
+            BY++;
+        }
+    } else if (ax < bx && ay > by) {  // diagonal down-left
+        int BY = by + 1;
+        for (int i = bx - 1; i > ax; i--) {
+            if ((board.getPiece(i, BY)) != 0) {
+                cout << "Blocked2" << endl;
+                return false;
+            }
+            BY++;
+        }
+    } else if (ax < bx && ay < by) {  // diagonal up-left
+        int BY = by - 1;
+        for (int i = bx - 1; i > ax; i--) {
+            if ((board.getPiece(i, BY)) != 0) {
+                cout << "Blocked3" << endl;
+                return false;
+            }
+            BY--;
+        }
+    } else if (ax > bx && ay < by) {  // diagonal up-right
+        int BY = by - 1;
+        for (int i = bx + 1; i > ax; i++) {
+            if ((board.getPiece(i, BY)) != 0) {
+                cout << "Blocked4" << endl;
+                return false;
+            }
+            BY--;
+        }
+    }
+
+    return Piece::check_move(ax, ay, bx, by, board);
 }
 
 Rook::Rook(int colour) : Piece(Piece::Rook, colour) {}
 
 bool Rook::check_move(int ax, int ay, int bx, int by, Board &board) const {
-    // 룩은 직선만
-    if (ax == bx) {
-        return Piece::check_move(ax, ay, bx, by, board);
-    } else if (ay == by) {
-        return Piece::check_move(ax, ay, bx, by, board);
+    if (board.getPiece(ax, ay) != 0) {  // Same colour
+        if ((board.getPiece(bx, by)->getColor()) ==
+            board.getPiece(ax, ay)->getColor()) {
+            cout << "There is an ally" << endl;
+            return false;
+        }
     }
-    return false;
+
+    if (ax != bx) {  // horizontal and vertical movement only
+        cout << "Invalid Movement!!!" << endl;
+        return false;
+    } else if (ay != by) {
+        cout << "Invalid Movement!!!" << endl;
+        return false;
+    }
+
+    if (ax == bx) {  // Vertical check
+        if (by < ay) {
+            for (int i = by + 1; i < ay; i++) {
+                if ((board.getPiece(bx, i)) != 0) {
+                    cout << "Blocked" << endl;
+                    return false;
+                }
+            }
+        } else if (by > ay) {
+            for (int i = by - 1; i > ay; i--) {
+                if ((board.getPiece(bx, i)) != 0) {
+                    cout << "Blocked" << endl;
+                    return false;
+                }
+            }
+        }
+    } else if (ay == by) {  // horizontal check
+        if (bx < ax) {
+            for (int i = bx + 1; i < ax; i++) {
+                if ((board.getPiece(i, by)) != 0) {
+                    cout << "Blocked" << endl;
+                    return false;
+                }
+            }
+        } else if (bx > ax) {
+            for (int i = bx - 1; i > ax; i--) {
+                if ((board.getPiece(i, by)) != 0) {
+                    cout << "Blocked" << endl;
+                    return false;
+                }
+            }
+        }
+    }
+
+    return Piece::check_move(ax, ay, bx, by, board);
 }
 
 Knight::Knight(int colour) : Piece(Piece::Knight, colour) {}
 
 bool Knight::check_move(int ax, int ay, int bx, int by, Board &board) const {
-    if (abs(1 - bx) == ax) {
-        if (abs(2 - by) == ay) {
-            return Piece::check_move(ax, ay, bx, by, board);
-        }
-    } else if (abs(2 - bx) == ax) {
-        if (abs(1 - by) == ay) {
-            return Piece::check_move(ax, ay, bx, by, board);
+    if (board.getPiece(ax, ay) != 0) {  // Same colour
+        if ((board.getPiece(bx, by)->getColor()) ==
+            board.getPiece(ax, ay)->getColor()) {
+            cout << "There is an ally" << endl;
+            return false;
         }
     }
-    return false;
+
+    if (abs(1 - bx) != ax) {  // Special Knight movement
+        if (abs(2 - by) != ay) {
+            cout << "Invalid movement knight" << endl;
+            return false;
+        }
+    } else if (abs(2 - bx) != ax) {
+        if (abs(1 - by) != ay) {
+            cout << "Invalid movement knight" << endl;
+            return false;
+        }
+    }
+    return Piece::check_move(ax, ay, bx, by, board);
 }
 
 Pawn::Pawn(int colour) : Piece(Piece::Pawn, colour) {}
 
 bool Pawn::check_move(int ax, int ay, int bx, int by, Board &board) const {
-    if (pcolour == Piece::black) {
-        if (ax == bx && (ay > by && ay - 2 <= by)) {
-            return Piece::check_move(ax, ay, bx, by, board);
-        }
-    } else {
-        if (ax == bx && (ay < by && ay + 2 >= by)) {
-            return Piece::check_move(ax, ay, bx, by, board);
+    if (board.getPiece(ax, ay) != 0) {  // Same colour
+        if ((board.getPiece(bx, by)->getColor()) ==
+            board.getPiece(ax, ay)->getColor()) {
+            cout << "There is an ally" << endl;
+            return false;
         }
     }
-    return false;
-}
 
-bool Pawn::check_attack(int ax, int ay, int bx, int by, Board &board) const {
-    if (pcolour == Piece::black) {
-        if ((abs(1 + ax) == bx) && (ay - 1 == by)) {
-            return true;
+    if (board.getPiece(ax, ay) == 0 && ((bx - ax) != (by - ay))) {
+        if (ax != bx) {
+            return false;
+        } else if ((by - ay == 2) || (ay - by) == 2) {
+            if (init_two_move) {
+                return false;
+            }
+            if (ay == by) {  // horizontal check
+                if (bx < ax) {
+                    for (int i = bx + 1; i < ax; i++) {
+                        if ((board.getPiece(i, by)) != 0) {
+                            cout << "Blocked Pawn" << endl;
+                            return false;
+                        }
+                    }
+                } else if (bx > ax) {
+                    for (int i = bx - 1; i > ax; i--) {
+                        if ((board.getPiece(i, by)) != 0) {
+                            cout << "Blocked Pawn" << endl;
+                            return false;
+                        }
+                    }
+                }
+            }
+            // init_two_move = false;
+        } else if ((by - ay > 2) ||
+                   (ay - by > 2)) {  // cannot move over two steps
+            cout << "Invalid movement pawn" << endl;
+            return false;
         }
-    } else {
-        if ((abs(1 - ax) == bx) && (ay + 1 == by)) {
-            return true;
+    } else if (board.getPiece(ax, ay) != 0 &&
+               ((bx - ax) == (by - ay))) {  // When attack
+        if (pcolour == Piece::black) {
+            if ((abs(1 + ax) != bx) || (ay - 1 != by)) {
+                cout << "invalid attack" << endl;
+                return false;
+            }
+        } else {
+            if ((abs(1 - ax) != bx) || (ay + 1 != by)) {
+                return false;
+            }
         }
     }
-    return false;
+    return Piece::check_move(ax, ay, bx, by, board);
 }
