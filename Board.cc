@@ -89,21 +89,22 @@ const Piece* Board::getPiece(int x, int y) const {
     throw invalid_argument("!out of range");
 }
 
-bool Board::check(int colour) {
+bool Board::check(int colour, Board &board) {
     cout << "black king x: " << blackKing_x << ", black king y: " << blackKing_y << endl;
     cout << "white king x: " << whiteKing_x << ", white king y: " << whiteKing_y << endl;
     
-    if (colour == 0) { // white
+    if (colour == 0) { // white, check if white king is in check
         for (int i = 0; i < 8; ++i) {
             for (int j = 0; j < 8; ++j) {
-
+                if (getPiece(i,j)->getColor() == Piece::black) {
+                    if (getPiece(i,j)->check_move(whiteKing_x, whiteKing_y, i, j, board) == true) {
+                        cout << "White is in check" << endl;
+                    }
                 }
-
             }
         }
-        
-        return true;
-
+    }
+    return true;
 }
 
 Board::~Board() {
