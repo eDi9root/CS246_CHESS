@@ -49,9 +49,7 @@ void Chess::turnmove() {
                 board.set_new_whiteking_y(y[1]);
             }
         }
-        if (board.check(colour, board)) {
-            cout << "white prob" << endl;
-        }
+        board.check(colour, board);
     }
 }
 
