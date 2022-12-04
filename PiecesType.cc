@@ -258,6 +258,15 @@ bool Pawn::check_move(int ax, int ay, int bx, int by, Board &board) const {
             return false;
         }
     }
+    if (pcolour == Piece::black) {
+        if (!(ax == bx && (ay > by && ay - 2 <= by))) {
+            return false;
+        }
+    } else {
+        if (!(ax == bx && (ay < by && ay + 2 >= by))) {
+            return false;
+        }
+    }
 
     if (board.getPiece(ax, ay) == 0 && ((bx - ax) != (by - ay))) {
         if (ax != bx) {
