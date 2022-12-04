@@ -258,15 +258,6 @@ bool Pawn::check_move(int ax, int ay, int bx, int by, Board &board) const {
             return false;
         }
     }
-    if (pcolour == Piece::black) {
-        if (!(ax == bx && (ay > by && ay - 2 <= by))) {
-            return false;
-        }
-    } else {
-        if (!(ax == bx && (ay < by && ay + 2 >= by))) {
-            return false;
-        }
-    }
 
     if (board.getPiece(ax, ay) == 0 && ((bx - ax) != (by - ay))) {
         if (ax != bx) {
@@ -299,16 +290,19 @@ bool Pawn::check_move(int ax, int ay, int bx, int by, Board &board) const {
             return false;
         }
     } else if (board.getPiece(ax, ay) != 0 &&
-               ((bx - ax) == (by - ay))) {  // When attack
-        if ((bx - ax) != (by - ay)) {
-            cout << "Invalid attack" << endl;
+               (abs(bx - ax) == abs(by - ay))) {  // When attack
+        if (abs(bx - ax) != abs(by - ay)) {
+            cout << "Invalid attack!" << endl;
             return false;
-        } else if ((by - ay) != 1) {
+        } else if (abs(by - ay) != 1) {
             cout << "Invalid attack" << endl;
             return false;
         }
-    } else if (board.getPiece(ax, ay) == 0 && ((bx - ax) == (by - ay))) {
-        cout << "abcd" << endl;
+    } else if (board.getPiece(ax, ay) == 0 && (abs(bx - ax) == abs(by - ay))) {
+        cout << "abasd" << endl;
+        return false;
+    } else if (board.getPiece(ax, ay) != 0 && (!((bx - ax) == (by - ay)))) {
+        cout << "bababa" << endl;
         return false;
     }
     if (pcolour == Piece::black) {
