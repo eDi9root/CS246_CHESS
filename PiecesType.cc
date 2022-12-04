@@ -235,7 +235,7 @@ bool Knight::check_move(int ax, int ay, int bx, int by, Board &board) const {
     if (abs(1 - bx) == ax) {  // Special Knight movement
         if (abs(2 - by) == ay) {
             return Piece::check_move(ax, ay, bx, by, board);
-                }
+        }
     } else if (abs(2 - bx) == ax) {
         if (abs(1 - by) == ay) {
             return Piece::check_move(ax, ay, bx, by, board);
@@ -294,6 +294,8 @@ bool Pawn::check_move(int ax, int ay, int bx, int by, Board &board) const {
             cout << "Invalid attack" << endl;
             return false;
         }
+    } else if (board.getPiece(ax, ay) == 0 && ((bx - ax) == (by - ay))) {
+        return false;
     }
     if (pcolour == Piece::black) {
         if (!(by - ay < 0)) {
