@@ -184,6 +184,10 @@ bool Rook::check_move(int ax, int ay, int bx, int by, Board &board) const {
         }
     }
 
+    if (!(bx == ax || by == ay)) {
+        return false;
+    }
+
     if (ax == bx) {  // Vertical check
         if (by < ay) {
             for (int i = by + 1; i < ay; i++) {
