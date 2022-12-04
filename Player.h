@@ -9,6 +9,7 @@ class Player {
 
    public:
     Player(int turn);
+    virtual ~Player() = default;
 };
 
 #endif

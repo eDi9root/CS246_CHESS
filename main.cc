@@ -19,20 +19,17 @@ int main() {
     string turn;
     string originpos;
     string newpos;
+
     while (!cin.eof()) {
         cin >> command;
         if (command == "game") {
             Chess play = Chess();
-            // play.graphics();
             play.run();
-            // play.turnmove();
-            // cin >> player1 >> player2;
             if ((player1 == "white-player") || (player2 == "black-player")) {
             } else if (player1 == "human") {
-              if (player2 == "computer[1]") {
-                //...
-              }
-
+                if (player2 == "computer[1]") {
+                    //...
+                }
             }
         } else if (command == "setup") {  // consider about input "setup" first
             // setup_init();
@@ -63,18 +60,19 @@ int main() {
                   */
                 }
             }
-/*
-        } else if (command == "move") {
-            cin >> originpos >> newpos;
-            if ((originpos[0] >= 'a' && originpos[0] <= 'h') &&
-                (newpos[0] >= 'a' && newpos[0] <= 'h') &&
-                (originpos[1] >= '1' && originpos[1] <= '8') &&
-                (newpos[1] >= '1' && newpos[1] <= '8')) {
-                cout << "move" << endl;
-                // move(originpos[0], originpos[1], newpos[0], newpos[1]);  //
-                // from ???
-            }
-*/
+            /*
+                    } else if (command == "move") {
+                        cin >> originpos >> newpos;
+                        if ((originpos[0] >= 'a' && originpos[0] <= 'h') &&
+                            (newpos[0] >= 'a' && newpos[0] <= 'h') &&
+                            (originpos[1] >= '1' && originpos[1] <= '8') &&
+                            (newpos[1] >= '1' && newpos[1] <= '8')) {
+                            cout << "move" << endl;
+                            // move(originpos[0], originpos[1], newpos[0],
+               newpos[1]);  //
+                            // from ???
+                        }
+            */
         } else if (command ==
                    "=") {  // makes the input's turn (i.e. white, black)
             cin >> turn;
