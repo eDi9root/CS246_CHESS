@@ -93,19 +93,21 @@ bool Board::check(int colour, Board &board) {
     cout << "black king x: " << blackKing_x << ", black king y: " << blackKing_y << endl;
     cout << "white king x: " << whiteKing_x << ", white king y: " << whiteKing_y << endl;
     
-    if (colour == 0) { // white, check if white king is in check
+    if (colour == 0) { // white, check if white king is in check]
         for (int i = 0; i < 8; ++i) {
             for (int j = 0; j < 8; ++j) {
-                if (board.getPiece(i,j)->getColor() == Piece::black &&
-                   (board.getPiece(i,j)->check_move(whiteKing_x, whiteKing_y, i, j, board) == true)) {
-                    cout << i << "and" << j << endl;
-                    cout << "White is in check" << endl;
-                    break;
+                if (board.getPiece(i,j) != 0) {
+                    if (board.getPiece(i,j)->getColor() == Piece::black
+                        && board.getPiece(i,j)->check_move(whiteKing_x, whiteKing_y, i, j, board) == true) {
+                        //cout << i << "and" << j << endl;
+                        cout << "White is in check" << endl;
+                        return true;
+                    }
                 }
             }
         }
     }
-    return true;
+    return false;
 }
 
 Board::~Board() {
