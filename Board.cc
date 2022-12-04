@@ -96,10 +96,11 @@ bool Board::check(int colour, Board &board) {
     if (colour == 0) { // white, check if white king is in check
         for (int i = 0; i < 8; ++i) {
             for (int j = 0; j < 8; ++j) {
-                if (getPiece(i,j)->getColor() == Piece::black) {
-                    if (getPiece(i,j)->check_move(whiteKing_x, whiteKing_y, i, j, board) == true) {
-                        cout << "White is in check" << endl;
-                    }
+                if (board.getPiece(i,j)->getColor() == Piece::black &&
+                   (board.getPiece(i,j)->check_move(whiteKing_x, whiteKing_y, i, j, board) == true)) {
+                    cout << i << "and" << j << endl;
+                    cout << "White is in check" << endl;
+                    break;
                 }
             }
         }
