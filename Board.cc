@@ -90,6 +90,49 @@ const Piece* Board::getPiece(int x, int y) const {
 }
 
 bool Board::checkmate(int colour) {
+    int checkmate = 0;
+    int checkaround = 0;
+    while (checkaround < 8) {
+    if (colour == 0) { // just checked if the white is in check
+        if (whiteKing_x + 1 < 8) {
+            if (getPiece(whiteKing_x + 1, whiteKing_y) != 0) {
+                checkmate++;
+            } else if (whiteKing_y - 1 >= 0) {
+                if (getPiece(whiteKing_x + 1, whiteKing_y - 1) != 0) {
+                    checkmate++;
+                }
+            } else if (whiteKing_y + 1 < 8) {
+                if (getPiece(whiteKing_x + 1, whiteKing_y + 1) != 0) {
+                    checkmate++;
+                }
+            }
+        } else if (whiteKing_x - 1 >= 0) {
+            if (getPiece(whiteKing_x - 1, whiteKing_y) != 0) {
+                checkmate++;
+            } else if (whiteKing_y - 1 >= 0) {
+                if (getPiece(whiteKing_x - 1, whiteKing_y - 1) != 0) {
+                    checkmate++;
+                }
+            } else if (whiteKing_y + 1 < 8) {
+                if (getPiece(whiteKing_x - 1, whiteKing_y + 1) != 0) {
+                    checkmate++;
+                }
+            }
+        } else if (whiteKing_y + 1 < 8) {
+            if (getPiece(whiteKing_x, whiteKing_y + 1) != 0) {
+                    checkmate++;
+            }
+        } else if (whiteKing_y - 1 >= 0) {
+            if (getPiece(whiteKing_x, whiteKing_y - 1) != 0) {
+                    checkmate++;
+            }
+        }
+    }
+    checkaround++;
+    }
+    if (checkmate == 0) {
+        return false;
+    }
     return true;
 }
 
