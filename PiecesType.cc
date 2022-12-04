@@ -184,14 +184,6 @@ bool Rook::check_move(int ax, int ay, int bx, int by, Board &board) const {
         }
     }
 
-    if (ax != bx) {  // horizontal and vertical movement only
-        cout << "Invalid Movement!!!" << endl;
-        return false;
-    } else if (ay != by) {
-        cout << "Invalid Movement!!!" << endl;
-        return false;
-    }
-
     if (ax == bx) {  // Vertical check
         if (by < ay) {
             for (int i = by + 1; i < ay; i++) {
@@ -240,18 +232,16 @@ bool Knight::check_move(int ax, int ay, int bx, int by, Board &board) const {
         }
     }
 
-    if (abs(1 - bx) != ax) {  // Special Knight movement
-        if (abs(2 - by) != ay) {
-            cout << "Invalid movement knight" << endl;
-            return false;
-        }
-    } else if (abs(2 - bx) != ax) {
-        if (abs(1 - by) != ay) {
-            cout << "Invalid movement knight" << endl;
-            return false;
+    if (abs(1 - bx) == ax) {  // Special Knight movement
+        if (abs(2 - by) == ay) {
+            return Piece::check_move(ax, ay, bx, by, board);
+                }
+    } else if (abs(2 - bx) == ax) {
+        if (abs(1 - by) == ay) {
+            return Piece::check_move(ax, ay, bx, by, board);
         }
     }
-    return Piece::check_move(ax, ay, bx, by, board);
+    return false;
 }
 
 Pawn::Pawn(int colour) : Piece(Piece::Pawn, colour) {}
