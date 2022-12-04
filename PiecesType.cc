@@ -14,12 +14,10 @@ bool King::check_move(int ax, int ay, int bx, int by, Board &board) const {
     if (board.getPiece(ax, ay) != 0) {  // Same colour
         if ((board.getPiece(bx, by)->getColor()) ==
             board.getPiece(ax, ay)->getColor()) {
-            cout << "There is an ally" << endl;
             return false;
         }
     }
     if ((abs(bx - ax) > 1 || abs(by - ay) > 1)) {
-        cout << "Invalid movement!" << endl;
         return false;
     }
     return Piece::check_move(ax, ay, bx, by, board);
@@ -31,7 +29,6 @@ bool Queen::check_move(int ax, int ay, int bx, int by, Board &board) const {
     if (board.getPiece(ax, ay) != 0) {  // Same colour
         if ((board.getPiece(bx, by)->getColor()) ==
             board.getPiece(ax, ay)->getColor()) {
-            cout << "There is an ally" << endl;
             return false;
         }
     }
@@ -39,14 +36,12 @@ bool Queen::check_move(int ax, int ay, int bx, int by, Board &board) const {
         if (by < ay) {
             for (int i = by + 1; i < ay; i++) {
                 if ((board.getPiece(bx, i)) != 0) {
-                    cout << "Blocked" << endl;
                     return false;
                 }
             }
         } else if (by > ay) {
             for (int i = by - 1; i > ay; i--) {
                 if ((board.getPiece(bx, i)) != 0) {
-                    cout << "Blocked" << endl;
                     return false;
                 }
             }
@@ -55,14 +50,12 @@ bool Queen::check_move(int ax, int ay, int bx, int by, Board &board) const {
         if (bx < ax) {
             for (int i = bx + 1; i < ax; i++) {
                 if ((board.getPiece(i, by)) != 0) {
-                    cout << "Blocked" << endl;
                     return false;
                 }
             }
         } else if (bx > ax) {
             for (int i = bx - 1; i > ax; i--) {
                 if ((board.getPiece(i, by)) != 0) {
-                    cout << "Blocked" << endl;
                     return false;
                 }
             }
@@ -72,7 +65,6 @@ bool Queen::check_move(int ax, int ay, int bx, int by, Board &board) const {
         int BY = by + 1;
         for (int i = bx + 1; i < ax; i++) {
             if ((board.getPiece(i, BY)) != 0) {
-                cout << "Blocked1" << endl;
                 return false;
             }
             BY++;
@@ -81,7 +73,6 @@ bool Queen::check_move(int ax, int ay, int bx, int by, Board &board) const {
         int BY = by + 1;
         for (int i = bx - 1; i > ax; i--) {
             if ((board.getPiece(i, BY)) != 0) {
-                cout << "Blocked2" << endl;
                 return false;
             }
             BY++;
@@ -90,7 +81,6 @@ bool Queen::check_move(int ax, int ay, int bx, int by, Board &board) const {
         int BY = by - 1;
         for (int i = bx - 1; i > ax; i--) {
             if ((board.getPiece(i, BY)) != 0) {
-                cout << "Blocked3" << endl;
                 return false;
             }
             BY--;
@@ -99,7 +89,6 @@ bool Queen::check_move(int ax, int ay, int bx, int by, Board &board) const {
         int BY = by - 1;
         for (int i = bx + 1; i > ax; i++) {
             if ((board.getPiece(i, BY)) != 0) {
-                cout << "Blocked4" << endl;
                 return false;
             }
             BY--;
@@ -108,7 +97,6 @@ bool Queen::check_move(int ax, int ay, int bx, int by, Board &board) const {
 
     if (bx != ax && by != ay) {
         if (abs(bx - ax) != abs(by - ay)) {
-            cout << "Invalid movement" << endl;
             return false;
         }
     }
@@ -122,13 +110,11 @@ bool Bishop::check_move(int ax, int ay, int bx, int by, Board &board) const {
     if (board.getPiece(ax, ay) != 0) {  // Same colour
         if ((board.getPiece(bx, by)->getColor()) ==
             board.getPiece(ax, ay)->getColor()) {
-            cout << "There is an ally" << endl;
             return false;
         }
     }
 
     if (abs(ax - bx) != abs(ay - by)) {  // diagonal movement only
-        cout << "Invalid movement!!" << endl;
         return false;
     }
 
@@ -136,7 +122,6 @@ bool Bishop::check_move(int ax, int ay, int bx, int by, Board &board) const {
         int BY = by + 1;
         for (int i = bx + 1; i < ax; i++) {
             if ((board.getPiece(i, BY)) != 0) {
-                cout << "Blocked1" << endl;
                 return false;
             }
             BY++;
@@ -145,7 +130,6 @@ bool Bishop::check_move(int ax, int ay, int bx, int by, Board &board) const {
         int BY = by + 1;
         for (int i = bx - 1; i > ax; i--) {
             if ((board.getPiece(i, BY)) != 0) {
-                cout << "Blocked2" << endl;
                 return false;
             }
             BY++;
@@ -154,7 +138,6 @@ bool Bishop::check_move(int ax, int ay, int bx, int by, Board &board) const {
         int BY = by - 1;
         for (int i = bx - 1; i > ax; i--) {
             if ((board.getPiece(i, BY)) != 0) {
-                cout << "Blocked3" << endl;
                 return false;
             }
             BY--;
@@ -163,7 +146,6 @@ bool Bishop::check_move(int ax, int ay, int bx, int by, Board &board) const {
         int BY = by - 1;
         for (int i = bx + 1; i > ax; i++) {
             if ((board.getPiece(i, BY)) != 0) {
-                cout << "Blocked4" << endl;
                 return false;
             }
             BY--;
@@ -179,7 +161,6 @@ bool Rook::check_move(int ax, int ay, int bx, int by, Board &board) const {
     if (board.getPiece(ax, ay) != 0) {  // Same colour
         if ((board.getPiece(bx, by)->getColor()) ==
             board.getPiece(ax, ay)->getColor()) {
-            cout << "There is an ally" << endl;
             return false;
         }
     }
@@ -192,14 +173,12 @@ bool Rook::check_move(int ax, int ay, int bx, int by, Board &board) const {
         if (by < ay) {
             for (int i = by + 1; i < ay; i++) {
                 if ((board.getPiece(bx, i)) != 0) {
-                    cout << "Blocked" << endl;
                     return false;
                 }
             }
         } else if (by > ay) {
             for (int i = by - 1; i > ay; i--) {
                 if ((board.getPiece(bx, i)) != 0) {
-                    cout << "Blocked" << endl;
                     return false;
                 }
             }
@@ -208,14 +187,12 @@ bool Rook::check_move(int ax, int ay, int bx, int by, Board &board) const {
         if (bx < ax) {
             for (int i = bx + 1; i < ax; i++) {
                 if ((board.getPiece(i, by)) != 0) {
-                    cout << "Blocked" << endl;
                     return false;
                 }
             }
         } else if (bx > ax) {
             for (int i = bx - 1; i > ax; i--) {
                 if ((board.getPiece(i, by)) != 0) {
-                    cout << "Blocked" << endl;
                     return false;
                 }
             }
@@ -231,7 +208,6 @@ bool Knight::check_move(int ax, int ay, int bx, int by, Board &board) const {
     if (board.getPiece(ax, ay) != 0) {  // Same colour
         if ((board.getPiece(bx, by)->getColor()) ==
             board.getPiece(ax, ay)->getColor()) {
-            cout << "There is an ally" << endl;
             return false;
         }
     }
@@ -254,7 +230,6 @@ bool Pawn::check_move(int ax, int ay, int bx, int by, Board &board) const {
     if (board.getPiece(ax, ay) != 0) {  // Same colour
         if ((board.getPiece(bx, by)->getColor()) ==
             board.getPiece(ax, ay)->getColor()) {
-            cout << "There is an ally" << endl;
             return false;
         }
     }
@@ -270,14 +245,12 @@ bool Pawn::check_move(int ax, int ay, int bx, int by, Board &board) const {
                 if (bx < ax) {
                     for (int i = bx + 1; i < ax; i++) {
                         if ((board.getPiece(i, by)) != 0) {
-                            cout << "Blocked Pawn" << endl;
                             return false;
                         }
                     }
                 } else if (bx > ax) {
                     for (int i = bx - 1; i > ax; i--) {
                         if ((board.getPiece(i, by)) != 0) {
-                            cout << "Blocked Pawn" << endl;
                             return false;
                         }
                     }
@@ -286,33 +259,26 @@ bool Pawn::check_move(int ax, int ay, int bx, int by, Board &board) const {
             // init_two_move = false;
         } else if ((by - ay > 2) ||
                    (ay - by > 2)) {  // cannot move over two steps
-            cout << "Invalid movement pawn" << endl;
             return false;
         }
     } else if (board.getPiece(ax, ay) != 0 &&
                (abs(bx - ax) == abs(by - ay))) {  // When attack
         if (abs(bx - ax) != abs(by - ay)) {
-            cout << "Invalid attack!" << endl;
             return false;
         } else if (abs(by - ay) != 1) {
-            cout << "Invalid attack" << endl;
             return false;
         }
     } else if (board.getPiece(ax, ay) == 0 && (abs(bx - ax) == abs(by - ay))) {
-        cout << "abasd" << endl;
         return false;
     } else if (board.getPiece(ax, ay) != 0 && (!((bx - ax) == (by - ay)))) {
-        cout << "bababa" << endl;
         return false;
     }
     if (pcolour == Piece::black) {
         if (!(by - ay < 0)) {
-            cout << "Cannot go back!" << endl;
             return false;
         }
     } else if (pcolour == Piece::white) {
         if (!(by - ay > 0)) {
-            cout << "Cannot go back" << endl;
             return false;
         }
     }
