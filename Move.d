@@ -1,1 +1,0 @@
-Move.o: Move.cc

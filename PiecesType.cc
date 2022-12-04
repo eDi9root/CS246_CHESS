@@ -308,6 +308,7 @@ bool Pawn::check_move(int ax, int ay, int bx, int by, Board &board) const {
             return false;
         }
     } else if (board.getPiece(ax, ay) == 0 && ((bx - ax) == (by - ay))) {
+        cout << "abcd" << endl;
         return false;
     }
     if (pcolour == Piece::black) {
