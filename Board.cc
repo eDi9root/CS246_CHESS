@@ -90,48 +90,93 @@ const Piece* Board::getPiece(int x, int y) const {
 }
 
 bool Board::checkmate(int colour) {
-    int checkmate = 0;
-    int checkaround = 0;
-    while (checkaround < 8) {
     if (colour == 0) { // just checked if the white is in check
         if (whiteKing_x + 1 < 8) {
             if (getPiece(whiteKing_x + 1, whiteKing_y) != 0) {
-                checkmate++;
-            } else if (whiteKing_y - 1 >= 0) {
+                return false;
+            }
+            if (whiteKing_y - 1 >= 0) {
                 if (getPiece(whiteKing_x + 1, whiteKing_y - 1) != 0) {
-                    checkmate++;
+                    return false;
                 }
-            } else if (whiteKing_y + 1 < 8) {
+            }
+            if (whiteKing_y + 1 < 8) {
                 if (getPiece(whiteKing_x + 1, whiteKing_y + 1) != 0) {
-                    checkmate++;
+                    return false;
                 }
             }
-        } else if (whiteKing_x - 1 >= 0) {
+        }
+        if (whiteKing_x - 1 >= 0) {
             if (getPiece(whiteKing_x - 1, whiteKing_y) != 0) {
-                checkmate++;
-            } else if (whiteKing_y - 1 >= 0) {
+                return false;
+            }
+            if (whiteKing_y - 1 >= 0) {
                 if (getPiece(whiteKing_x - 1, whiteKing_y - 1) != 0) {
-                    checkmate++;
+                    return false;
                 }
-            } else if (whiteKing_y + 1 < 8) {
+            } 
+            if (whiteKing_y + 1 < 8) {
                 if (getPiece(whiteKing_x - 1, whiteKing_y + 1) != 0) {
-                    checkmate++;
+                    return false;
                 }
             }
-        } else if (whiteKing_y + 1 < 8) {
+        }
+        if (whiteKing_y + 1 < 8) {
             if (getPiece(whiteKing_x, whiteKing_y + 1) != 0) {
-                    checkmate++;
+                return false;
             }
-        } else if (whiteKing_y - 1 >= 0) {
+        }
+        if (whiteKing_y - 1 >= 0) {
             if (getPiece(whiteKing_x, whiteKing_y - 1) != 0) {
-                    checkmate++;
+                return false;
+            }
+        }
+    } else if (colour == 1) { // just checked if the white is in check
+        if (blackKing_x + 1 < 8) {
+            if (getPiece(blackKing_x + 1, blackKing_y) != 0) {
+                return false;
+            }
+            if (blackKing_y - 1 >= 0) {
+                if (getPiece(blackKing_x + 1, blackKing_y - 1) != 0) {
+                    return false;
+                }
+            }
+            if (blackKing_y + 1 < 8) {
+                if (getPiece(blackKing_x + 1, blackKing_y + 1) != 0) {
+                    return false;
+                }
+            }
+        }
+        if (blackKing_x - 1 >= 0) {
+            if (getPiece(blackKing_x - 1, blackKing_y) != 0) {
+                return false;
+            }
+            if (whiteKing_y - 1 >= 0) {
+                if (getPiece(blackKing_x - 1, blackKing_y - 1) != 0) {
+                    return false;
+                }
+            } 
+            if (blackKing_y + 1 < 8) {
+                if (getPiece(blackKing_x - 1, blackKing_y + 1) != 0) {
+                    return false;
+                }
+            }
+        }
+        if (blackKing_y + 1 < 8) {
+            if (getPiece(blackKing_x, blackKing_y + 1) != 0) {
+                return false;
+            }
+        }
+        if (blackKing_y - 1 >= 0) {
+            if (getPiece(blackKing_x, blackKing_y - 1) != 0) {
+                return false;
             }
         }
     }
-    checkaround++;
-    }
-    if (checkmate == 0) {
-        return false;
+    if (colour == 0) {
+        cout << "Checkmate! Black wins!" << endl;
+    } else if (colour == 1) {
+        cout << "Checkmate! White wins!" << endl;
     }
     return true;
 }
