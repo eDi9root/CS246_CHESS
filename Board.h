@@ -37,7 +37,7 @@ class Board : public Subject {
     const Piece* getPiece(int x, int y) const;
     bool movement(int ax, int ay, int bx,
                   int by);  // move class 를 가져와서 이동
-    bool check(int colour);
+    bool check(int colour, Board &board);
 
     // void setup_placeP(char piecesType, char c, char y);
     // bool legal_movement(string pieceType, string x, string y);
