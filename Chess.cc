@@ -83,6 +83,8 @@ void Chess::run() {
         if (cin >> move) {
             if (move == "move") {
                 turnmove();
+            } else {
+                cout << "Invalid command" << endl;
             }
         }
     }

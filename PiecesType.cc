@@ -269,7 +269,7 @@ bool Pawn::check_move(int ax, int ay, int bx, int by, Board &board) const {
         if (ax != bx) {
             return false;
         } else if ((by - ay == 2) || (ay - by) == 2) {
-            if (init_two_move) {
+            if (!(init_two_move)) {
                 return false;
             }
             if (ay == by) {  // horizontal check
@@ -297,15 +297,23 @@ bool Pawn::check_move(int ax, int ay, int bx, int by, Board &board) const {
         }
     } else if (board.getPiece(ax, ay) != 0 &&
                ((bx - ax) == (by - ay))) {  // When attack
-        if (pcolour == Piece::black) {
-            if ((abs(1 + ax) != bx) || (ay - 1 != by)) {
-                cout << "invalid attack" << endl;
-                return false;
-            }
-        } else {
-            if ((abs(1 - ax) != bx) || (ay + 1 != by)) {
-                return false;
-            }
+        if ((bx - ax) != (by - ay)) {
+            cout << "Invalid attack" << endl;
+            return false;
+        } else if ((by - ay) != 1) {
+            cout << "Invalid attack" << endl;
+            return false;
+        }
+    }
+    if (pcolour == Piece::black) {
+        if (!(by - ay < 0)) {
+            cout << "Cannot go back!" << endl;
+            return false;
+        }
+    } else if (pcolour == Piece::white) {
+        if (!(by - ay > 0)) {
+            cout << "Cannot go back" << endl;
+            return false;
         }
     }
     return Piece::check_move(ax, ay, bx, by, board);
