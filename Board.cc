@@ -45,19 +45,11 @@ void Board::init() {
     whiteKing_y = 7;
 }
 
-void Board::set_new_blackking_x(int x) {
-    blackKing_x = x;
-}
-void Board::set_new_blackking_y(int y) {
-    blackKing_y = y;
-}
+void Board::set_new_blackking_x(int x) { blackKing_x = x; }
+void Board::set_new_blackking_y(int y) { blackKing_y = y; }
 
-void Board::set_new_whiteking_x(int x) {
-    whiteKing_x = x;
-}
-void Board::set_new_whiteking_y(int y) {
-    whiteKing_y = y;
-}
+void Board::set_new_whiteking_x(int x) { whiteKing_x = x; }
+void Board::set_new_whiteking_y(int y) { whiteKing_y = y; }
 
 void Board::Render() { notifyObservers(); }
 
@@ -90,7 +82,7 @@ const Piece* Board::getPiece(int x, int y) const {
 }
 
 bool Board::checkmate(int colour) {
-    if (colour == 0) { // just checked if the white is in check
+    if (colour == 0) {  // just checked if the white is in check
         if (whiteKing_x + 1 < 8) {
             if (getPiece(whiteKing_x + 1, whiteKing_y) != 0) {
                 return false;
@@ -114,7 +106,7 @@ bool Board::checkmate(int colour) {
                 if (getPiece(whiteKing_x - 1, whiteKing_y - 1) != 0) {
                     return false;
                 }
-            } 
+            }
             if (whiteKing_y + 1 < 8) {
                 if (getPiece(whiteKing_x - 1, whiteKing_y + 1) != 0) {
                     return false;
@@ -131,7 +123,7 @@ bool Board::checkmate(int colour) {
                 return false;
             }
         }
-    } else if (colour == 1) { // just checked if the white is in check
+    } else if (colour == 1) {  // just checked if the white is in check
         if (blackKing_x + 1 < 8) {
             if (getPiece(blackKing_x + 1, blackKing_y) != 0) {
                 return false;
@@ -155,7 +147,7 @@ bool Board::checkmate(int colour) {
                 if (getPiece(blackKing_x - 1, blackKing_y - 1) != 0) {
                     return false;
                 }
-            } 
+            }
             if (blackKing_y + 1 < 8) {
                 if (getPiece(blackKing_x - 1, blackKing_y + 1) != 0) {
                     return false;
@@ -183,23 +175,27 @@ bool Board::checkmate(int colour) {
     return true;
 }
 
-bool Board::check(int colour, Board &board) {
-    cout << "black king x: " << blackKing_x << ", black king y: " << blackKing_y << endl;
-    cout << "white king x: " << whiteKing_x << ", white king y: " << whiteKing_y << endl;
+bool Board::check(int colour, Board& board) {
+    cout << "black king x: " << blackKing_x << ", black king y: " << blackKing_y
+         << endl;
+    cout << "white king x: " << whiteKing_x << ", white king y: " << whiteKing_y
+         << endl;
 
     for (int i = 0; i < 8; ++i) {
         for (int j = 0; j < 8; ++j) {
-            if (board.getPiece(i,j) != 0) {
-                if (colour == 0) { // white, check if white king is in check
-                    if (board.getPiece(i,j)->getColor() == Piece::black
-                        && board.getPiece(i,j)->check_move(whiteKing_x, whiteKing_y, i, j, board) == true) {
-                        //cout << "White is in check" << endl;
-                            return true;
+            if (board.getPiece(i, j) != 0) {
+                if (colour == 0) {  // white, check if white king is in check
+                    if (board.getPiece(i, j)->getColor() == Piece::black &&
+                        board.getPiece(i, j)->check_move(
+                            whiteKing_x, whiteKing_y, i, j, board) == true) {
+                        // cout << "White is in check" << endl;
+                        return true;
                     }
                 } else {
-                    if (board.getPiece(i,j)->getColor() == Piece::white
-                        && board.getPiece(i,j)->check_move(blackKing_x, blackKing_y, i, j, board) == true) {
-                        //cout << "Black is in check" << endl;
+                    if (board.getPiece(i, j)->getColor() == Piece::white &&
+                        board.getPiece(i, j)->check_move(
+                            blackKing_x, blackKing_y, i, j, board) == true) {
+                        // cout << "Black is in check" << endl;
                         return true;
                     }
                 }
@@ -218,5 +214,3 @@ Board::~Board() {
         }
     }
 }
-
-

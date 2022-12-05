@@ -10,16 +10,20 @@ using namespace std;
 King::King(int colour) : Piece(Piece::King, colour) {}
 
 bool King::check_ally(int ax, int ay, int bx, int by, Board &board) const {
-    if (board.getPiece(ax, ay) != 0) {  // Same colour
+    if (board.getPiece(ax, ay) != 0) {
         if ((board.getPiece(bx, by)->getColor()) ==
             board.getPiece(ax, ay)->getColor()) {
             return false;
         }
     }
     return true;
-}
+}  // check Same colour
 
 bool King::check_move(int ax, int ay, int bx, int by, Board &board) const {
+    if ((!(init_moved_king)) && (abs(ax - bx) == 2) && (abs(ay - by) == 0)) {
+        return check_castle(ax, ay, bx, by, board);
+    }
+
     if (!(check_ally(ax, ay, bx, by, board))) {
         return false;
     }
@@ -29,20 +33,73 @@ bool King::check_move(int ax, int ay, int bx, int by, Board &board) const {
         return false;
     }
 
+    board.getPiece(bx, by)->init_move_king();
+    return Piece::check_move(ax, ay, bx, by, board);
+}
+
+bool King::check_castle(int ax, int ay, int bx, int by, Board &board) const {
+    if (ax > bx) {  // Kingside
+        if (board.getPiece(bx + 1, by) != 0 ||
+            board.getPiece(bx + 2, by) != 0) {
+            return false;
+        }
+        if (((board.getPiece(ax + 1, ay))->pid == Rook) &&
+            !(init_moved_Rook)) {  // check rook is in theres
+            if (board.check(pcolour,
+                            board)) {  // check current King is under attack
+                return false;
+            }
+            for (int i = 1; i < 3; i++) {  // Check if the king is
+                                           // attacked in the path of movement
+                board.movement(bx + i, ay, bx, by);
+                if (board.check(pcolour, board)) {
+                    board.movement(bx, by, ax, ay);
+                    return false;
+                }
+                board.movement(bx, by, bx + i, ay);
+            }
+            board.movement(ax - 1, ay, bx + 3, by);  // change Rook position
+        }
+    }
+    if (ax < bx) {  // Queenside
+        if (board.getPiece(bx - 1, by) != 0 ||
+            board.getPiece(bx - 2, by) != 0 ||
+            board.getPiece(bx - 3, by) != 0) {
+            return false;
+        }
+        if (((board.getPiece(ax - 2, ay))->pid == Rook) &&
+            !(init_moved_Rook)) {  // check rook is in there
+            if (board.check(pcolour,
+                            board)) {  // check current King is under attack
+                return false;
+            }
+            for (int i = 1; i < 3; i++) {  // Check if the king is
+                                           // attacked in the path of movement
+                board.movement(bx - i, ay, bx, by);
+                if (board.check(pcolour, board)) {
+                    board.movement(bx, by, ax, ay);
+                    return false;
+                }
+                board.movement(bx, by, bx - i, ay);
+            }
+            board.movement(ax + 1, ay, bx - 4, by);  // change Rook position
+        }
+    }
+    board.getPiece(bx, by)->init_move_king();
     return Piece::check_move(ax, ay, bx, by, board);
 }
 
 Queen::Queen(int colour) : Piece(Piece::Queen, colour) {}
 
 bool Queen::check_ally(int ax, int ay, int bx, int by, Board &board) const {
-    if (board.getPiece(ax, ay) != 0) {  // Same colour
+    if (board.getPiece(ax, ay) != 0) {
         if ((board.getPiece(bx, by)->getColor()) ==
             board.getPiece(ax, ay)->getColor()) {
             return false;
         }
     }
     return true;
-}
+}  // check Same colour
 
 bool Queen::check_move(int ax, int ay, int bx, int by, Board &board) const {
     if (!(check_ally(ax, ay, bx, by, board))) {
@@ -124,14 +181,14 @@ bool Queen::check_move(int ax, int ay, int bx, int by, Board &board) const {
 Bishop::Bishop(int colour) : Piece(Piece::Bishop, colour) {}
 
 bool Bishop::check_ally(int ax, int ay, int bx, int by, Board &board) const {
-    if (board.getPiece(ax, ay) != 0) {  // Same colour
+    if (board.getPiece(ax, ay) != 0) {
         if ((board.getPiece(bx, by)->getColor()) ==
             board.getPiece(ax, ay)->getColor()) {
             return false;
         }
     }
     return true;
-}
+}  // check Same colour
 
 bool Bishop::check_move(int ax, int ay, int bx, int by, Board &board) const {
     if (!(check_ally(ax, ay, bx, by, board))) {
@@ -182,14 +239,14 @@ bool Bishop::check_move(int ax, int ay, int bx, int by, Board &board) const {
 Rook::Rook(int colour) : Piece(Piece::Rook, colour) {}
 
 bool Rook::check_ally(int ax, int ay, int bx, int by, Board &board) const {
-    if (board.getPiece(ax, ay) != 0) {  // Same colour
+    if (board.getPiece(ax, ay) != 0) {
         if ((board.getPiece(bx, by)->getColor()) ==
             board.getPiece(ax, ay)->getColor()) {
             return false;
         }
     }
     return true;
-}
+}  // check Same colour
 
 bool Rook::check_move(int ax, int ay, int bx, int by, Board &board) const {
     if (!(check_ally(ax, ay, bx, by, board))) {
@@ -229,21 +286,21 @@ bool Rook::check_move(int ax, int ay, int bx, int by, Board &board) const {
             }
         }
     }
-
+    board.getPiece(bx, by)->init_move_Rook();
     return Piece::check_move(ax, ay, bx, by, board);
 }
 
 Knight::Knight(int colour) : Piece(Piece::Knight, colour) {}
 
 bool Knight::check_ally(int ax, int ay, int bx, int by, Board &board) const {
-    if (board.getPiece(ax, ay) != 0) {  // Same colour
+    if (board.getPiece(ax, ay) != 0) {
         if ((board.getPiece(bx, by)->getColor()) ==
             board.getPiece(ax, ay)->getColor()) {
             return false;
         }
     }
     return true;
-}
+}  // check Same colour
 
 bool Knight::check_move(int ax, int ay, int bx, int by, Board &board) const {
     if (!(check_ally(ax, ay, bx, by, board))) {
@@ -265,14 +322,14 @@ bool Knight::check_move(int ax, int ay, int bx, int by, Board &board) const {
 Pawn::Pawn(int colour) : Piece(Piece::Pawn, colour) {}
 
 bool Pawn::check_ally(int ax, int ay, int bx, int by, Board &board) const {
-    if (board.getPiece(ax, ay) != 0) {  // Same colour
+    if (board.getPiece(ax, ay) != 0) {
         if ((board.getPiece(bx, by)->getColor()) ==
             board.getPiece(ax, ay)->getColor()) {
             return false;
         }
     }
     return true;
-}
+}  // check Same colour
 
 bool Pawn::check_move(int ax, int ay, int bx, int by, Board &board) const {
     if (!(check_ally(ax, ay, bx, by, board))) {

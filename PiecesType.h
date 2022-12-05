@@ -7,19 +7,22 @@
 
 #include "Board.h"
 #include "Piece.h"
-#include "Tile.h"
 
 class King : public Piece {
    private:
-    bool castle = true;
+    bool castle = false;
 
    public:
     King(int colour);
 
     bool check_ally(int ax, int ay, int bx, int by, Board &board) const;
+    // check if there is an ally at the destination
     bool check_move(int ax, int ay, int bx, int by, Board &board) const;
+    // check the entire movement
+    bool check_castle(int ax, int ay, int bx, int by, Board &board) const;
+    // check castling movement
 
-    friend class Board;  // castle 변수의 접근을 위해 Board 를 friend 로 선언?
+    friend class Board;  // To approach castle
 };
 
 class Queen : public Piece {
@@ -27,7 +30,9 @@ class Queen : public Piece {
     Queen(int colour);
 
     bool check_ally(int ax, int ay, int bx, int by, Board &board) const;
+    // check if there is an ally at the destination
     bool check_move(int ax, int ay, int bx, int by, Board &board) const;
+    // check the entire movement
 };
 
 class Bishop : public Piece {
@@ -35,7 +40,9 @@ class Bishop : public Piece {
     Bishop(int colour);
 
     bool check_ally(int ax, int ay, int bx, int by, Board &board) const;
+    // check if there is an ally at the destination
     bool check_move(int ax, int ay, int bx, int by, Board &board) const;
+    // check the entire movement
 };
 
 class Rook : public Piece {
@@ -43,7 +50,9 @@ class Rook : public Piece {
     Rook(int colour);
 
     bool check_ally(int ax, int ay, int bx, int by, Board &board) const;
+    // check if there is an ally at the destination
     bool check_move(int ax, int ay, int bx, int by, Board &board) const;
+    // check the entire movement
 };
 
 class Knight : public Piece {
@@ -51,22 +60,24 @@ class Knight : public Piece {
     Knight(int colour);
 
     bool check_ally(int ax, int ay, int bx, int by, Board &board) const;
+    // check if there is an ally at the destination
     bool check_move(int ax, int ay, int bx, int by, Board &board) const;
+    // check the entire movement
 };
 
 class Pawn : public Piece {
    private:
     bool enpassen = true;
-    bool init_two_move = false;
 
    public:
     Pawn(int colour);
 
     bool check_ally(int ax, int ay, int bx, int by, Board &board) const;
+    // check if there is an ally at the destination
     bool check_move(int ax, int ay, int bx, int by, Board &board) const;
-    bool check_init_move(bool init_two_move) const;
+    // check the entire movement
 
-    friend class Board;  // castle 변수의 접근을 위해 Board 를 friend 로 선언?
+    friend class Board;
 };
 
 #endif
