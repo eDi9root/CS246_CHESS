@@ -19,12 +19,12 @@ Board::Board() {
     }
 }
 
-void Board::init() {
+void Board::init() {  // board initialize when the game is started without setup
     int colour = Piece::black;
     int y1 = 0;
     int y2 = 1;
     for (int j = 0; j < 2; ++j) {
-        pBoard[0][y1] = new Rook(colour);  // white
+        pBoard[0][y1] = new Rook(colour);
         pBoard[1][y1] = new Knight(colour);
         pBoard[2][y1] = new Bishop(colour);
         pBoard[3][y1] = new Queen(colour);
@@ -54,14 +54,14 @@ void Board::set_new_whiteking_y(int y) { whiteKing_y = y; }
 void Board::Render() { notifyObservers(); }
 
 bool Board::movement(int ax, int ay, int bx, int by) {
-    // 이동할 곳에 말이 있으면 제거
+    // Remove piece if there is a piece in the place to move
     if (pBoard[ax][ay]) {
         delete pBoard[ax][ay];
     }
-    // 단순히 이동
+    // movement
     pBoard[ax][ay] = pBoard[bx][by];
 
-    // 이동 완료될 경우 지나간 자리는 0 또는 null 로
+    // After complete movement, make the original place to zero
     pBoard[bx][by] = 0;
 
     return true;
@@ -71,14 +71,14 @@ Piece* Board::getPiece(int x, int y) {
     if (x >= 0 && x < 8 && y >= 0 && y < 8) {
         return pBoard[x][y];
     }
-    throw invalid_argument("!out of range!");
+    throw invalid_argument("out of range!");
 }
 
 const Piece* Board::getPiece(int x, int y) const {
     if (x >= 0 && x < 8 && y >= 0 && y < 8) {
         return pBoard[x][y];
     }
-    throw invalid_argument("!out of range");
+    throw invalid_argument("out of range");
 }
 
 bool Board::checkmate(int colour) {

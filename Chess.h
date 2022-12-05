@@ -13,7 +13,6 @@ using namespace std;
 
 class Chess {
     Board board;
-    // unique_ptr<Player> players[2];
     vector<unique_ptr<Observer>> ob;
     bool playing;
 
@@ -22,7 +21,6 @@ class Chess {
    public:
     Chess();
     // void resign();
-    // void reset();
     void turnmove();
     void setup();
     void run();

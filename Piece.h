@@ -9,10 +9,8 @@ class Board;
 
 class Piece {
    private:
-    int id;      // Itype
-    int colour;  // iTeam
-                 // string position;
-                 // bool captured;
+    int id;      // Type
+    int colour;  // Team
 
    protected:
     bool init_moved = false;       // check the pawn first move
@@ -20,6 +18,7 @@ class Piece {
     bool init_moved_Rook = false;  // check the Rook first move for castle
 
    public:
+    // using enum to make it clear
     enum { King = 0, Queen = 1, Bishop = 2, Knight = 3, Rook = 4, Pawn = 5 };
     enum { white = 0, black = 1 };
 
@@ -28,10 +27,10 @@ class Piece {
 
    public:
     Piece(const Piece &pieces);
-    int getColor();
-    void init_move();
-    void init_move_king();
-    void init_move_Rook();
+    int getColor();         // get colour;
+    void init_move();       // if the pawn moved, then make it true
+    void init_move_king();  // if the King moved, then make it true
+    void init_move_Rook();  // if the Rook moved, then make it true
     virtual bool check_move(int ax, int ay, int bx, int by, Board &board) const;
     // check valid movement
 

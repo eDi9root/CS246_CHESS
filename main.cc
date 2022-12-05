@@ -20,6 +20,10 @@ int main() {
     string originpos;
     string newpos;
 
+    cout << "Commands" << endl;
+    cout << "1. game [white-player] [black-player]" << endl;
+    cout << "2. setup" << endl;
+
     while (!cin.eof()) {
         cin >> command;
         if (command == "game") {

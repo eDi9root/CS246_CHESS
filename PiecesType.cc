@@ -5,7 +5,7 @@
 #include "Piece.h"
 using namespace std;
 
-#define abs(x) ((x) < 0 ? -(x) : (x))
+#define abs(x) ((x) < 0 ? -(x) : (x))  // absolute value calculator
 
 King::King(int colour) : Piece(Piece::King, colour) {}
 
