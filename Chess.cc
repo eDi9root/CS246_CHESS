@@ -39,17 +39,36 @@ void Chess::turnmove() {
         throw invalid_argument("Not your turn\n");
     } else {
         board.movement(x[1], y[1], x[0], y[0]);
-        colour = !colour;
-        if (board.getPiece(x[1], y[1])->pid == Piece::King) {
-            if (board.getPiece(x[1], y[1])->getColor() == Piece::black) {
-                board.set_new_blackking_x(x[1]);
-                board.set_new_blackking_y(y[1]);
-            } else {
-                board.set_new_whiteking_x(x[1]);
-                board.set_new_whiteking_y(y[1]);
+        if (board.check(colour, board) == true) { // if I moved my king and it made my king in check
+            board.movement(x[0], y[0], x[1], y[1]);
+            cout << "INVALID MOVEMENT" << endl;
+        } else {
+            if (board.getPiece(x[1], y[1])->pid == Piece::King) {
+                if (board.getPiece(x[1], y[1])->getColor() == Piece::black) {
+                    board.set_new_blackking_x(x[1]);
+                    board.set_new_blackking_y(y[1]);
+                } else {
+                    board.set_new_whiteking_x(x[1]);
+                    board.set_new_whiteking_y(y[1]);
+                }
+            }
+            colour = !colour;
+            if (board.check(colour, board) == true) {
+                if (board.checkmate(colour) == true) {
+                    if (colour == 0) {
+                        cout << "Checkmate! Black wins!" << endl;
+                    } else {
+                        cout << "Checkmate! White wins!" << endl;
+                    }
+                } else {
+                    if (colour == 0) {
+                        cout << "White is in check" << endl;
+                    } else {
+                        cout << "Black is in check" << endl;
+                    }
+                }
             }
         }
-        board.check(colour, board);
     }
 }
 
