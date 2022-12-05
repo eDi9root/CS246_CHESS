@@ -50,10 +50,11 @@ bool Chess::turnmove() {
         throw string("Not your turn\n");
     } else {
         board.movement(x[1], y[1], x[0], y[0]);
-        if (board.check(colour, board) ==
-            true) {  // if I moved my king and it made my king in check
+        if (board.check(colour, board) == true) {
             board.movement(x[0], y[0], x[1], y[1]);
             cout << "INVALID MOVEMENT" << endl;
+            // if I moved my Pieces and it made my king in check then
+            // cant move
         } else {
             if (board.getPiece(x[1], y[1])->pid == Piece::King) {
                 if (board.getPiece(x[1], y[1])->getColor() == Piece::black) {
