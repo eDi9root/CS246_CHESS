@@ -13,7 +13,9 @@ class Piece {
     int colour;  // iTeam
                  // string position;
                  // bool captured;
-                 // bool init_moved;
+
+   protected:
+    bool init_moved = false;  // check the pawn first move
 
    public:
     enum { King = 0, Queen = 1, Bishop = 2, Knight = 3, Rook = 4, Pawn = 5 };
@@ -25,9 +27,9 @@ class Piece {
    public:
     Piece(const Piece &pieces);
     int getColor();
+    void init_move();
     virtual bool check_move(int ax, int ay, int bx, int by, Board &board) const;
-    // 이동 가능 확인
-    // 공격 가능 확인
+    // check valid movement
 
     virtual ~Piece() = default;
 
