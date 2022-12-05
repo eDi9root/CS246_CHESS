@@ -6,6 +6,7 @@
 #include <vector>
 
 #include "Board.h"
+#include "Human.h"
 #include "Player.h"
 #include "observer.h"
 

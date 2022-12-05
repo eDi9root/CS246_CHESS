@@ -30,7 +30,6 @@ bool Chess::turnmove() {
     int y[2] = {
         0,
     };
-    Piece *targetpiece = 0;
 
     cin >> command[0] >> command[1];  // Command input
 
@@ -40,13 +39,15 @@ bool Chess::turnmove() {
     x[1] = command[1][0] - 'a';
     y[1] = 7 - (command[1][1] - '1');  // target coordinate
 
+    Piece* targetpiece = 0;
+
     targetpiece = board.getPiece(x[0], y[0]);
     if (targetpiece == 0) {
-        throw invalid_argument("Cannot find piece to move\n");
+        throw string("Cannot find piece to move\n");
     } else if (!(targetpiece->check_move(x[1], y[1], x[0], y[0], board))) {
-        throw invalid_argument("INVALID MOVEMENT\n");
+        throw string("INVALID MOVEMENT\n");
     } else if (targetpiece->pcolour != colour) {
-        throw invalid_argument("Not your turn\n");
+        throw string("Not your turn\n");
     } else {
         board.movement(x[1], y[1], x[0], y[0]);
         if (board.check(colour, board) ==
@@ -97,8 +98,13 @@ void Chess::run() {
     cout << "4. resign" << endl;
     while (cin >> move) {
         if (move == "move") {
-            if (turnmove()) {
-                break;
+            try {
+                if (turnmove()) {
+                    break;
+                }
+            } catch (string error) {
+                cout << error << endl;
+                cout << "Try again\n" << endl;
             }
             board.Render();
             cout << "3. move [start_tile] [end_tile]" << endl;

@@ -2,9 +2,10 @@
 #define _COMPUTERS_H
 
 #include "Board.h"
-#include "Player.h"
+#include "Chess.h"
+#include "Piece.h"
 
-class Computers : public Player {
+class Computers {
     int level;
 
    public:

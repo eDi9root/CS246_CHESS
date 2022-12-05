@@ -3,12 +3,15 @@
 
 #include <string>
 
-#include "Player.h"
+#include "Chess.h"
+#include "Piece.h"
 
 using namespace std;
 
-class Human : public Player {
-    Human(int turn);
+class Human {
+   public:
+    Human();
+    void human_player(int turn);
 };
 
 #endif
