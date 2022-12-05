@@ -81,6 +81,46 @@ const Piece* Board::getPiece(int x, int y) const {
     throw invalid_argument("out of range");
 }
 
+bool Board::stalemate(int colour, Board& board) {
+    for (int i = 0; i < 8; ++i) { // check if there's at least one piece that is able to move
+        for (int j = 0; j < 8; ++j) {
+            if (getPiece(i,j) != 0 && getPiece(i,j)->getColor() == colour) { // if it's white's turn check if white is in stalemate
+                for (int k = 0; k < 8; ++k) {                                // if it's black's turn check if black is in stalemate
+                    for (int l = 0; l < 8; ++l) {
+                        if (getPiece(i,j)->check_move(k,l,i,j, board) == true) {
+                            Piece *orig = getPiece(i,j);
+                            Piece *change = 0;
+                            if (getPiece(k,l) != 0) {
+                                Piece *change = getPiece(k,l);
+                            }
+                            movement(k,l,i,j);
+                            if (check(colour, board) == false) {
+                                if (getPiece(i,j) != 0) {
+                                    delete pBoard[i][j];
+                                }
+                                if (getPiece(k,l) != 0) {
+                                    delete pBoard[k][l];
+                                }
+                                pBoard[i][j] = orig;
+                                pBoard[k][l] = change;
+                                return false;
+                            }
+                            if (getPiece(i,j) != 0) {
+                                delete pBoard[i][j];
+                            }
+                            if (getPiece(k,l) != 0) {
+                                delete pBoard[k][l];
+                            }
+                            pBoard[i][j] = orig;
+                            pBoard[k][l] = change;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    return true;
+}
 bool Board::checkmate(int colour) {
     if (colour == 0) {  // just checked if the white is in check
         if (whiteKing_x + 1 < 8) {
