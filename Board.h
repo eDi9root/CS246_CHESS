@@ -34,6 +34,7 @@ class Board : public Subject {
     const Piece* getPiece(int x, int y) const;
     bool movement(int ax, int ay, int bx,
                   int by);  // actual movement
+    bool stalemate(int colour, Board& board);
     bool checkmate(int colour);
     bool check(int colour, Board& board);
 
