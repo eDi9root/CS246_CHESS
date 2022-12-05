@@ -42,6 +42,7 @@ bool Chess::turnmove() {
     Piece* targetpiece = 0;
 
     targetpiece = board.getPiece(x[0], y[0]);
+
     if (targetpiece == 0) {
         throw string("Cannot find piece to move\n");
     } else if (!(targetpiece->check_move(x[1], y[1], x[0], y[0], board))) {
