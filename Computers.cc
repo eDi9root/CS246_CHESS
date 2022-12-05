@@ -1,12 +1,17 @@
 #include "Computers.h"
 
+#include <cstdlib>
+#include <ctime>
 #include <iostream>
 #include <string>
 
 using namespace std;
 
-Computers::Computers(int turn) : Player{turn} {}
-
-void Computers::level_one(int turn, Board &B) {
-    B.movement(rand() % 8, rand() % 8, rand() % 8, rand() % 8);
+void Computers::level_one(int colour, Board &B) {
+    srand((unsigned int)time(NULL));
+    while (true) {
+        int command = rand();
+        B.movement((int)command % 8, (int)command % 8, (int)command % 8,
+                   (int)command % 8);
+    }
 }

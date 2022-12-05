@@ -7,13 +7,14 @@
 
 class Computers {
     int level;
+    int colour;
 
    public:
-    Computers(int level);
-    void level_one(int turn, Board &B);
-    void level_two(int turn, Board &B);
-    void level_three(int turn, Board &B);
-    void level_four(int turn, Board &B);
+    Computers(int level, int colour);
+    void level_one(int colour, Board &B);
+    void level_two(int colour, Board &B);
+    void level_three(int colour, Board &B);
+    void level_four(int colour, Board &B);
     virtual ~Computers() = default;
 };
 

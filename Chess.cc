@@ -9,12 +9,12 @@ Chess::Chess() { board.init(); }
 void Chess::count_winner(int colour) {
     if (colour == 0) {  // white wins
         winner_white = 1;
-    } else if (colour == 1) {
+    } else if (colour == 1) {  // Black wins
         winner_black = 1;
     }
 }
 
-void Chess::count_draw(int colour) {
+void Chess::count_draw(int colour) {  // draw, stalemate
     winner_white = 0.5;
     winner_black = 0.5;
 }
@@ -128,4 +128,9 @@ void Chess::graphics() {
     unique_ptr<Observer> o;
     o = std::make_unique<TextDisplay>(&board);
     ob.push_back(std::move(o));
+}
+
+void Chess::get_players(string p1, string p2) {
+    player1 = p1;
+    player2 = p2;
 }

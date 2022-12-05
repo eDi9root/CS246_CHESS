@@ -4,7 +4,6 @@
 #include <string>
 
 #include "Chess.h"
-#include "Human.h"
 #include "Player.h"
 
 using namespace std;
@@ -32,7 +31,8 @@ int main() {
         cin >> command;
         if (command == "game") {
             cin >> player1 >> player2;
-            if (player1 == "human" && player2 == "human") {
+            play.get_players(player1, player2);
+            if (player1 == "human" && player2 == "human") {  // human vs human
                 play.run();
             }
         } else if (command == "setup") {  // consider about input "setup" first
