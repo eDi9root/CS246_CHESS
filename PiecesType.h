@@ -76,7 +76,8 @@ class Pawn : public Piece {
     // check if there is an ally at the destination
     bool check_move(int ax, int ay, int bx, int by, Board &board) const;
     // check the entire movement
-
+    bool check_enpassant(int ax, int ay, int bx, int by, Board &board) const;
+    // check en passant
     friend class Board;
 };
 

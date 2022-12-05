@@ -20,21 +20,23 @@ int main() {
     string originpos;
     string newpos;
 
-    cout << "Commands" << endl;
-    cout << "1. game [white-player] [black-player]" << endl;
-    cout << "2. setup" << endl;
+    float white_win = 0;
+    float black_win = 0;
 
     while (!cin.eof()) {
+        Chess play = Chess();
+        cout << "Commands" << endl;
+        cout << "1. game [white-player] [black-player]" << endl;
+        cout << "2. setup" << endl;
         cin >> command;
         if (command == "game") {
-            Chess play = Chess();
             play.run();
-            if ((player1 == "white-player") || (player2 == "black-player")) {
-            } else if (player1 == "human") {
-                if (player2 == "computer[1]") {
-                    //...
-                }
-            }
+            // if ((player1 == "white-player") || (player2 == "black-player")) {
+            // } else if (player1 == "human") {
+            //     if (player2 == "computer[1]") {
+            //         //...
+            //     }
+            // }
         } else if (command == "setup") {  // consider about input "setup" first
             // setup_init();
             cin >> setup;
@@ -87,9 +89,13 @@ int main() {
                 //...
             }
             */
-        } else if (command == "redesign") {
         } else {  // invalid command
             cout << "invalid command!" << endl;
         }
+        white_win = white_win + play.printW();
+        black_win = black_win + play.printB();
     }
+    cout << "Final Score: " << endl;
+    cout << "White: " << white_win << endl;
+    cout << "Black: " << black_win << endl;
 }

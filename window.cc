@@ -1,19 +1,21 @@
+#include "window.h"
+
 #include <X11/Xlib.h>
 #include <X11/Xutil.h>
-#include <iostream>
-#include <cstdlib>
-#include <string>
 #include <unistd.h>
-#include "window.h"
+
+#include <cmath>
+#include <cstdlib>
+#include <iostream>
+#include <string>
 
 using namespace std;
 
-Xwindow::Xwindow(int width, int height)
-{
+const double my_pi = std::acos(-1);
 
+Xwindow::Xwindow(int width, int height) : width{width}, height{height} {
     d = XOpenDisplay(NULL);
-    if (d == NULL)
-    {
+    if (d == NULL) {
         cerr << "Cannot open display" << endl;
         exit(1);
     }
@@ -23,9 +25,9 @@ Xwindow::Xwindow(int width, int height)
     XSelectInput(d, w, ExposureMask | KeyPressMask);
     XMapRaised(d, w);
 
-    Pixmap pix = XCreatePixmap(d, w, width,
-                               height, DefaultDepth(d, DefaultScreen(d)));
-    gc = XCreateGC(d, pix, 0, (XGCValues *)0);
+    Pixmap pix =
+        XCreatePixmap(d, w, width, height, DefaultDepth(d, DefaultScreen(d)));
+    gc = XCreateGC(d, pix, 0, (XGCValues*)0);
 
     XFlush(d);
     XFlush(d);
@@ -33,11 +35,11 @@ Xwindow::Xwindow(int width, int height)
     // Set up colours.
     XColor xcolour;
     Colormap cmap;
-    char color_vals[10][10] = {"white", "black", "red", "green", "blue", "cyan", "yellow", "magenta", "orange", "brown"};
+    char color_vals[10][10] = {"white", "black",  "red",     "green",  "blue",
+                               "cyan",  "yellow", "magenta", "orange", "brown"};
 
     cmap = DefaultColormap(d, DefaultScreen(d));
-    for (int i = 0; i < 5; ++i)
-    {
+    for (int i = 0; i < 10; ++i) {
         XParseColor(d, cmap, color_vals[i], &xcolour);
         XAllocColor(d, cmap, &xcolour);
         colours[i] = xcolour.pixel;
@@ -48,38 +50,63 @@ Xwindow::Xwindow(int width, int height)
     // Make window non-resizeable.
     XSizeHints hints;
     hints.flags = (USPosition | PSize | PMinSize | PMaxSize);
-    hints.height = hints.base_height = hints.min_height = hints.max_height = height;
+    hints.height = hints.base_height = hints.min_height = hints.max_height =
+        height;
     hints.width = hints.base_width = hints.min_width = hints.max_width = width;
     XSetNormalHints(d, w, &hints);
 
     XSynchronize(d, True);
 
-    usleep(1000);
+    // usleep(1000);
 
     // Make sure we don't race against the Window being shown
     XEvent ev;
-    while (1)
-    {
+    while (1) {
         XNextEvent(d, &ev);
-        if (ev.type == Expose)
-            break;
+        if (ev.type == Expose) break;
     }
 }
 
-Xwindow::~Xwindow()
-{
+Xwindow::~Xwindow() {
     XFreeGC(d, gc);
     XCloseDisplay(d);
 }
 
-void Xwindow::fillRectangle(int x, int y, int width, int height, int colour)
-{
+void Xwindow::fillRectangle(int x, int y, int width, int height, int colour) {
     XSetForeground(d, gc, colours[colour]);
     XFillRectangle(d, w, gc, x, y, width, height);
     XSetForeground(d, gc, colours[Black]);
 }
 
-void Xwindow::drawString(int x, int y, string msg)
-{
+void Xwindow::drawString(int x, int y, string msg, int colour) {
     XDrawString(d, w, DefaultGC(d, s), x, y, msg.c_str(), msg.length());
+}
+
+void Xwindow::drawLine(int x1, int x2, int y1, int y2) {
+    XDrawLine(d, w, gc, x1, y1, x2, y2);
+}
+
+// void Xwindow::drawPiece(int x, int y, int width, int height, char piece) {
+//     x = x + (width / 2) - (bitmap_width / 2);
+//     y = y + (height / 2) - (bitmap_height / 2);
+//     try {
+//         XCopyPlane(d, *(imageMap.at(piece)), w, gc2, 0, 0, bitmap_width,
+//                    bitmap_height, x, y, 1);
+//         XSync(d, false);
+//     } catch (const out_of_range& except) {
+//         cerr << "out of range" << except.what() << endl;
+//     }
+// }
+
+void Xwindow::printMassage(int x, int y, const string& msg, int colour,
+                           XFontStruct& xf) {
+    XSetForeground(d, gc, colours[colour]);
+    XTextItem xt;
+    xt.chars = const_cast<char*>(msg.c_str());
+    xt.nchars = msg.length();
+    xt.delta = 0;
+    xt.font = xf.fid;
+    XDrawText(d, w, gc, x, y, &xt, 1);
+    XSetForeground(d, gc, colours[Black]);
+    XFlush(d);
 }

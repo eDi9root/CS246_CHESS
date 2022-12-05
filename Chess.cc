@@ -6,6 +6,22 @@ using namespace std;
 
 Chess::Chess() { board.init(); }
 
+void Chess::count_winner(int colour) {
+    if (colour == 0) {  // white wins
+        winner_white = 1;
+    } else if (colour == 1) {
+        winner_black = 1;
+    }
+}
+
+void Chess::count_draw(int colour) {
+    winner_white = 0.5;
+    winner_black = 0.5;
+}
+
+int Chess::printW() { return winner_white; }
+int Chess::printB() { return winner_black; }
+
 void Chess::turnmove() {
     string command[2];
     int x[2] = {
@@ -53,6 +69,8 @@ void Chess::turnmove() {
             colour = !colour;
             if (board.check(colour, board) == true) {
                 if (board.checkmate(colour) == true) {
+                    count_winner(!(colour));
+                    end_game = false;
                     if (colour == 0) {
                         cout << "Checkmate! Black wins!" << endl;
                     } else {
@@ -73,18 +91,30 @@ void Chess::turnmove() {
 void Chess::setup() {}
 
 void Chess::run() {
+    end_game = true;
     string move;
     graphics();
-    while (true) {
-        board.Render();
-        cout << "3. move [start_tile] [end_tile]" << endl;
-        cout << "4. resing" << endl;
-        if (cin >> move) {
-            if (move == "move") {
-                turnmove();
+    board.Render();
+    cout << "3. move [start_tile] [end_tile]" << endl;
+    cout << "4. resign" << endl;
+    while (cin >> move) {
+        if (move == "move") {
+            turnmove();
+            board.Render();
+            cout << "3. move [start_tile] [end_tile]" << endl;
+            cout << "4. resign" << endl;
+        } else if (move == "resign") {
+            if (colour == 1) {
+                cout << "Black resigned this game" << endl;
+                cout << "White get one point!" << endl;
             } else {
-                cout << "Invalid command" << endl;
+                cout << "White resigned this game" << endl;
+                cout << "Black get one point!" << endl;
             }
+            count_winner(!(colour));
+            break;
+        } else {
+            cout << "Invalid command" << endl;
         }
     }
 }
