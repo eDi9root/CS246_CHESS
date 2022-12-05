@@ -30,13 +30,10 @@ int main() {
         cout << "2. setup" << endl;
         cin >> command;
         if (command == "game") {
-            play.run();
-            // if ((player1 == "white-player") || (player2 == "black-player")) {
-            // } else if (player1 == "human") {
-            //     if (player2 == "computer[1]") {
-            //         //...
-            //     }
-            // }
+            cin >> player1 >> player2;
+            if (player1 == "human" && player2 == "human") {
+                play.run();
+            }
         } else if (command == "setup") {  // consider about input "setup" first
             // setup_init();
             cin >> setup;

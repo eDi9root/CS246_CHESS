@@ -29,7 +29,7 @@ class Chess {
     void count_draw(int colour);
     int printW();
     int printB();
-    void turnmove();
+    bool turnmove();
     void setup();
     void run();
     void graphics();

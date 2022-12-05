@@ -22,7 +22,7 @@ void Chess::count_draw(int colour) {
 int Chess::printW() { return winner_white; }
 int Chess::printB() { return winner_black; }
 
-void Chess::turnmove() {
+bool Chess::turnmove() {
     string command[2];
     int x[2] = {
         0,
@@ -31,7 +31,6 @@ void Chess::turnmove() {
         0,
     };
     Piece *targetpiece = 0;
-    Piece *attackpiece = 0;
 
     cin >> command[0] >> command[1];  // Command input
 
@@ -42,8 +41,6 @@ void Chess::turnmove() {
     y[1] = 7 - (command[1][1] - '1');  // target coordinate
 
     targetpiece = board.getPiece(x[0], y[0]);
-    attackpiece = board.getPiece(x[1], y[1]);
-
     if (targetpiece == 0) {
         throw invalid_argument("Cannot find piece to move\n");
     } else if (!(targetpiece->check_move(x[1], y[1], x[0], y[0], board))) {
@@ -70,11 +67,12 @@ void Chess::turnmove() {
             if (board.check(colour, board) == true) {
                 if (board.checkmate(colour) == true) {
                     count_winner(!(colour));
-                    end_game = false;
                     if (colour == 0) {
                         cout << "Checkmate! Black wins!" << endl;
+                        return true;
                     } else {
                         cout << "Checkmate! White wins!" << endl;
+                        return true;
                     }
                 } else {
                     if (colour == 0) {
@@ -86,12 +84,12 @@ void Chess::turnmove() {
             }
         }
     }
+    return false;
 }
 
 void Chess::setup() {}
 
 void Chess::run() {
-    end_game = true;
     string move;
     graphics();
     board.Render();
@@ -99,17 +97,17 @@ void Chess::run() {
     cout << "4. resign" << endl;
     while (cin >> move) {
         if (move == "move") {
-            turnmove();
+            if (turnmove()) {
+                break;
+            }
             board.Render();
             cout << "3. move [start_tile] [end_tile]" << endl;
             cout << "4. resign" << endl;
         } else if (move == "resign") {
             if (colour == 1) {
-                cout << "Black resigned this game" << endl;
-                cout << "White get one point!" << endl;
+                cout << "White wins!" << endl;
             } else {
-                cout << "White resigned this game" << endl;
-                cout << "Black get one point!" << endl;
+                cout << "Black wins!" << endl;
             }
             count_winner(!(colour));
             break;
