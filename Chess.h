@@ -36,10 +36,14 @@ class Chess {
     void count_draw(int colour);
     int printW();
     int printB();
+
     bool turnmove();
     void setupMode();
     void blackKing();
     void whiteKing();
+    void blackKingSub();
+    void whiteKingSub();
+
     void run();
     void run_computer(string player1, string player2);
     void graphics();

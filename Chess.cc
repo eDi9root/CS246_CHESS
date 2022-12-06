@@ -237,6 +237,9 @@ void Chess::run_computer(string player1, string player2) {
 void Chess::blackKing() { cntblackKing = 1; }
 void Chess::whiteKing() { cntwhiteKing = 1; }
 
+void Chess::blackKingSub() { cntblackKing = 0; }
+void Chess::whiteKingSub() { cntwhiteKing = 0; }
+
 void Chess::setupMode() {
     string setup;
     string piecetype;   // store the type of the piece
@@ -304,9 +307,11 @@ void Chess::setupMode() {
             int y = 7 - (coordinate[1] - '1');
             board.setup('0', x, y);
             if (x == board.blackKing_x && y == board.blackKing_y) {
+                blackKingSub();
                 board.set_new_blackking_x(-1);
                 board.set_new_blackking_y(-1);
             } else if (x == board.whiteKing_x && y == board.whiteKing_y) {
+                whiteKingSub();
                 board.set_new_whiteking_x(-1);
                 board.set_new_whiteking_y(-1);
             }
@@ -324,6 +329,10 @@ void Chess::setupMode() {
                     board.check(1, board) == false) {
                     cout << "ready for start playing the game:)" << endl;
                     break;
+                } else {
+                    cout << "Your king is in check !" << endl;
+                    cout << "Can't go out!" << endl;
+                    continue;
                 }
             } else {
                 cout << "You can't finish the setup mode" << endl;
