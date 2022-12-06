@@ -24,9 +24,9 @@ int Chess::printB() { return winner_black; }
 
 bool Chess::turnmove() {
     if (board.stalemate(colour, board) == true) {
-        return false;
-    } 
-    
+        return true;
+    }
+
     string command[2];
     int x[2] = {
         0,
@@ -125,6 +125,31 @@ void Chess::run() {
             break;
         } else {
             cout << "Invalid command" << endl;
+        }
+    }
+}
+
+void Chess::run_computer(string player1, string player2) {
+    string move;
+    graphics();
+    board.Render();
+    if (player1 == "computer[1]") {
+        while (true) {
+            Computers level1 = Computers(colour, 0, board);
+            colour = !colour;
+            board.Render();
+            cout << "3. move [start_tile] [end_tile]" << endl;
+            cout << "4. resign" << endl;
+            while (cin >> move) {
+                if (move == "move") {
+                    turnmove();
+                    board.Render();
+                    break;
+                } else {
+                    cout << "Invalid Command!" << endl;
+                }
+                // break;
+            }
         }
     }
 }

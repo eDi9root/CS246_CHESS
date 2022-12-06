@@ -10,7 +10,7 @@ class Computers {
     int colour;
 
    public:
-    Computers(int level, int colour);
+    Computers(int level, int colour, Board &B);
     void level_one(int colour, Board &B);
     void level_two(int colour, Board &B);
     void level_three(int colour, Board &B);

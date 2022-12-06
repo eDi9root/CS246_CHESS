@@ -6,6 +6,7 @@
 #include <vector>
 
 #include "Board.h"
+#include "Computers.h"
 #include "Player.h"
 #include "observer.h"
 
@@ -35,6 +36,7 @@ class Chess {
     bool turnmove();
     void setup();
     void run();
+    void run_computer(string player1, string player2);
     void graphics();
     void get_players(string p1, string p2);
 };
