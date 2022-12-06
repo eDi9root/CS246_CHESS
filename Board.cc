@@ -45,6 +45,36 @@ void Board::init() {  // board initialize when the game is started without setup
     whiteKing_y = 7;
 }
 
+void Board::setup(char piece, int x, int y) {
+    if (piece == 'K') {
+        pBoard[x][y] = new King(Piece::white);
+    } else if (piece == 'R') {
+        pBoard[x][y] = new Rook(Piece::white);
+    } else if (piece == 'N') {
+        pBoard[x][y] = new Knight(Piece::white);
+    } else if (piece == 'B') {
+        pBoard[x][y] = new Bishop(Piece::white);
+    } else if (piece == 'Q') {
+        pBoard[x][y] = new Queen(Piece::white);
+    } else if (piece == 'P') {
+        pBoard[x][y] = new Pawn(Piece::white);
+    } else if (piece == 'k') {
+        pBoard[x][y] = new King(Piece::black);
+    } else if (piece == 'r') {
+        pBoard[x][y] = new Rook(Piece::black);
+    } else if (piece == 'n') {
+        pBoard[x][y] = new Knight(Piece::black);
+    } else if (piece == 'b') {
+        pBoard[x][y] = new Bishop(Piece::black);
+    } else if (piece == 'q') {
+        pBoard[x][y] = new Queen(Piece::black);
+    } else if (piece == 'p') {
+        pBoard[x][y] = new Pawn(Piece::black);
+    } else if (piece == '0') {
+        pBoard[x][y] = 0;
+    }
+}
+
 void Board::set_new_blackking_x(int x) { blackKing_x = x; }
 void Board::set_new_blackking_y(int y) { blackKing_y = y; }
 

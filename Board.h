@@ -15,14 +15,15 @@ class Board : public Subject {
     string piecesType;
     string colour;
     string positions;
-    int blackKing_x;
+
+   public:
+       int blackKing_x;
     int blackKing_y;
     int whiteKing_x;
     int whiteKing_y;
-
-   public:
     Board();
     void init();
+    void setup(char piece, int x, int y);
 
     void set_new_blackking_x(int x);
     void set_new_blackking_y(int y);

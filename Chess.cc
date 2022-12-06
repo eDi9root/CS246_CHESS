@@ -4,7 +4,11 @@
 
 using namespace std;
 
-Chess::Chess() { board.init(); }
+Chess::Chess() {}
+
+void Chess::initializeBoard() {
+    board.init();
+}
 
 void Chess::count_winner(int colour) {
     if (colour == 0) {  // white wins
@@ -93,8 +97,6 @@ bool Chess::turnmove() {
     }
     return false;
 }
-
-void Chess::setup() {}
 
 void Chess::run() {
     string move;
@@ -231,6 +233,108 @@ void Chess::run_computer(string player1, string player2) {
             if (end_game) {
                 break;
             }
+        }
+    }
+}
+void Chess::blackKing() {
+    cntblackKing = 1;
+}
+void Chess::whiteKing() {
+    cntwhiteKing = 1;
+}
+
+void Chess::setupMode() {
+    string setup;
+    string piecetype;   // store the type of the piece
+    string coordinate;  // for coordinate
+    string turn;
+    graphics();
+    board.Render();
+    while (cin >> setup) {
+        if (setup == "+") {
+        cin >> piecetype >> coordinate;
+            if ((piecetype[0] == 'K' || piecetype[0] == 'Q' ||
+                piecetype[0] == 'B' || piecetype[0] == 'R' ||
+                piecetype[0] == 'N' || piecetype[0] == 'P' ||
+                piecetype[0] == 'k' || piecetype[0] == 'q' ||
+                piecetype[0] == 'b' || piecetype[0] == 'r' ||
+                piecetype[0] == 'n' || piecetype[0] == 'p') &&
+                ((coordinate[0] >= 'a' && coordinate[0] <= 'h') 
+                && (coordinate[1] >= '1' && coordinate[1] <= '8'))) {  
+                    int x = coordinate[0] - 'a';
+                    int y = 7 - (coordinate[1] - '1');
+                    // check if the command is valid
+                    if (piecetype[0] == 'K') {
+                        if (cntwhiteKing == 0) {
+                            board.setup(piecetype[0], x, y);
+                            whiteKing();
+                            board.set_new_whiteking_x(x);
+                            board.set_new_whiteking_y(y);
+                            board.Render();
+                            continue;
+                        } else {
+                            cout << "You already place the White king" << endl;
+                            continue;
+                        }
+                        continue;
+                    } else if (piecetype[0] == 'k') {
+                        if (cntblackKing == 0) {
+                            board.setup(piecetype[0], x, y);
+                            blackKing();
+                            board.set_new_blackking_x(x);
+                            board.set_new_blackking_y(y);
+                            board.Render();
+                            continue;
+                        } else {
+                            cout << "You already place the Black king" << endl;
+                            continue;
+                        }
+                        continue;
+                    } else if ((piecetype[0] == 'P' || piecetype[0] == 'p') && (y == 0 || y == 7)) {
+                            cout << "You can't place pawn on the first and last row" << endl;
+                            continue;
+                    } else {
+                        board.setup(piecetype[0], x, y);
+                        board.Render();
+                        continue;
+                    }
+                } else {
+                    cout << "Invalid Command" << endl;
+                    continue;
+                }
+        } else if (setup == "-") {
+            cin >> coordinate;
+            int x = coordinate[0] - 'a';
+            int y = 7 - (coordinate[1] - '1');
+            board.setup('0', x, y);
+            if (x == board.blackKing_x && y == board.blackKing_y) {
+                board.set_new_blackking_x(-1);
+                board.set_new_blackking_y(-1);
+            } else if (x == board.whiteKing_x && y == board.whiteKing_y) {
+                board.set_new_whiteking_x(-1);
+                board.set_new_whiteking_y(-1);  
+            }
+            board.Render();
+            continue;
+        } else if (setup == "=") {
+            cin >> turn;
+            if (turn == "black") {
+                colour = !colour;
+            }
+            continue;
+        } else if (setup == "done") {
+            if (cntblackKing == 1 && cntwhiteKing == 1) {
+                if (board.check(0, board) == false && board.check(1, board) == false) {
+                    cout << "ready for start playing the game:)" << endl;
+                    break;
+                }
+            } else {
+                cout << "You can't finish the setup mode" << endl;
+                continue;
+            }
+        } else {
+            cout << "Invalid Command" << endl;
+            continue;
         }
     }
 }
