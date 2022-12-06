@@ -27,9 +27,11 @@ int Chess::printW() { return winner_white; }
 int Chess::printB() { return winner_black; }
 
 bool Chess::turnmove() {
+    /*
     if (board.stalemate(colour, board) == true) {
         return true;
     }
+    */ 
 
     string command[2];
     int x[2] = {
