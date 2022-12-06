@@ -167,7 +167,7 @@ bool Queen::check_move(int ax, int ay, int bx, int by, Board &board) const {
         }
     } else if (ax > bx && ay < by) {  // diagonal up-right
         int BY = by - 1;
-        for (int i = bx + 1; i > ax; i++) {
+        for (int i = bx + 1; i < ax; i++) {
             if ((board.getPiece(i, BY)) != 0) {
                 return false;
             }
@@ -225,7 +225,7 @@ bool Bishop::check_move(int ax, int ay, int bx, int by, Board &board) const {
         }
     } else if (ax > bx && ay < by) {  // diagonal up-right
         int BY = by - 1;
-        for (int i = bx + 1; i > ax; i++) {
+        for (int i = bx + 1; i < ax; i++) {
             if ((board.getPiece(i, BY)) != 0) {
                 return false;
             }

@@ -36,6 +36,10 @@ int main() {
                 play.run();
             } else if (player1 == "computer[1]" && player2 == "human") {
                 play.run_computer(player1, player2);
+            } else if (player1 == "human" && player2 == "computer[1]") {
+                play.run_computer(player1, player2);
+            } else if (player1 == "computer[2]" && player2 == "human") {
+                play.run_computer(player1, player2);
             }
         } else if (command == "setup") {  // consider about input "setup" first
             // setup_init();

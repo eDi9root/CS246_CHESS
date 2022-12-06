@@ -131,24 +131,105 @@ void Chess::run() {
 
 void Chess::run_computer(string player1, string player2) {
     string move;
+    bool end_game = false;
     graphics();
     board.Render();
     if (player1 == "computer[1]") {
         while (true) {
-            Computers level1 = Computers(colour, 0, board);
+            Computers level1 = Computers(1, colour, board);
             colour = !colour;
             board.Render();
             cout << "3. move [start_tile] [end_tile]" << endl;
             cout << "4. resign" << endl;
             while (cin >> move) {
                 if (move == "move") {
-                    turnmove();
+                    if (turnmove()) {
+                        end_game = true;
+                    }
                     board.Render();
+                    break;
+                } else if (move == "resign") {
+                    if (colour == 1) {
+                        cout << "White wins!" << endl;
+                    } else {
+                        cout << "Black wins!" << endl;
+                    }
+                    count_winner(!(colour));
+                    end_game = true;
                     break;
                 } else {
                     cout << "Invalid Command!" << endl;
                 }
-                // break;
+            }
+            if (end_game) {
+                break;
+            }
+        }
+    } else if (player2 == "computer[1]") {
+        bool isresign = false;
+        while (true) {
+            cout << "3. move [start_tile] [end_tile]" << endl;
+            cout << "4. resign" << endl;
+            while (cin >> move) {
+                if (move == "move") {
+                    if (turnmove()) {
+                        end_game = true;
+                    }
+                    board.Render();
+                    break;
+                } else if (move == "resign") {
+                    if (colour == 1) {
+                        cout << "White wins!" << endl;
+                    } else {
+                        cout << "Black wins!" << endl;
+                    }
+                    count_winner(!(colour));
+                    end_game = true;
+                    isresign = true;
+                    break;
+                } else {
+                    cout << "Invalid Command!" << endl;
+                }
+            }
+            if (!(isresign)) {
+                Computers level1 = Computers(1, colour, board);
+                colour = !colour;
+                board.Render();
+            }
+            if (end_game) {
+                break;
+            }
+        }
+
+    } else if (player1 == "computer[2]") {
+        while (true) {
+            Computers level2 = Computers(2, colour, board);
+            colour = !colour;
+            board.Render();
+            cout << "3. move [start_tile] [end_tile]" << endl;
+            cout << "4. resign" << endl;
+            while (cin >> move) {
+                if (move == "move") {
+                    if (turnmove()) {
+                        end_game = true;
+                    }
+                    board.Render();
+                    break;
+                } else if (move == "resign") {
+                    if (colour == 1) {
+                        cout << "White wins!" << endl;
+                    } else {
+                        cout << "Black wins!" << endl;
+                    }
+                    count_winner(!(colour));
+                    end_game = true;
+                    break;
+                } else {
+                    cout << "Invalid Command!" << endl;
+                }
+            }
+            if (end_game) {
+                break;
             }
         }
     }
