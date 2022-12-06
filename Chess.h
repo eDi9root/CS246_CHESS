@@ -19,6 +19,9 @@ class Chess {
 
     unsigned int colour = Piece::white;
 
+    int cntwhiteKing = 0;
+    int cntblackKing = 0;
+
    protected:
     float winner_white = 0;
     float winner_black = 0;
@@ -28,12 +31,15 @@ class Chess {
 
    public:
     Chess();
+    void initializeBoard();
     void count_winner(int colour);
     void count_draw(int colour);
     int printW();
     int printB();
     bool turnmove();
-    void setup();
+    void setupMode();
+    void blackKing();
+    void whiteKing();
     void run();
     void run_computer(string player1, string player2);
     void graphics();
