@@ -7,7 +7,6 @@
 
 #include "Board.h"
 #include "Computers.h"
-#include "Player.h"
 #include "observer.h"
 
 using namespace std;

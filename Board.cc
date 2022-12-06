@@ -6,7 +6,6 @@
 #include "Chess.h"
 #include "Piece.h"
 #include "PiecesType.h"
-#include "Player.h"
 #include "TextDisplay.h"
 
 using namespace std;

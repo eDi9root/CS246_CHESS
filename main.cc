@@ -4,7 +4,6 @@
 #include <string>
 
 #include "Chess.h"
-#include "Player.h"
 
 using namespace std;
 

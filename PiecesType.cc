@@ -368,8 +368,41 @@ bool Pawn::check_move(int ax, int ay, int bx, int by, Board &board) const {
             return false;
         }
     } else if (board.getPiece(ax, ay) == 0 && (abs(bx - ax) == abs(by - ay))) {
+        if (board.getPiece(bx, by)->getColor() == 0 && by == 3) {
+            if (board.getPiece(bx - 1, by) == 0 &&
+                board.getPiece(bx + 1, by) == 0) {
+                return false;
+            } else if (board.getPiece(bx - 1, by)->getColor() != 1 ||
+                       board.getPiece(bx + 1, by)->getColor() != 1) {
+                return false;
+            } else if (board.getPiece(bx - 1, by)->pid != Piece::Pawn ||
+                       board.getPiece(bx + 1, by)->pid != Piece::Pawn) {
+                return false;
+            } else if (by != 3) {
+                return false;
+            }
+            // } else if ((en_passant)) {
+            //     return Piece::check_move(ax, ay, bx, by, board);
+            // }
+        } else if (board.getPiece(bx, by)->getColor() == 1 && by == 4) {
+            if (board.getPiece(bx - 1, by) == 0 &&
+                board.getPiece(bx + 1, by) == 0) {
+                return false;
+            } else if (board.getPiece(bx - 1, by)->getColor() != 0 ||
+                       board.getPiece(bx + 1, by)->getColor() != 0) {
+                return false;
+            } else if (board.getPiece(bx - 1, by)->pid != Piece::Pawn ||
+                       board.getPiece(bx + 1, by)->pid != Piece::Pawn) {
+                return false;
+            } else if (by != 4) {
+                return false;
+            }
+            // } else if ((en_passant)) {
+            //     return Piece::check_move(ax, ay, bx, by, board);
+            // }
+        }
         return false;
-    }
+    }  // En passant
 
     if (pcolour == Piece::black) {  // cannot go back
         if (!(by - ay < 0)) {

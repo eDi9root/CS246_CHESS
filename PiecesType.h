@@ -67,8 +67,6 @@ class Knight : public Piece {
 
 class Pawn : public Piece {
    private:
-    bool enpassen = true;
-
    public:
     Pawn(int colour);
 
