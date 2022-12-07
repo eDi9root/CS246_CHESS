@@ -1,5 +1,6 @@
 #include "Chess.h"
 
+#include "GraphicDisplay.h"
 #include "TextDisplay.h"
 
 using namespace std;
@@ -98,7 +99,8 @@ bool Chess::turnmove() {
 
 void Chess::run() {
     string move;
-    graphics();
+    text_display();
+    graphic_display();
     board.Render();
     cout << "3. move [start_tile] [end_tile]" << endl;
     cout << "4. resign" << endl;
@@ -132,7 +134,8 @@ void Chess::run() {
 void Chess::run_computer(string player1, string player2) {
     string move;
     bool end_game = false;
-    graphics();
+    text_display();
+    graphic_display();
     board.Render();
     if (player1 == "computer[1]") {
         while (true) {
@@ -245,7 +248,8 @@ void Chess::setupMode() {
     string piecetype;   // store the type of the piece
     string coordinate;  // for coordinate
     string turn;
-    graphics();
+    text_display();
+    graphic_display();
     board.Render();
     while (cin >> setup) {
         if (setup == "+") {
@@ -345,9 +349,15 @@ void Chess::setupMode() {
     }
 }
 
-void Chess::graphics() {
+void Chess::text_display() {
     unique_ptr<Observer> o;
     o = std::make_unique<TextDisplay>(&board);
+    ob.push_back(std::move(o));
+}
+
+void Chess::graphic_display() {
+    unique_ptr<Observer> o;
+    o = std::make_unique<GraphicDisplay>(&board);
     ob.push_back(std::move(o));
 }
 

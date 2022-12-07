@@ -46,7 +46,9 @@ class Chess {
 
     void run();
     void run_computer(string player1, string player2);
-    void graphics();
+    void text_display();
+    void graphic_display();
+
     void get_players(string p1, string p2);
 };
 

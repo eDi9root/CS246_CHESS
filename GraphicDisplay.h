@@ -11,11 +11,11 @@
 class GraphicDisplay : public Observer {
     Board *sub_gr;
     Xwindow window;
-    int width, height;
 
    public:
     GraphicDisplay(Board *sub);
     ~GraphicDisplay();
+    string Tochar(Piece *p);
     void notify() override;
 };
 

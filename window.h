@@ -9,7 +9,7 @@ class Xwindow {
     Display* d;
     Window w;
     int s;
-    GC gc, gc_2;
+    GC gc;
     unsigned long colours[10];
     int width, height;
 
@@ -25,6 +25,7 @@ class Xwindow {
         Magenta,
         Orange,
         Brown
+
     };
     // colours
 
@@ -36,12 +37,15 @@ class Xwindow {
 
     void drawString(int x, int y, std::string msg, int colour = Black);
 
+    void drawBigString(int x, int y, std::string msg, int colour = Black);
+
     void drawLine(int x1, int x2, int y1, int y2);
 
-    // void drawPiece(int x, int y, int width, int height, char piece);
+    void drawStringFont(int x, int y, std::string msg, std::string font,
+                        int colour = Black);
 
    private:
-    void printMassage(int x, int y, const std::string& msg, int colour,
+    void printMessage(int x, int y, const std::string& msg, int colour,
                       XFontStruct& xf);
 };
 

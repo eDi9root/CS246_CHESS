@@ -7,11 +7,10 @@
 #include <cmath>
 #include <cstdlib>
 #include <iostream>
+#include <sstream>
 #include <string>
 
 using namespace std;
-
-const double my_pi = std::acos(-1);
 
 Xwindow::Xwindow(int width, int height) : width{width}, height{height} {
     d = XOpenDisplay(NULL);
@@ -57,7 +56,7 @@ Xwindow::Xwindow(int width, int height) : width{width}, height{height} {
 
     XSynchronize(d, True);
 
-    // usleep(1000);
+    usleep(1000);
 
     // Make sure we don't race against the Window being shown
     XEvent ev;
@@ -82,23 +81,31 @@ void Xwindow::drawString(int x, int y, string msg, int colour) {
     XDrawString(d, w, DefaultGC(d, s), x, y, msg.c_str(), msg.length());
 }
 
+void Xwindow::drawBigString(int x, int y, string msg, int colour) {
+    ostringstream name;
+    name << "-*-helvetica-bold-r-*-*-*-240-" << width / 10 << "-" << height / 10
+         << "-*-*-*-*";
+
+    drawStringFont(x, y, msg, name.str(), colour);
+}
+
+void Xwindow::drawStringFont(int x, int y, string msg, string font,
+                             int colour) {
+    XFontStruct* f = XLoadQueryFont(d, font.c_str());
+
+    if (f == nullptr) {
+        f = XLoadQueryFont(d, "6x13");
+    }
+
+    printMessage(x, y, msg, colour, *f);
+    delete f;
+}
+
 void Xwindow::drawLine(int x1, int x2, int y1, int y2) {
     XDrawLine(d, w, gc, x1, y1, x2, y2);
 }
 
-// void Xwindow::drawPiece(int x, int y, int width, int height, char piece) {
-//     x = x + (width / 2) - (bitmap_width / 2);
-//     y = y + (height / 2) - (bitmap_height / 2);
-//     try {
-//         XCopyPlane(d, *(imageMap.at(piece)), w, gc2, 0, 0, bitmap_width,
-//                    bitmap_height, x, y, 1);
-//         XSync(d, false);
-//     } catch (const out_of_range& except) {
-//         cerr << "out of range" << except.what() << endl;
-//     }
-// }
-
-void Xwindow::printMassage(int x, int y, const string& msg, int colour,
+void Xwindow::printMessage(int x, int y, const string& msg, int colour,
                            XFontStruct& xf) {
     XSetForeground(d, gc, colours[colour]);
     XTextItem xt;

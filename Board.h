@@ -17,7 +17,7 @@ class Board : public Subject {
     string positions;
 
    public:
-       int blackKing_x;
+    int blackKing_x;
     int blackKing_y;
     int whiteKing_x;
     int whiteKing_y;

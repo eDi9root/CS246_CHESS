@@ -4,6 +4,7 @@
 #include <vector>
 
 #include "Chess.h"
+#include "GraphicDisplay.h"
 #include "Piece.h"
 #include "PiecesType.h"
 #include "TextDisplay.h"
